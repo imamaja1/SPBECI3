@@ -351,7 +351,7 @@
             }
             $.ajax({
                 type: 'PUT',
-                url: " <?= base_url() ?>Rest_API/permintaan_terminal",
+                url: " <?= base_url() ?>Rest_API/Permintaan_terminal",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")
@@ -374,7 +374,7 @@
             }
             $.ajax({
                 type: 'PUT',
-                url: " <?= base_url() ?>Rest_API/permintaan_terminal",
+                url: " <?= base_url() ?>Rest_API/Permintaan_terminal",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")
@@ -396,7 +396,7 @@
                 'KEY-SPBE': 'SPBE'
             }
             $.ajax({
-                type: 'PUT',
+                type: 'POST',
                 url: " <?= base_url() ?>Rest_API/Aktifitas/Percepatan",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -424,7 +424,7 @@
             console.log(value_data);
             $.ajax({
                 type: 'PUT',
-                url: " <?= base_url() ?>Rest_API/aktifitas/percepatan",
+                url: " <?= base_url() ?>Rest_API/Aktifitas/Percepatan",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")
@@ -445,7 +445,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': "Basic " + btoa("gas:gas")
             },
-            url: " <?= base_url() ?>Rest_API/aktifitas/skid_tank?KEY-SPBE=SPBE",
+            url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
             contentType: "application/json",
             dataType: 'json',
             success: function(response) {

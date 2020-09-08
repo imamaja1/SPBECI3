@@ -39,7 +39,7 @@ class Aktifitas extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_OK);
     }
 
-    public function Percepatan_put()
+    public function Percepatan_post()
     {
         $permintaan = array(
             'kode_permintaan' => $this->put('kode_permintaan'),
