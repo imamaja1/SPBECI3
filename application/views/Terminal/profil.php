@@ -168,10 +168,9 @@
                     'KEY-SPBE': 'SPBE'
                 }
             }
-            console.log(value_data);
             $.ajax({
-                type: 'PUT',
-                url: " <?= base_url() ?>Rest_API/Terminal_lpg",
+                type: 'POST',
+                url: " <?= base_url() ?>Rest_API/Terminal_lpg/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")

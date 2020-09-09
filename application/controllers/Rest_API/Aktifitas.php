@@ -8,10 +8,10 @@ class Aktifitas extends REST_Controller
     {
         parent::__construct();
         $this->load->model('M_skid_tank');
-        $this->load->model('M_spbe');
+        $this->load->model('M_SPBE');
         $this->load->model('M_permintaan');
     }
-    public function skid_tank_get()
+    public function Skid_tank_get()
     {
         // if($this->get('id') == null){
         $tgl = 2;

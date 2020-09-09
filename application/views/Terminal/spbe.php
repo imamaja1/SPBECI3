@@ -313,7 +313,7 @@
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
                         },
-                        "url": "<?= base_url() ?>/Rest_API/spbe?KEY-SPBE=SPBE"
+                        "url": "<?= base_url() ?>/Rest_API/SPBE?KEY-SPBE=SPBE"
                     },
                     columns: [{
                         data: null
@@ -399,7 +399,7 @@
                 function view_data(id) {
                     $.ajax({
                         type: 'GET',
-                        url: " <?= base_url() ?>Rest_API/spbe?KEY-SPBE=SPBE&id=" + id,
+                        url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
@@ -465,8 +465,8 @@
                         }
                     }
                     $.ajax({
-                        type: 'PUT',
-                        url: " <?= base_url() ?>Rest_API/SPBE",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/SPBE/edit",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
@@ -495,8 +495,8 @@
                     }
                     console.log(value_data);
                     $.ajax({
-                        type: 'DELETE',
-                        url: " <?= base_url() ?>Rest_API/spbe",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/SPBE/delete",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")

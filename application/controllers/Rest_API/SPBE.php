@@ -53,33 +53,33 @@ class SPBE extends REST_Controller
     $this->response($respone, REST_Controller::HTTP_CREATED);
   }
 
-  public function index_put()
+  public function edit_post()
   {
     $data = array(
-      'kode_spbe' => $this->put('kode_spbe'),
-      'nama_spbe' => $this->put('nama_spbe'),
-      'alamat_spbe' => $this->put('alamat_spbe'),
-      'telepon_spbe' => $this->put('telepon_spbe'),
-      'kapasitas_tt' => $this->put('kapasitas_tt'),
-      'dot' => $this->put('dot'),
-      'limit' => $this->put('limit'),
-      'jarak' => $this->put('jarak'),
+      'kode_spbe' => $this->post('kode_spbe'),
+      'nama_spbe' => $this->post('nama_spbe'),
+      'alamat_spbe' => $this->post('alamat_spbe'),
+      'telepon_spbe' => $this->post('telepon_spbe'),
+      'kapasitas_tt' => $this->post('kapasitas_tt'),
+      'dot' => $this->post('dot'),
+      'limit' => $this->post('limit'),
+      'jarak' => $this->post('jarak'),
     );
-    if ($this->put('password') &&  $this->put('username')) {
-      if ($this->put('password') == 'false') {
-        $data['username'] = $this->put('username');
+    if ($this->post('password') &&  $this->post('username')) {
+      if ($this->post('password') == 'false') {
+        $data['username'] = $this->post('username');
       } else {
-        $data['username'] = $this->put('username');
-        $data['password'] = md5($this->put('password'));
+        $data['username'] = $this->post('username');
+        $data['password'] = md5($this->post('password'));
       }
     }
     $respone = $this->M_SPBE->update_SPBE($data);
     $this->response($data, REST_Controller::HTTP_CREATED);
   }
 
-  public function index_delete()
+  public function delete_post()
   {
-    $id = $this->delete('kode_SPBE');
+    $id = $this->post('kode_SPBE');
     $respone = $this->M_SPBE->delete_SPBE($id);
     if ($respone) {
       $this->response($respone, REST_Controller::HTTP_OK);

@@ -481,7 +481,7 @@
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
                         },
-                        url: " <?= base_url() ?>Rest_API/permintaan/skid_tank?KEY-SPBE=SPBE&id=" + kode,
+                        url: " <?= base_url() ?>Rest_API/Permintaan/Skid_tank?KEY-SPBE=SPBE&id=" + kode,
                         contentType: "application/json",
                         dataType: 'json',
                         success: function(response) {
@@ -509,7 +509,7 @@
                 function view_patra_niaga() {
                     $.ajax({
                         type: 'GET',
-                        url: " <?= base_url() ?>Rest_API/patra_niaga?KEY-SPBE=SPBE",
+                        url: " <?= base_url() ?>Rest_API/Patra_niaga?KEY-SPBE=SPBE",
                         contentType: "application/json",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -553,8 +553,8 @@
                         }
                     }
                     $.ajax({
-                        type: 'PUT',
-                        url: " <?= base_url() ?>Rest_API/Patra_niaga",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/Patra_niaga/edit",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
@@ -575,7 +575,7 @@
                             'Authorization': "Basic " + btoa("gas:gas")
                         },
                         method: "GET",
-                        url: "<?= base_url() ?>/Rest_api/skid_tank?KEY-SPBE=SPBE",
+                        url: "<?= base_url() ?>/Rest_API/Skid_tank?KEY-SPBE=SPBE",
                     },
                     columns: [{
                         data: null
@@ -623,7 +623,7 @@
                     console.log(id);
                     $.ajax({
                         type: 'GET',
-                        url: " <?= base_url() ?>Rest_API/skid_tank?KEY-SPBE=SPBE&id=" + id,
+                        url: " <?= base_url() ?>Rest_API/Skid_tank?KEY-SPBE=SPBE&id=" + id,
                         contentType: "application/json",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -699,7 +699,7 @@
                         console.log(value_data);
                         $.ajax({
                             type: 'POST',
-                            url: " <?= base_url() ?>Rest_API/skid_tank",
+                            url: " <?= base_url() ?>Rest_API/Skid_tank",
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
                                 'Authorization': "Basic " + btoa("gas:gas")
@@ -749,8 +749,8 @@
                     console.log(value_data);
 
                     $.ajax({
-                        type: 'PUT',
-                        url: " <?= base_url() ?>Rest_API/skid_tank",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/Skid_tank/edit",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
@@ -780,8 +780,8 @@
                     }
                     console.log(value_data);
                     $.ajax({
-                        type: 'DELETE',
-                        url: " <?= base_url() ?>Rest_API/skid_tank",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/Skid_tank/delete",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")

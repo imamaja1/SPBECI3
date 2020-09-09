@@ -63,39 +63,39 @@ class Skid_tank extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
-    public function index_put()
+    public function edit_post()
     {
         $data1 = array(
-            'kode_skid_tank' => $this->put('kode_skid_tank'),
-            'nopol' => $this->put('nopol'),
-            'kapasitas' => $this->put('kapasitas'),
-            'odometer' => $this->put('odometer'),
-            'status' => $this->put('status'),
+            'kode_skid_tank' => $this->post('kode_skid_tank'),
+            'nopol' => $this->post('nopol'),
+            'kapasitas' => $this->post('kapasitas'),
+            'odometer' => $this->post('odometer'),
+            'status' => $this->post('status'),
         );
         $data2 = array(
-            'kode_supir' => $this->put('kode_supir1'),
-            'nopol' => $this->put('nopol'),
-            'nama_supir' => $this->put('nama_supir1'),
-            'tgl_lahir' => $this->put('tgl_lahir1'),
-            'no_hp' => $this->put('no_hp1'),
-            'no_sim' => $this->put('no_sim1'),
-            'tahun_berlaku' => $this->put('tahun_berlaku1'),
+            'kode_supir' => $this->post('kode_supir1'),
+            'nopol' => $this->post('nopol'),
+            'nama_supir' => $this->post('nama_supir1'),
+            'tgl_lahir' => $this->post('tgl_lahir1'),
+            'no_hp' => $this->post('no_hp1'),
+            'no_sim' => $this->post('no_sim1'),
+            'tahun_berlaku' => $this->post('tahun_berlaku1'),
         );
         $data3 = array(
-            'kode_supir' => $this->put('kode_supir2'),
-            'nama_supir' => $this->put('nama_supir2'),
-            'tgl_lahir' => $this->put('tgl_lahir2'),
+            'kode_supir' => $this->post('kode_supir2'),
+            'nama_supir' => $this->post('nama_supir2'),
+            'tgl_lahir' => $this->post('tgl_lahir2'),
             'no_hp' => $this->put('no_hp2'),
-            'no_sim' => $this->put('no_sim2'),
-            'tahun_berlaku' => $this->put('tahun_berlaku2'),
+            'no_sim' => $this->post('no_sim2'),
+            'tahun_berlaku' => $this->post('tahun_berlaku2'),
         );
         $respone = $this->M_skid_tank->update_skid_tank($data1, $data2, $data3);
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
-    public function index_delete()
+    public function delete_post()
     {
-        $id = $this->delete('kode_skid_tank');
+        $id = $this->post('kode_skid_tank');
         $respone = $this->M_skid_tank->delete_skid_tank($id);
         if ($respone) {
             $this->response($respone, REST_Controller::HTTP_OK);

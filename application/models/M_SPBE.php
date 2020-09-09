@@ -76,8 +76,8 @@ class M_spbe extends CI_Model
     if ($id == '') {
       return $this->empty_response();
     } else {
-      $this->db->where("kode_SPBE", $id);
-      $delete = $this->db->delete("t_SPBE");
+      $this->db->where("kode_spbe", $id);
+      $delete = $this->db->delete("t_spbe");
       if ($delete) {
         $response['status'] = 200;
         $response['error'] = false;

@@ -48,24 +48,24 @@ class Terminal_lpg extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
-    public function index_put()
+    public function edit_post()
     {
         if ($this->put('password')) {
             $data = array(
-                'kode_terminal' => $this->put('kode_terminal'),
-                'nama_terminal' => $this->put('nama_terminal'),
-                'telepon_terminal' => $this->put('telepon_terminal'),
-                'alamat_terminal' => $this->put('alamat_terminal'),
-                'username' => $this->put('username'),
+                'kode_terminal' => $this->post('kode_terminal'),
+                'nama_terminal' => $this->post('nama_terminal'),
+                'telepon_terminal' => $this->post('telepon_terminal'),
+                'alamat_terminal' => $this->post('alamat_terminal'),
+                'username' => $this->post('username'),
             );
         } else {
             $data = array(
-                'kode_terminal' => $this->put('kode_terminal'),
-                'nama_terminal' => $this->put('nama_terminal'),
-                'telepon_terminal' => $this->put('telepon_terminal'),
-                'alamat_terminal' => $this->put('alamat_terminal'),
-                'username' => $this->put('username'),
-                'password' => md5($this->put('password'))
+                'kode_terminal' => $this->post('kode_terminal'),
+                'nama_terminal' => $this->post('nama_terminal'),
+                'telepon_terminal' => $this->post('telepon_terminal'),
+                'alamat_terminal' => $this->post('alamat_terminal'),
+                'username' => $this->post('username'),
+                'password' => md5($this->post('password'))
             );
         }
 
