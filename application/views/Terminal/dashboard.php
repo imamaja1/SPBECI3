@@ -75,19 +75,7 @@
                         </div>
                     </div>
                     <!-- START WIDGET REGISTRED -->
-                    <div class="widget widget-default widget-item-icon" onclick="location.href='pages-address-book.html';">
-                        <div class="widget-item-left">
-                            <span class="fa fa-user"></span>
-                        </div>
-                        <div class="widget-data">
-                            <div class="widget-int num-count">375</div>
-                            <div class="widget-title">User Pengguna Aplikasi </div>
-                            <div class="widget-subtitle">blum active</div>
-                        </div>
-                        <div class="widget-controls">
-                            <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
-                        </div>
-                    </div>
+
 
                 </div>
             </div>
@@ -314,7 +302,7 @@
                                                 document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-info btn-rounded pull-right" data-toggle="modal" data-target="#percepatan" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')" >Percepat</button><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',5)  ">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong><br></div><div class="pull d-inline-block"><span class="text-info d-inline-block">Proses Penyaluran Gas Di SPBE </span></div><div class="pull-right">60%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div></div></div>'
                                             }
                                         } else {
-                                            document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-info btn-rounded pull-right" data-toggle="modal" data-target="#percepatan" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepat</button><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong><br>/div><div class="pull d-inline-block"><span class="text-info d-inline-block">Proses Perjalan Menuju Tujuan</span></div><div class="pull-right">40%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div></div></div>'
+                                            document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-info btn-rounded pull-right" data-toggle="modal" data-target="#percepatan" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepat</button><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong><br></div><div class="pull d-inline-block"><span class="text-info d-inline-block">Proses Perjalan Menuju Tujuan</span></div><div class="pull-right">40%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div></div></div>'
                                         }
                                     } else {
                                         document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-info btn-rounded pull-right" data-toggle="modal" data-target="#percepatan" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepat</button><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',3)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong><br></div><div class="pull d-inline-block"><span class="text-info d-inline-block">Proses Berangakt Menuju Tujuan</span></div><div class="pull-right">20%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">20%</div></div></div>'
@@ -423,7 +411,7 @@
 
             console.log(value_data);
             $.ajax({
-                type: 'PUT',
+                type: 'POST',
                 url: " <?= base_url() ?>Rest_API/Aktifitas/Percepatan",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',

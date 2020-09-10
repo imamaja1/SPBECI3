@@ -11,7 +11,7 @@ class Auth extends CI_Controller
             if ($_SESSION['level'] == 1) {
                 redirect('terminal');
             } else if ($_SESSION['level'] == 2) {
-                redirect('spbe');
+                redirect('SPBE');
             } else if ($_SESSION['level'] == 3) {
                 redirect('patra_niaga');
             }

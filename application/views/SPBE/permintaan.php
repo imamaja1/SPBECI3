@@ -484,8 +484,8 @@
                         'KEY-SPBE': 'SPBE'
                     }
                     $.ajax({
-                        type: 'DELETE',
-                        url: " <?= base_url() ?>Rest_API/permintaan",
+                        type: 'post',
+                        url: " <?= base_url() ?>Rest_API/Permintaan/delete",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")

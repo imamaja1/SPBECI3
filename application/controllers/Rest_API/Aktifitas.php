@@ -42,14 +42,14 @@ class Aktifitas extends REST_Controller
     public function Percepatan_post()
     {
         $permintaan = array(
-            'kode_permintaan' => $this->put('kode_permintaan'),
+            'kode_permintaan' => $this->post('kode_permintaan'),
             'status_permintaan' => '2',
         );
         $respone = $this->M_permintaan->percepatan($permintaan);
-        $skid = $this->M_skid_tank->one_skid($this->put('kode_skid_tank'));
+        $skid = $this->M_skid_tank->one_skid($this->post('kode_skid_tank'));
         $skid_tank = array(
-            'kode_skid_tank' => $this->put('kode_skid_tank'),
-            'odometer' => $skid->odometer + $this->put('jarak'),
+            'kode_skid_tank' => $this->post('kode_skid_tank'),
+            'odometer' => $skid->odometer + $this->post('jarak'),
             'status' => '1',
         );
         $skid = $this->M_skid_tank->update_skid($skid_tank);

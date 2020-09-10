@@ -185,7 +185,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': "Basic " + btoa("gas:gas")
             },
-            url: " <?= base_url() ?>Rest_API/auth?KEY-SPBE=SPBE",
+            url: " <?= base_url() ?>Rest_API/Auth?KEY-SPBE=SPBE",
             contentType: "application/json",
             dataType: 'json',
             success: function(response) {
@@ -203,7 +203,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")
                 },
-                url: " <?= base_url() ?>Rest_API/permintaan_spbe?KEY-SPBE=SPBE&id=" + id,
+                url: " <?= base_url() ?>Rest_API/Permintaan_spbe?KEY-SPBE=SPBE&id=" + id,
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
@@ -227,7 +227,7 @@
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")
                 },
-                url: " <?= base_url() ?>Rest_API/permintaan_spbe/permintaan?KEY-SPBE=SPBE&id=" + id,
+                url: " <?= base_url() ?>Rest_API/Permintaan_spbe/permintaan?KEY-SPBE=SPBE&id=" + id,
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
@@ -270,8 +270,8 @@
                 'KEY-SPBE': 'SPBE'
             }
             $.ajax({
-                type: 'put',
-                url: " <?= base_url() ?>Rest_API/permintaan_spbe",
+                type: 'POST',
+                url: " <?= base_url() ?>Rest_API/Permintaan_spbe/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")

@@ -41,16 +41,16 @@ class Permintaan_patra_niaga extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
-    public function index_put()
+    public function edit_post()
     {
         date_default_timezone_set('Asia/Jakarta');
         $data = array(
-            'kode_permintaan' => $this->put('kode_permintaan'),
-            'status_patra_niaga' => $this->put('status_patra_niaga'),
+            'kode_permintaan' => $this->post('kode_permintaan'),
+            'status_patra_niaga' => $this->post('status_patra_niaga'),
             'tgl_berangkat_tujuan' => date('Y-m-d H:i:s')
         );
-        if ($this->put('kode_skid_tank') != null) {
-            $data['kode_skid_tank'] = $this->put('kode_skid_tank');
+        if ($this->post('kode_skid_tank') != null) {
+            $data['kode_skid_tank'] = $this->post('kode_skid_tank');
         }
         $respone = $this->M_permintaan->update_permintaan_patra_niaga($data);
         $this->response($respone, REST_Controller::HTTP_CREATED);

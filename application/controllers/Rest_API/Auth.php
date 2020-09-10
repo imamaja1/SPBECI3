@@ -13,7 +13,7 @@ class Auth extends REST_Controller
     {
         parent::__construct();
         $this->load->model('M_terminal_lpg');
-        $this->load->model('M_spbe');
+        $this->load->model('M_SPBE');
         $this->load->model('M_patra_niaga');
     }
     public function index_get()
@@ -73,8 +73,8 @@ class Auth extends REST_Controller
             'username' => $this->post('username'),
             'password' => md5($this->post('password')),
         );
-        if ($this->M_spbe->auth($data)->num_rows() > 0) {
-            $nama = $this->M_spbe->auth($data)->row();
+        if ($this->M_SPBE->auth($data)->num_rows() > 0) {
+            $nama = $this->M_SPBE->auth($data)->row();
             $respone['status'] = 200;
             $respone['error'] = false;
             $respone['sesion'] = array(

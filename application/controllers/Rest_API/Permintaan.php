@@ -68,7 +68,7 @@ class Permintaan extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
-    public function index_put()
+    public function edit_post()
     {
         $data = array(
             'kode_lpg' => $this->put('kode_lpg'),
@@ -80,9 +80,9 @@ class Permintaan extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
-    public function index_delete()
+    public function delete_post()
     {
-        $id = $this->delete('kode_permintaan');
+        $id = $this->post('kode_permintaan');
         // $this->response($id, REST_Controller::HTTP_BAD_REQUEST);
         $respone = $this->M_permintaan->delete_permintaan($id);
         if ($respone) {

@@ -425,7 +425,7 @@
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
                         },
-                        url: " <?= base_url() ?>Rest_API/permintaan/skid_tank?KEY-SPBE=SPBE&id=" + kode,
+                        url: " <?= base_url() ?>Rest_API/Permintaan/skid_tank?KEY-SPBE=SPBE&id=" + kode,
                         contentType: "application/json",
                         dataType: 'json',
                         success: function(response) {
@@ -470,7 +470,7 @@
                             'Authorization': "Basic " + btoa("gas:gas")
                         },
                         method: "GET",
-                        url: "<?= base_url() ?>/Rest_api/skid_tank?KEY-SPBE=SPBE",
+                        url: "<?= base_url() ?>/Rest_API/Skid_tank?KEY-SPBE=SPBE",
                     },
                     columns: [{
                         data: null
@@ -518,7 +518,7 @@
                     console.log(id);
                     $.ajax({
                         type: 'GET',
-                        url: " <?= base_url() ?>Rest_API/skid_tank?KEY-SPBE=SPBE&id=" + id,
+                        url: " <?= base_url() ?>Rest_API/Skid_tank?KEY-SPBE=SPBE&id=" + id,
                         contentType: "application/json",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -592,7 +592,7 @@
                         }
                         $.ajax({
                             type: 'POST',
-                            url: " <?= base_url() ?>Rest_API/skid_tank",
+                            url: " <?= base_url() ?>Rest_API/Skid_tank",
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
                                 'Authorization': "Basic " + btoa("gas:gas")
@@ -634,7 +634,6 @@
                 }
 
                 function put_data() {
-                    console.log('put');
                     const value_data = {
                         'kode_skid_tank': kode_skid_tank,
                         'nopol': $("#put_nopol").val(),
@@ -658,8 +657,8 @@
                         'KEY-SPBE': 'SPBE'
                     }
                     $.ajax({
-                        type: 'PUT',
-                        url: " <?= base_url() ?>Rest_API/skid_tank",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/Skid_tank/edit",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
@@ -686,8 +685,8 @@
                         'KEY-SPBE': 'SPBE'
                     }
                     $.ajax({
-                        type: 'DELETE',
-                        url: " <?= base_url() ?>Rest_API/Skid_tank",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/Skid_tank/delete",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")

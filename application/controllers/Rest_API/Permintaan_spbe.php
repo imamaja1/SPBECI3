@@ -33,17 +33,17 @@ class Permintaan_spbe extends REST_Controller
         $respone['data'] = $this->M_permintaan->time_permintaan_spbe($id)->result();
         $this->response($respone, REST_Controller::HTTP_OK);
     }
-    public function index_put()
+    public function edit_post()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $time = $this->M_permintaan->time_permintaan_spbe2($this->put('kode_permintaan'))->row();
+        $time = $this->M_permintaan->time_permintaan_spbe2($this->post('kode_permintaan'))->row();
         $timea = $time->tgl_berangkat_tujuan;
         $timeb = date('Y-m-d H:i:s');
         $z = strtotime($timeb) - strtotime($timea);
         $tgl_kembali = date('Y-m-d H:i:s', strtotime('+14400 second', strtotime($timeb)));
         $tgl_sampai_kembali = date('Y-m-d H:i:s', strtotime('+' . ($z + 14400) . 'second', strtotime($timeb)));
         $data = array(
-            'kode_permintaan' => $this->put('kode_permintaan'),
+            'kode_permintaan' => $this->post('kode_permintaan'),
             'tgl_sampai_tujuan' => $timeb,
             'tgl_kembali' => $tgl_kembali,
             'tgl_sampai_kembali' => $tgl_sampai_kembali,

@@ -395,7 +395,7 @@
                 function view_patra_niaga() {
                     $.ajax({
                         type: 'GET',
-                        url: " <?= base_url() ?>Rest_API/patra_niaga?KEY-SPBE=SPBE",
+                        url: " <?= base_url() ?>Rest_API/Patra_niaga?KEY-SPBE=SPBE",
                         contentType: "application/json",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -416,7 +416,6 @@
                 }
 
                 function put_patra_niaga() {
-                    console.log('put');
                     var value_data;
                     if ($("#put_password").val() == password) {
                         value_data = {
@@ -441,8 +440,8 @@
                     }
 
                     $.ajax({
-                        type: 'PUT',
-                        url: " <?= base_url() ?>Rest_API/patra_niaga",
+                        type: 'POST',
+                        url: " <?= base_url() ?>Rest_API/Patra_niaga/edit",
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
                             'Authorization': "Basic " + btoa("gas:gas")
