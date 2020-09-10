@@ -49,7 +49,7 @@ class Patra_niaga extends REST_Controller
     }
     public function edit_post()
     {
-        if ($this->post('password')) {
+        if ($this->post('password') == false) {
             $data = array(
                 'kode_patra_niaga' => $this->post('kode_patra_niaga'),
                 'nama_patra_niaga' => $this->post('nama_patra_niaga'),

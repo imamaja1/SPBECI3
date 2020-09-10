@@ -170,6 +170,7 @@
                     'KEY-SPBE': 'SPBE'
                 }
             }
+            console.log(value_data)
             $.ajax({
                 type: 'POST',
                 url: " <?= base_url() ?>Rest_API/Terminal_lpg/edit",
