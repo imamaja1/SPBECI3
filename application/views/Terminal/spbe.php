@@ -300,6 +300,7 @@
             <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <!-- END TEMPLATE -->
             <!-- END SCRIPTS -->
             <script>
@@ -360,7 +361,13 @@
                         $("#post_dot").val() == '' || $("#post_jarak").val() == '' || $("#post_limit").val() == '' || $("#post_username").val() == '' ||
                         $("#post_password").val() == '' || $("#post_kali_dot").val() == '') {
                         // $('.validasi').show()
-                        $('.validasi').show().delay(9000).fadeOut(400);
+                        $('.validasi').show();
+                        swal({
+                            title: "Data tidak boleh kosong!",
+                            text: "Tolong periksa kembali data yang dimasukan!!",
+                            icon: "warning",
+                            button: "close",
+                        });
                     } else {
                         const value_data = {
                             'nama_spbe': $("#post_name_spbe").val(),
@@ -385,10 +392,14 @@
                             data: value_data,
                             success: function(response) {
                                 $('#inputdata').modal('hide')
-                                console.log(response);
+                                swal({
+                                    title: "Penambahan Data Berhasil!",
+                                    icon: "success",
+                                    button: "close",
+                                });
                                 $(".put").hide();
                                 $(".delete").hide();
-                                $(".tambah").show().delay(9000).fadeOut(400);
+                                $(".tambah").show();
                                 $("#datatable").DataTable().ajax.reload();
                                 empty()
                             }
@@ -474,8 +485,12 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            console.log(response);
-                            $(".put").show().delay(9000).fadeOut(400);
+                            swal({
+                                title: "Edit Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+                            $(".put").show();
                             $(".delete").hide();
                             $(".tambah").hide();
                             $("#datatable").DataTable().ajax.reload();
@@ -504,8 +519,12 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            console.log(response.message);
-                            $(".delete").show().delay(9000).fadeOut(400);
+                            swal({
+                                title: "Penghapusan Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+                            $(".delete").show();
                             $(".tambah").hide();
                             $(".put").hide();
                             $("#datatable").DataTable().ajax.reload();

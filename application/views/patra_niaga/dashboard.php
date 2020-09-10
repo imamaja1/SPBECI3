@@ -211,6 +211,7 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/morris/raphael-min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/morris/morris.min.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
     <script type="text/javascript">
@@ -408,8 +409,8 @@
             }
             console.log(value_data);
             $.ajax({
-                type: 'PUT',
-                url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga",
+                type: 'POST',
+                url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Authorization': "Basic " + btoa("gas:gas")
@@ -419,6 +420,12 @@
                 success: function(response) {
                     console.log(response);
                     data_permintaan()
+                    swal({
+                        title: "Perceptan Berhasil!",
+                        text: "Permintaan Skid Tank DiTolak",
+                        icon: "success",
+                        button: "close",
+                    });
                 }
             });
         }
@@ -442,6 +449,11 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
+                    swal({
+                        title: "Verifikasi Data Berhasil!",
+                        icon: "success",
+                        button: "close",
+                    })
                     data_permintaan();
                     data_permintaan2();
                     $('#inputdata').modal('hide');
@@ -497,6 +509,12 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
+                    swal({
+                        title: "Perceptan Berhasil!",
+                        text: "Skid TanK Dikonfirmasi Telah sampai",
+                        icon: "success",
+                        button: "close",
+                    });
                     data_permintaan2();
                     chart();
                     $("#datatable").DataTable().ajax.reload();
@@ -521,6 +539,12 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
+                    swal({
+                        title: "Perceptan Berhasil!",
+                        text: "Skid TanK Dikonfirmasi Telah sampai",
+                        icon: "success",
+                        button: "close",
+                    });
                     data_permintaan2();
                     chart();
                     $("#datatable").DataTable().ajax.reload();

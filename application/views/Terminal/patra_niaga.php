@@ -457,6 +457,7 @@
             <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/moment.min.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <!-- END TEMPLATE -->
             <!-- END SCRIPTS -->
             <script>
@@ -563,7 +564,13 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            $(".put").show().delay(9000).fadeOut(400);
+                            $(".put").show();
+                            swal({
+                                title: "Edit Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+
                             view_patra_niaga()
                         }
                     });
@@ -708,17 +715,27 @@
                             dataType: 'json',
                             data: value_data,
                             success: function(response) {
-                                console.log(response);
+                                swal({
+                                    title: "Penambahan Data Berhasil!",
+                                    icon: "success",
+                                    button: "close",
+                                });
                                 $(".delete2").hide();
                                 $(".put2").hide();
-                                $(".tambah2").show().delay(9000).fadeOut(400);
+                                $(".tambah2").show();
                                 $("#datatable").DataTable().ajax.reload();
                                 $('#inputdata').modal('hide')
                                 empty()
                             }
                         });
                     } else {
-                        $('.validasi').show().delay(9000).fadeOut(400);
+                        $('.validasi').show();
+                        swal({
+                            title: "Data tidak boleh kosong!",
+                            text: "Tolong periksa kembali data yang dimasukan!!",
+                            icon: "warning",
+                            button: "close",
+                        });
                     }
                 }
 
@@ -759,9 +776,13 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            console.log(response);
+                            swal({
+                                title: "Edit Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
                             $(".delete2").hide();
-                            $(".put2").show().delay(9000).fadeOut(400);
+                            $(".put2").show();
                             $(".tambah2").hide();
                             $("#datatable").DataTable().ajax.reload();
                         }
@@ -790,8 +811,13 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            console.log(response);
-                            $(".delete2").show().delay(9000).fadeOut(400);
+                            swal({
+                                title: "Penghapusan Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+
+                            $(".delete2").show();
                             $(".put2").hide();
                             $(".tambah2").hide();
                             $("#datatable").DataTable().ajax.reload();

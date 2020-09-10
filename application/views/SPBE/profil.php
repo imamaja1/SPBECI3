@@ -112,6 +112,7 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
     <script type="text/javascript">
@@ -189,9 +190,13 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
-                    console.log(response);
+                    swal({
+                        title: "Edit Data Berhasil!",
+                        icon: "success",
+                        button: "close",
+                    });
                     data_spbe();
-                    $(".put").show().delay(9000).fadeOut(400);
+                    $(".put").show();
                 }
             });
 

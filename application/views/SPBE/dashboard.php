@@ -138,6 +138,7 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
     <script type="text/javascript">
@@ -279,6 +280,12 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
+                    swal({
+                        title: "Verifikasi Data Berhasil!",
+                        icon: "success",
+                        button: "close",
+                    })
+
                     data_permintaan(id);
                     data_permintaan2(id);
                 }

@@ -225,12 +225,14 @@
     <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
     <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->
     <script type="text/javascript">
         var kode_permintaan;
         var jarak;
         var kode_skid_tank;
+
 
         function kode3(kode, jum) {
             $.ajax({
@@ -393,9 +395,14 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
-                    // console.log(response);
                     data_permintaan()
-                    // chart()
+                    swal({
+                        title: "Berhasil!",
+                        text: "Skid Tank Dikonfirmasi Telah Berada Dipangkalan",
+                        icon: "success",
+                        button: "close",
+                    });
+                    // chart
                 }
             });
         }
@@ -423,6 +430,12 @@
                     console.log(response);
                     data_permintaan()
                     // chart()
+                    swal({
+                        title: "Perceptan Berhasil!",
+                        text: "Skid TanK Dikonfirmasi Telah sampai",
+                        icon: "success",
+                        button: "close",
+                    });
                 }
             });
         }

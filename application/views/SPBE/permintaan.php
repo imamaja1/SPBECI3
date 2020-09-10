@@ -257,6 +257,7 @@
             <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <!-- END TEMPLATE -->
             <!-- END SCRIPTS -->
             <script>
@@ -398,7 +399,13 @@
 
                 function post_data() {
                     if ($("#post_no_spa").val() == '' || $("#post_tgl_spa").val() == '' || $("#post_stock").val() == '') {
-                        $('.validasi').show().delay(9000).fadeOut(400);
+                        $('.validasi').show();
+                        swal({
+                            title: "Data tidak boleh kosong!",
+                            text: "Tolong periksa kembali data yang dimasukan!!",
+                            icon: "warning",
+                            button: "close",
+                        });
                     } else {
                         console.log('post');
                         const value_data = {
@@ -420,9 +427,14 @@
                             dataType: 'json',
                             data: value_data,
                             success: function(response) {
-                                console.log(response);
+                                swal({
+                                    title: "Penambahan Data Berhasil!",
+                                    icon: "success",
+                                    button: "close",
+                                });
+
                                 $(".delete").hide();
-                                $(".tambah").show().delay(9000).fadeOut(400);
+                                $(".tambah").show();
                                 $(".put").hide();
                                 $('#inputdata').modal('hide');
                                 $("#datatable").DataTable().ajax.reload();
@@ -494,8 +506,12 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            console.log(response);
-                            $(".delete").show().delay(9000).fadeOut(400);
+                            swal({
+                                title: "Penghapusan Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+                            $(".delete").show();
                             $(".tambah").hide();
                             $(".put").hide();
                             $("#datatable").DataTable().ajax.reload();

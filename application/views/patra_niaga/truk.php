@@ -403,6 +403,8 @@
 
             <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/moment.min.js"></script>
             <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
             <!-- END TEMPLATE -->
             <!-- END SCRIPTS -->
             <script>
@@ -601,8 +603,12 @@
                             dataType: 'json',
                             data: value_data,
                             success: function(response) {
-                                console.log(response);
-                                $(".tambah").show().delay(9000).fadeOut(400);
+                                swal({
+                                    title: "Penambahan Data Berhasil!",
+                                    icon: "success",
+                                    button: "close",
+                                });
+                                $(".tambah").show();
                                 $(".put").hide();
                                 $(".delete").hide();
                                 $("#datatable").DataTable().ajax.reload();
@@ -611,7 +617,13 @@
                             }
                         });
                     } else {
-                        $('.validasi').show().delay(9000).fadeOut(400);
+                        $('.validasi').show();
+                        swal({
+                            title: "Data tidak boleh kosong!",
+                            text: "Tolong periksa kembali data yang dimasukan!!",
+                            icon: "warning",
+                            button: "close",
+                        });
                     }
                 }
 
@@ -667,7 +679,13 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            $(".put").show().delay(9000).fadeOut(400);
+                            swal({
+                                title: "Edit Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+
+                            $(".put").show();
                             $(".tambah").hide();
                             $(".delete").hide();
                             $("#datatable").DataTable().ajax.reload();
@@ -695,8 +713,12 @@
                         dataType: 'json',
                         data: value_data,
                         success: function(response) {
-                            // console.log(response)
-                            $(".delete").show().delay(9000).fadeOut(400);
+                            swal({
+                                title: "Penghapusan Data Berhasil!",
+                                icon: "success",
+                                button: "close",
+                            });
+                            $(".delete").show();
                             $(".tambah").hide();
                             $(".put").hide();
                             $("#datatable").DataTable().ajax.reload();
