@@ -114,15 +114,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="copyright ml-auto">
-                    2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="copyright ml-auto">
+                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </div>
+            </footer>
+        </div>
     </div>
     <!--   Core JS Files   -->
     <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>

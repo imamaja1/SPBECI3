@@ -3,18 +3,13 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <div class="user">
-                <div class="avatar-sm float-left mr-2">
-                    <img src="<?= base_url() ?>assets/img/profile.jpg" alt="..." class="avatar-img rounded-circle">
-                </div>
-                <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                        <span>
-                            Hizrian
-                            <span class="user-level">Administrator</span>
-                        </span>
-                    </a>
-                    <div class="clearfix"></div>
-
+                <div class="card">
+                    <div class="card-body" style="text-align: center;">
+                        <div id="profil_img"></div>
+                        <div class="profile-image" style="margin: -20px 0 0px 0 ;">
+                            <a type="file" data-toggle="modal" data-target="#Profil"><span class="fa fa-camera" style="background-color: skyblue; padding:8px; border-radius:50%; border-color:black"></span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <ul class="nav nav-primary">
@@ -88,56 +83,6 @@
 <!-- End Sidebar -->
 
 
-<!-- <div id="preloader">
-    <div id="status">
-    </div>
-</div>
-<ul class="x-navigation">
-    <li class="xn-logo">
-        <a href="index.html">Terminal</a>
-        <a href="#" class="x-navigation-control"></a>
-    </li>
-    <div class="xn-profile">
-        <div class="profile">
-            <div class="profile-image">
-                <div id="profil_img"></div>
-            </div>
-            <div class="profile-image" style="margin: -20px 0 20px 0 ;">
-                <a type="file" data-toggle="modal" data-target="#Profil"><span class="fa fa-camera" style="background-color: beige; padding:8px; border-radius:50%; border-color:black"></span></a>
-            </div>
-        </div>
-    </div>
-    <li class="xn-title">Dashboard</li>
-    <li <?php if ($side == 'Dashboard') {
-            echo ' class="active" ';
-        } ?>>
-        <a href=" <?= base_url() ?>Terminal"><span class="fa fa-dashboard"></span> <span class="xn-text">Dashboard</span></a>
-    </li>
-    <li class="xn-title">DATA</li>
-    <li <?php if ($side == 'spbe') {
-            echo ' class="active" ';
-        } ?>>
-        <a href=" <?= base_url() ?>Terminal/spbe"><span class="fa fa-square-o"></span> <span class="xn-text">SPBE</span></a>
-    </li>
-    <li <?php if ($side == 'patra_niaga') {
-            echo ' class="active" ';
-        } ?>>
-        <a href=" <?= base_url() ?>Terminal/patra_niaga"><span class="fa fa-square-o"></span> <span class="xn-text">Patra Niaga</span></a>
-    </li>
-    <li <?php if ($side == 'profil') {
-            echo ' class="active" ';
-        } ?>>
-        <a href="<?= base_url() ?>Terminal/profil"><span class="fa fa-user"></span> <span class="xn-text">Profil</span></a>
-    </li>
-    <li class="xn-title">Log Out</li>
-    <li <?php if ($side == 'log_out') {
-            echo ' class="active" ';
-        } ?>>
-        <a href=" <?= base_url() ?>Terminal/log_out"><span class="fa fa-power-off"></span> <span class="xn-text">Log Out</span></a>
-    </li>
-</ul>
-
-
 
 <div class="modal fade bd-example-modal-sm" id="Profil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -168,28 +113,29 @@
 
 <script>
     var data_profil;
-    document.getElementById('images').innerHTML = ' <img src="<?= base_url() ?>assets/assets/images/users/no-image.jpg" alt="John Doe" onchange="SavePhoto()" id="blah"  width="100" height="100"/>';
-    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>assets/assets/images/users/no-image.jpg" alt="John Doe"  width="100" height="100"/>';
+    document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl"  onchange="SavePhoto()" id="blah" >';
+
+    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">';
 
     function readURL(input) {
-
-        //     console.log('profil');
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#blah')
-                    .attr('src', e.target.result)
-                    .width(100)
-                    .height(100);
-            };
-            reader.readAsDataURL(input.files[0]);
-            data_profil = input.files[0];
-        }
+        console.log('profil');
+        // if (input.files && input.files[0]) {
+        //     var reader = new FileReader();
+        //     reader.onload = function(e) {
+        //         $('#blah')
+        //             .attr('src', e.target.result)
+        //             .width(100)
+        //             .height(100);
+        //     };
+        //     reader.readAsDataURL(input.files[0]);
+        //     data_profil = input.files[0];
+        // }
     }
 
     function profil() {
         var nama_profil = new FormData();
         nama_profil.append('file_profil', data_profil);
+        console.log('ada')
         $.ajax({
             type: 'POST',
             url: " <?= base_url() ?>Rest_API/Profil/Terminal",
@@ -210,21 +156,21 @@
         });
     }
 
-    function foto_profil() {
-        $.ajax({
-            type: 'GET',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
-            },
-            url: " <?= base_url() ?>Rest_API/Profil/Terminal?KEY-SPBE=SPBE",
-            contentType: "application/json",
-            dataType: 'json',
-            success: function(response) {
-                console.log(response);
-                document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '" alt="John Doe"  width="100" height="100"/>';
-            }
-        })
-    }
-    setTimeout(foto_profil, 100)
-</script> -->
+    // function foto_profil() {
+    //     $.ajax({
+    //         type: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/x-www-form-urlencoded',
+    //             'Authorization': "Basic " + btoa("gas:gas")
+    //         },
+    //         url: " <?= base_url() ?>Rest_API/Profil/Terminal?KEY-SPBE=SPBE",
+    //         contentType: "application/json",
+    //         dataType: 'json',
+    //         success: function(response) {
+    //             console.log(response);
+    //             document.getElementById('profil_img').innerHTML = '<img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">'
+    //         }
+    //     })
+    // }
+    // setTimeout(foto_profil, 100)
+</script>

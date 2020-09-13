@@ -188,7 +188,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': "Basic " + btoa("gas:gas")
             },
-            url: " http://localhost/SPBECI3/Rest_API/Auth?KEY-SPBE=SPBE",
+            url: " <?= base_url() ?>Rest_API/Auth?KEY-SPBE=SPBE",
             contentType: "application/json",
             dataType: 'json',
             success: function(response) {
