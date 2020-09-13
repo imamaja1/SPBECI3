@@ -8,7 +8,7 @@ class Terminal extends CI_Controller
     {
         parent::__construct();
         if (isset($_SESSION['status'])) {
-            if ($_SESSION['level'] == 2) {
+            if ($_SESSION['level'] == "2") {
                 redirect('spbe');
             }
         } else {

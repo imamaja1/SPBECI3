@@ -52,7 +52,8 @@ class Aktifitas extends REST_Controller
             'odometer' => $skid->odometer + $this->post('jarak'),
             'status' => '1',
         );
-        $skid = $this->M_skid_tank->update_skid($skid_tank);
-        $this->response($skid_tank, REST_Controller::HTTP_OK);
+        $this->M_skid_tank->update_skid($skid_tank);
+        $respone['ststus'] = true;
+        $this->response($respone, REST_Controller::HTTP_OK);
     }
 }

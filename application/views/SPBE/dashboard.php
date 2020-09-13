@@ -2,152 +2,203 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view('SPBE/head'); ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="<?= base_url() ?>assets/img/icon.ico" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="<?= base_url() ?>assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Lato:300,400,700,900"]
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+                urls: ['<?= base_url() ?>assets/css/fonts.min.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/atlantis.min.css">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css">
 </head>
 
 <body>
-    <!-- START PAGE CONTAINER -->
-    <div class="page-container">
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="blue">
 
-        <!-- START PAGE SIDEBAR -->
-        <div class="page-sidebar">
-            <!-- START X-NAVIGATION -->
-            <?php $this->load->view('SPBE/side'); ?>
-            <!-- END X-NAVIGATION -->
+                <!-- <h1 style="color: aliceblue; text-align:center">Terminal</h1> -->
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2"></nav>
+            <!-- End Navbar -->
         </div>
-        <!-- END PAGE SIDEBAR -->
 
-        <!-- PAGE CONTENT -->
-        <div class="page-content">
+        <?php $this->load->view('SPBE/side') ?>
 
-            <!-- START X-NAVIGATION VERTICAL -->
-            <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-
-            </ul>
-            <!-- END X-NAVIGATION VERTICAL -->
-
-            <!-- START BREADCRUMB -->
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active"><?= $side ?></li>
-            </ul>
-            <!-- END BREADCRUMB -->
-
-
-
-            <!-- PAGE CONTENT WRAPPER -->
-            <div class="page-content-wrap">
-                <div class="col-md-6">
-                    <div class="panel panel-default" style="max-height:250px; overflow-y:auto;">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Konfirmasi Skid Tank</h3>
-                        </div>
-
-                        <div class="panel-body">
-                            <div class="row stacked">
-                                <div id="Ferivikasi"></div>
+        <div class="main-panel">
+            <div class="content">
+                <div class="panel-header bg-primary-gradient">
+                    <div class="page-inner py-5">
+                        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                            <div>
+                                <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="panel panel-default" style="max-height:250px; overflow-y:auto;">
-                        <div class="panel-heading">
-                            <div class="panel-title-box">
-                                <h3>Permintaan</h3>
-                                <span>Progres Permintaan</span>
+                <!-- isi -->
+                <div class="page-inner mt--5">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card" style="max-height:350px; overflow-y:auto;">
+                                <div class="card-header">
+                                    <div class="card-title">Konfirmasi Skid Tank</div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="Verifikasi"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="panel-body">
-                            <div class="row stacked">
-                                <div class="col-md-12">
+                        <div class="col-md-8">
+                            <div class="card" style="max-height:350px; overflow-y:auto;">
+                                <div class="card-header">
+                                    <div class="card-title">Progres Skid Tank</div>
+                                </div>
+                                <div class="card-body">
                                     <div id="progres"></div>
-
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">Activiti Skid Tank</div>
+                                </div>
+                                <div class="card-body">
+                                    <ol class="activity-feed">
+                                        <div id="datatimeline"></div>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-title">Jarak yang ditempuh Skid Tank</div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="chart-container">
+                                        <canvas id="dashboard-bar-1"></canvas>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- END PAGE CONTENT WRAPPER -->
-        </div>
-        <!-- END PAGE CONTENT -->
-    </div>
-    <!-- END PAGE CONTAINER -->
-
-    <!-- verifikasi -->
-    <div class="modal fade" id="verifikasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body" style="text-align: center;">
-                    <h2 class="modal-title" id="exampleModalLabel"> Yakin Ingin Mengkonfirmasi ?</h2>
-                    <br>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin: 0 10% 0 0;">NO</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin: 0 0 0 10%;" onclick="verifikasi()">YES</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="timeline" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="timeline2">
-                                <div class="line text-muted"></div>
-                                <article class="panel panel-info panel-outline"></article>
-                                <div id="datatimeline"></div>
-                                <div class="separator text-muted"><time>.</time></div>
-                                <div class="separator text-muted"><time></time></div>
-                            </div>
-                        </div>
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="copyright ml-auto">
+                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary pull-right" data-dismiss="modal" style="margin: 0 0 0 0;">close</button>
-                </div>
-            </div>
+            </footer>
         </div>
     </div>
+    <!--   Core JS Files   -->
+    <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/core/popper.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
-    <!-- START PRELOADS -->
-    <audio id="audio-alert" src="<?= base_url() ?>assets/audio/alert.mp3" preload="auto"></audio>
-    <audio id="audio-fail" src="<?= base_url() ?>assets/audio/fail.mp3" preload="auto"></audio>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/moment.min.js"></script>
-    <!-- END PRELOADS -->
-    <!-- START SCRIPTS -->
-    <!-- START PLUGINS -->
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>
-    <!-- END PLUGINS -->
-    <!-- THIS PAGE PLUGINS -->
-    <script type='text/javascript' src='<?= base_url() ?>assets/js/plugins/icheck/icheck.min.js'></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/morris/raphael-min.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/morris/morris.min.js"></script>
-    <!-- END PAGE PLUGINS -->
-    <!-- START TEMPLATE -->
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- END TEMPLATE -->
-    <!-- END SCRIPTS -->
+    <!-- Chart JS -->
+    <script src="<?= base_url() ?>assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="<?= base_url() ?>assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="<?= base_url() ?>assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="<?= base_url() ?>assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="<?= base_url() ?>assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="<?= base_url() ?>assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Atlantis JS -->
+    <script src="<?= base_url() ?>assets/js/atlantis.min.js"></script>
+
+    <!-- moment -->
+    <script src="<?= base_url() ?>assets/js/moment.min.js"></script>
+
+    <!-- moris -->
+    <script src="<?= base_url() ?>assets/js/raphael-min.js"></script>
+    <script src="<?= base_url() ?>assets/js/morris.min.js"></script>
+
     <script type="text/javascript">
         var kode_permintaan;
-        var tgl;
+        var jarak;
+        var kode_skid_tank;
+        var time;
         var id;
 
+        $.ajax({
+            type: 'GET',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': "Basic " + btoa("gas:gas")
+            },
+            url: " http://localhost/SPBECI3/Rest_API/Auth?KEY-SPBE=SPBE",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(response) {
+                id = response.kode_spbe
+                data_permintaan2()
+                data_permintaan()
+            }
+        })
+
         function kode3(kode, jum) {
-            document.getElementById('datatimeline').innerHTML = null;
             $.ajax({
                 type: 'GET',
                 headers: {
@@ -158,16 +209,17 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
+                    document.getElementById('datatimeline').innerHTML = null;
                     if (jum > 1) {
-                        document.getElementById('datatimeline').innerHTML += ' <article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl + '<br><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong>.</div></article>';
+                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                         if (jum > 2) {
-                            document.getElementById('datatimeline').innerHTML += ' <article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl_berangkat_tujuan + '<br><strong>Verifikasi Perminaan Skid Tank</strong> <br>oleh <strong>Patra Niaga</strong>.</div></article>';
+                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                             if (jum > 3) {
-                                document.getElementById('datatimeline').innerHTML += '<article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl_berangkat_tujuan + '<br> Proses <strong>Skid Tank Berangkat</strong>.</div></article>';
+                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                                 if (jum > 4) {
-                                    document.getElementById('datatimeline').innerHTML += '<article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl_sampai_tujuan + '<br> Proses <strong>Skid Tank Berangkat</strong>.</div></article>'
+                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                                     if (jum > 5) {
-                                        document.getElementById('datatimeline').innerHTML += '<article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl_kembali + '<br> Proses <strong>Skid Tank Berangkat</strong>.</div></article>'
+                                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                                     }
                                 }
                             }
@@ -176,52 +228,9 @@
                 }
 
             })
-
-
         }
 
-        $.ajax({
-            type: 'GET',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
-            },
-            url: " <?= base_url() ?>Rest_API/Auth?KEY-SPBE=SPBE",
-            contentType: "application/json",
-            dataType: 'json',
-            success: function(response) {
-                id = response.kode_spbe
-                data_permintaan(id)
-                data_permintaan2(id)
-                document.getElementById('namaspbe').innerHTML = response.nama_spbe;
-            }
-        })
-
-        function data_permintaan(id) {
-            $.ajax({
-                type: 'GET',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
-                },
-                url: " <?= base_url() ?>Rest_API/Permintaan_spbe?KEY-SPBE=SPBE&id=" + id,
-                contentType: "application/json",
-                dataType: 'json',
-                success: function(response) {
-                    document.getElementById('Ferivikasi').innerHTML = null;
-                    if (response.status) {
-                        $.each(response.data, function(i) {
-                            if (response.data[i].status_permintaan != '2') {
-                                document.getElementById('Ferivikasi').innerHTML += '<div class="panel-body list-group list-group-contacts"><a href="#" class="list-group-item"><span class="contacts-title">Skid Tank Dengan Nomer Polisi ' + response.data[i].nopol + '</span><table><tr><td style="padding: 2px;"> No SPA </td><td style="padding: 2px;"> : </td><td style="padding: 2px;"> ' + response.data[i].no_spa + ' </td></tr><tr><td style="padding: 2px;">Tanggal SPA </td><td style="padding: 2px;"> : </td><td style="padding: 2px;">' + response.data[i].tgl_spa + '</td></tr><tr><td style="padding: 2px;">Kapasitas TT </td><td style="padding: 2px;"> : </td><td style="padding: 2px;">' + response.data[i].kapasitas + '</td></tr></table><div class="list-group-controls"><button class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#verifikasi" onclick="kode(' + response.data[i].kode_permintaan + ')">Konfirmasi</button></div></a></div>';
-                            }
-                        });
-                    }
-                }
-            });
-        }
-
-        function data_permintaan2(id) {
-            var time;
+        function data_permintaan() {
             $.ajax({
                 type: 'GET',
                 headers: {
@@ -232,27 +241,37 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response);
                     document.getElementById('progres').innerHTML = null;
                     if (response.status) {
                         var x = new Date(new Date().toLocaleString('en-US', {
                             timeZone: 'Asia/Jakarta'
                         }));
-                        var times = moment(x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate() + ' ' + x.getHours() + ':' + x.getMinutes() + ':' + x.getSeconds());
+                        var times = moment.utc(x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate() + ' ' + x.getHours() + ':' + x.getMinutes() + ':' + x.getSeconds());
+                        console.log(response)
                         $.each(response.data, function(i) {
                             if (response.data[i].status_permintaan != '2') {
                                 if (response.data[i].status_patra_niaga == '2') {
                                     if (moment(response.data[i].tgl_berangkat_tujuan) < times) {
-                                        if (moment(response.data[i].tgl_berangkat_tujuan) < moment(response.data[i].tgl_sampai_tujuan)) {
-                                            document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',5)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong></div><br><div class="pull"><span class="text-info">Skdi Tank di Tujuan</span></div><div class="pull-right">100%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div></div></div>'
+                                        if (moment(response.data[i].tgl_sampai_tujuan) < times && moment(response.data[i].tgl_berangkat_tujuan) < moment(response.data[i].tgl_sampai_tujuan)) {
+                                            if (moment(response.data[i].tgl_kembali) < times) {
+                                                if (moment(response.data[i].tgl_sampai_kembali) < times) {
+                                                    console.log('nesxt3');
+                                                    kdoe2(response.data[i].kode_permintaan, response.data[i].jarak, response.data[i].kode_skid_tank);
+                                                    document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">timeline</button></div></div>'
+                                                } else {
+                                                    document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">timeline</button></div></div>'
+                                                }
+                                            } else {
+                                                document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">timeline</button></div></div>'
+                                            }
                                         } else {
-                                            document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong></div><br><div class="pull"><span class="text-info">Proses Perjalan Menuju Tujuan</span></div><div class="pull-right">70%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">70%</div></div></div>'
+                                            document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">timeline</button></div></div>'
                                         }
                                     } else {
-                                        document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',3)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong></div><br><div class="pull"><span class="text-info">Proses Berangakt Menuju Tujuan</span></div><div class="pull-right">20%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">50%</div></div></div>'
+                                        document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 20%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',3)">timeline</button></div></div>'
                                     }
                                 } else if (response.data[i].status_patra_niaga == '1') {
-                                    document.getElementById('progres').innerHTML += '<div class="progress-list"><button class="btn btn-primary btn-rounded pull-right" data-toggle="modal" data-target="#timeline" onclick="kode3(' + response.data[i].kode_permintaan + ',2)">Time Line</button><div class="pull-left"><strong>' + response.data[i].nama_spbe + '</strong></div><br><div class="pull"><span class="text-info">Permintaan Verifikasi Patra Niaga</span></div><div class="pull-right">30%</div><div class="progress progress-small progress-striped active"><div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">30%</div></div></div>'
+                                    document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 10%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',2)">timeline</button></div></div>'
                                 }
                             }
                         });
@@ -261,13 +280,81 @@
             })
         }
 
-        function kode(data) {
-            kode_permintaan = data;
+        $.ajax({
+            type: 'GET',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': "Basic " + btoa("gas:gas")
+            },
+            url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(response) {
+                console.log(response.data)
+                Morris.Bar({
+                    element: 'dashboard-bar-1',
+                    data: response.data,
+                    xkey: 'nopol',
+                    ykeys: ['jarak'],
+                    labels: ['Jarak Yang Ditempuh'],
+                    barColors: ['#33414E', '#1caf9a'],
+                    gridTextSize: '12px',
+                    hideHover: true,
+                    resize: true,
+                    gridLineColor: '#E5E5E5'
+                });
+            }
+        })
+
+        function data_permintaan2() {
+            $.ajax({
+                type: 'GET',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                url: " <?= base_url() ?>Rest_API/Permintaan_spbe?KEY-SPBE=SPBE&id=" + id,
+                contentType: "application/json",
+                dataType: 'json',
+                success: function(response) {
+                    document.getElementById('Verifikasi').innerHTML = null;
+                    console.log(response);
+                    if (response.status) {
+                        $.each(response.data, function(i) {
+                            document.getElementById('Verifikasi').innerHTML += '<div class="card p-3"><div class=" d-flex row"><div class="col-md-8"><h6 class="text-uppercase fw-bold mb-1">Skid Tang dengan NOPOL : ' + response.data[i].nopol + ' <span></h6><span class="text-uppercase text-muted d-block"><table><tr><td>No SPA</td><td> : ' + response.data[i].no_spa + '</td></tr><tr><td>Tanggal SPA</td><td> : ' + response.data[i].tgl_spa + '</td></tr><tr><td>Kapasitas TT </td><td> : ' + response.data[i].kapasitas_tt + '</td></tr></table></span></div><div class=" col-md-4 pull-right mt-2"><button class="btn btn-success btn-border btn-round pull-right btn-sm" onclick="kode_vefikasi(' + response.data[i].kode_permintaan + ')">Konfirmasui</button></div></div></div>'
+                        });
+                    }
+                }
+            });
         }
 
-        function verifikasi() {
+        function kode_vefikasi(data) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Permintaan akan dikonfirmasi!",
+                icon: 'info',
+                buttons: {
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    },
+                    confirm: {
+                        text: 'Konfirmasi!',
+                        className: 'btn btn-success'
+                    }
+                }
+            }).then((e) => {
+                if (e) {
+                    konfirmasi(data)
+                } else {
+                    swal.close();
+                }
+            });
+        }
+
+        function konfirmasi(data) {
             const value_data = {
-                'kode_permintaan': kode_permintaan,
+                'kode_permintaan': data,
                 'KEY-SPBE': 'SPBE'
             }
             $.ajax({
@@ -281,16 +368,40 @@
                 data: value_data,
                 success: function(response) {
                     swal({
-                        title: "Verifikasi Data Berhasil!",
+                        title: "Konfirmasi Data Berhasil!",
                         icon: "success",
                         button: "close",
                     })
 
-                    data_permintaan(id);
-                    data_permintaan2(id);
+                    data_permintaan();
+                    data_permintaan2();
                 }
             });
         }
+        // $.ajax({
+        //     type: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/x-www-form-urlencoded',
+        //         'Authorization': "Basic " + btoa("gas:gas")
+        //     },
+        //     url: " <?= base_url() ?>Rest_API/aktifitas/spbe?KEY-SPBE=SPBE",
+        //     contentType: "application/json",
+        //     dataType: 'json',
+        //     success: function(response) {
+        //         Morris.Bar({
+        //             element: 'dashboard-bar-2',
+        //             data: response.data,
+        //             xkey: 'nama_spbe',
+        //             ykeys: ['jumlah_diterima', 'jumlah_ditolak'],
+        //             labels: ['Jumlah Permintaan Diterima', 'Jumlah Permintaan Ditolak'],
+        //             barColors: ['#33414E', '#1caf9a'],
+        //             gridTextSize: '10px',
+        //             hideHover: true,
+        //             resize: true,
+        //             gridLineColor: '#E5E5E5'
+        //         });
+        //     }
+        // })
     </script>
 </body>
 

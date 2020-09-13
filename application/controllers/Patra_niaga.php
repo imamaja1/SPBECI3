@@ -8,9 +8,9 @@ class Patra_niaga extends CI_Controller
     {
         parent::__construct();
         if (isset($_SESSION['status'])) {
-            if ($_SESSION['level'] == 1) {
+            if ($_SESSION['level'] == "1") {
                 redirect('terminal');
-            } else if ($_SESSION['level'] == 2) {
+            } else if ($_SESSION['level'] == "2") {
                 redirect('spbe');
             }
         } else {
@@ -37,10 +37,10 @@ class Patra_niaga extends CI_Controller
         $data['side'] = 'supir';
         $this->load->view('patra_niaga/supir', $data);
     }
-    public function truk()
+    public function skid_tank()
     {
         $data['side'] = 'truk';
-        $this->load->view('patra_niaga/truk', $data);
+        $this->load->view('patra_niaga/skid_tank', $data);
     }
     function log_out()
     {

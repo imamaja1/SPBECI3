@@ -168,9 +168,11 @@ class M_permintaan extends CI_Model
         $this->db->where('kode_permintaan', $data['kode_permintaan']);
         $update = $this->db->update("permintaan", $data);
         if ($update) {
-            $data1 = array('status' => '2');
-            $this->db->where('kode_skid_tank', $data['kode_skid_tank']);
-            $this->db->update("t_skid_tank", $data1);
+            if ($data['kode_skid_tank'] != 0) {
+                $data1 = array('status' => '2');
+                $this->db->where('kode_skid_tank', $data['kode_skid_tank']);
+                $this->db->update("t_skid_tank", $data1);
+            }
             $response['status'] = 200;
             $response['error'] = false;
             $response['message'] = 'Data person diupdate.';

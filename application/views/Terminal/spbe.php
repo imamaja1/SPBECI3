@@ -2,536 +2,562 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view('Terminal/head'); ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="<?= base_url() ?>assets/img/icon.ico" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="<?= base_url() ?>assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Lato:300,400,700,900"]
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+                urls: ['<?= base_url() ?>assets/css/fonts.min.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/atlantis.min.css">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css">
 </head>
 
 <body>
-    <!-- START PAGE CONTAINER -->
-    <div class="page-container">
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="blue">
 
-        <!-- START PAGE SIDEBAR -->
-        <div class="page-sidebar">
-            <!-- START X-NAVIGATION -->
-            <?php $this->load->view('Terminal/side'); ?>
-            <!-- END X-NAVIGATION -->
+                <h1 style="color: aliceblue; text-align:center">Terminal</h1>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2"></nav>
+            <!-- End Navbar -->
         </div>
-        <!-- END PAGE SIDEBAR -->
 
-        <!-- PAGE CONTENT -->
-        <div class="page-content">
+        <?php $this->load->view('Terminal/side') ?>
 
-            <!-- START X-NAVIGATION VERTICAL -->
-            <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-
-            </ul>
-            <!-- END X-NAVIGATION VERTICAL -->
-
-            <!-- START BREADCRUMB -->
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">SPBE</li>
-            </ul>
-            <!-- END BREADCRUMB -->
-
-            <!-- PAGE CONTENT WRAPPER -->
-            <div class="page-content-wrap">
-
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <div class="alert alert-success tambah" style="display: none" role="tambah">
-                            Penambahan Data Telah Berhasil
-                        </div>
-                        <div class="alert alert-info put" style="display: none" role="put">
-                            Pembaruan Data Telah Berhasil
-                        </div>
-                        <div class="alert alert-danger delete" style="display: none" role="delete">
-                            Penghapusan Data Telah Berhasil
-                        </div>
-
-
-                        <!-- START DEFAULT DATATABLE -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#inputdata">Input Data</button>
-                                <ul class="panel-controls">
-                                    <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                    <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
-                                </ul>
-                            </div>
-                            <div class="panel-body table-responsive push-up-10">
-                                <table id="datatable" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama SPBE</th>
-                                            <th>No Telepon</th>
-                                            <th>DOT</th>
-                                            <th>Kapasitas TT</th>
-                                            <th style="width: 20px;">Action </th>
-                                        </tr>
-                                    </thead>
-                                </table>
+        <div class="main-panel">
+            <div class="content">
+                <div class="panel-header bg-primary-gradient">
+                    <div class="page-inner py-5">
+                        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                            <div>
+                                <h2 class="text-white pb-2 fw-bold">SPBE</h2>
                             </div>
                         </div>
                     </div>
-                    <!-- END PAGE CONTENT WRAPPER -->
                 </div>
-                <!-- END PAGE CONTENT -->
-            </div>
-            <!-- END PAGE CONTAINER -->
 
-            <!-- view Data-->
-            <div class="modal fade" id="viewdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header" style="background-color: white;">
-                            <h3 class="modal-title" id="exampleModalLabel">Data SPBE</h3>
-                        </div>
-                        <div class="modal-body col-md-12" style="background-color: white;">
-
-                            <div class="form-group col-md-6 border border-primary">
-                                <label for="exampleInputEmail1">Nama SPBE</label>
-                                <br>
-                                <span id="view_nama_spbe"></span>
-                                <hr>
-                            </div>
-                            <div class="form-group col-md-6 border border-primary">
-                                <label for="exampleInputEmail1">No Telepon</label>
-                                <br>
-                                <span id="view_telepon_spbe"></span>
-                                <hr>
-                            </div>
-                            <div class="form-group col-md-6 border border-primary">
-                                <label for="exampleInputEmail1">Kapasitas TT</label>
-                                <br>
-                                <span id="view_kapasitas_tt"></span>
-                                <hr>
-                            </div>
-
-                            <div class="form-group col-md-4 border border-primary">
-                                <label for="exampleInputEmail1">Jarak SPBE</label>
-                                <br>
-                                <span id="view_jarak"></span>
-                                <hr>
-                            </div>
-                            <div class="form-group col-md-12 border border-primary">
-                                <label for="exampleInputEmail1">Alamat SPBE</label>
-                                <br>
-                                <span id="view_alamat_spbe"></span>
-                                <hr>
-                            </div>
-                            <div class="form-group col-md-6 border border-primary">
-                                <label for="exampleInputEmail1">DOT</label>
-                                <br>
-                                <span id="view_dot"></span>
-                                <hr>
-                            </div>
-                            <div class="form-group col-md-6 border border-primary">
-                                <label for="exampleInputEmail1">Limit</label>
-                                <br>
-                                <span id="view_limit"></span>
-                                <hr>
-                            </div>
-                        </div>
-                        <div class="modal-footer" style="background-color: white;">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- END-->
-            <!-- Input Data-->
-            <div class="modal fade" id="inputdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <form>
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel">Input Data SPBE</h3>
-                            </div>
-                            <div class="modal-body col-md-12">
-                                <div class="alert alert-danger validasi" style="display: none;" role="validasi">
-                                    Data SPBE tidak boleh kosong
+                <!-- isi -->
+                <div class="page-inner mt--5">
+                    <div class="row mt--2">
+                        <div class="col-md-12">
+                            <div class="card full-height">
+                                <div class="card-header">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="card-title">Data SPBE</h4>
+                                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata">
+                                            <i class="fa fa-plus"></i>
+                                            Tambah Data
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Nama SPBE</label>
-                                    <input type="" class="form-control" id="post_name_spbe" aria-describedby="emailHelp" required>
-                                </div>
+                                <!-- modal input data -->
+                                <div class="modal fade bd-example-modal-lg" id="inputdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="exampleModalLongTitle">Input Data</h3>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="modal-body row">
+                                                    <div class="alert alert-danger validasi col-md-12" style="display: none;" role="validasi">
+                                                        Data SPBE tidak boleh kosong
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="exampleInputEmail1">Nama SPBE</label>
+                                                        <input type="" class="form-control" id="post_name_spbe" aria-describedby="emailHelp" required>
+                                                    </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">No Telepon</label>
-                                    <input type="" class="form-control" id="post_telepon_spbe" aria-describedby="emailHelp" required>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="exampleInputEmail1">No Telepon</label>
+                                                        <input type="" class="form-control" id="post_telepon_spbe" aria-describedby="emailHelp" required>
+                                                    </div>
+
+                                                    <div class="form-group col-md-6">
+                                                        <label for="exampleInputEmail1">Kapasitas TT</label>
+                                                        <input type="" class="form-control" id="post_kapasitas_tt" aria-describedby="emailHelp" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="exampleInputEmail1">Jarak SPBE</label>
+                                                        <input type="" class="form-control" id="post_jarak" aria-describedby="emailHelp" required>
+                                                    </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="exampleInputEmail1">Alamat SPBE</label>
+                                                        <textarea class="form-control" id="post_alamat_spbe"></textarea>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="exampleInputEmail1">DOT</label>
+                                                        <input type="" class="form-control" onchange="myFunction()" id="post_dot" aria-describedby="emailHelp" required>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="exampleInputEmail1">Kali DOT</label>
+                                                        <input type="" class="form-control" onchange="myFunction()" id="post_kali_dot" aria-describedby="emailHelp" required>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="exampleInputEmail1">Limit</label>
+                                                        <input type="" class="form-control" id="post_limit" aria-describedby="emailHelp" disabled>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="exampleInputEmail1">Username</label>
+                                                        <input type="" class="form-control" id="post_username" aria-describedby="emailHelp" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="exampleInputEmail1">Password</label>
+                                                        <input type="password" class="form-control" id="post_password" aria-describedby="emailHelp" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                                                <button type="button" class="btn btn-primary" onclick="post_data()">Simpan</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Kapasitas TT</label>
-                                    <input type="" class="form-control" id="post_kapasitas_tt" aria-describedby="emailHelp" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Jarak SPBE</label>
-                                    <input type="" class="form-control" id="post_jarak" aria-describedby="emailHelp" required>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <label for="exampleInputEmail1">Alamat SPBE</label>
-                                    <textarea class="form-control" id="post_alamat_spbe"></textarea>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="exampleInputEmail1">DOT</label>
-                                    <input type="" class="form-control" onchange="myFunction()" id="post_dot" aria-describedby="emailHelp" required>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="exampleInputEmail1">Kali DOT</label>
-                                    <input type="" class="form-control" onchange="myFunction()" id="post_kali_dot" aria-describedby="emailHelp" required>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="exampleInputEmail1">Limit</label>
-                                    <input type="" class="form-control" id="post_limit" aria-describedby="emailHelp" disabled>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Username</label>
-                                    <input type="" class="form-control" id="post_username" aria-describedby="emailHelp" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="exampleInputEmail1">Password</label>
-                                    <input type="password" class="form-control" id="post_password" aria-describedby="emailHelp" required>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
-                                <button type="button" class="btn btn-info" onclick="post_data()">Simpan</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!-- END -->
-            <!-- Update Data-->
-            <div class="modal fade" id="updatedata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h3 class="modal-title" id="exampleModalLabel">Update Data SPBE</h3>
-                        </div>
-                        <div class="modal-body col-md-12">
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Nama SPBE</label>
-                                <input type="" class="form-control" id="put_nama_spbe" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Telepone SPBE</label>
-                                <input type="" class="form-control" id="put_telepon_spbe" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Kapasitas TT</label>
-                                <input type="" class="form-control" id="put_kapasitas_tt" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Jarak SPBE</label>
-                                <input type="" class="form-control" id="put_jarak" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label for="exampleInputEmail1">Alamat SPBE</label>
-                                <textarea class="form-control" id="put_alamat_spbe"></textarea>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="exampleInputEmail1">DOT</label>
-                                <input type="" class="form-control" onchange="myFunction()" id="put_dot" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="exampleInputEmail1">DOT</label>
-                                <input type="" class="form-control" onchange="myFunction()" id="put_kali_dot" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="exampleInputEmail1">Limit</label>
-                                <input type="" class="form-control" id="put_limit" aria-describedby="emailHelp" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">Username</label>
-                                <input type="" class="form-control" id="put_username" aria-describedby="emailHelp">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="exampleInputEmail1">password</label>
-                                <input type="password" class="form-control" id="put_password" aria-describedby="emailHelp">
-                            </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="datatable" class="display table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama SPBE</th>
+                                                    <th>No Telepon</th>
+                                                    <th>DOT</th>
+                                                    <th>Kapasitas TT</th>
+                                                    <th style="width: 20px;">Action </th>
+                                                </tr>
+                                            </thead>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
-                            <button type="button" class="btn btn-info" data-dismiss="modal" onclick="put_data()">Update</button>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tiger Nixon</td>
+                                                    <td>System Architect</td>
+                                                    <td>Edinburgh</td>
+                                                    <td>61</td>
+                                                    <td>2011/04/25</td>
+                                                    <td>$320,800</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- END -->
-            <!-- Delete Data-->
-            <div class="modal fade" id="deletedata" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="copyright ml-auto">
+                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <!-- modal edit data -->
+    <div class="modal fade bd-example-modal-lg" id="editdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Input Data</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body row">
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Nama SPBE</label>
+                            <input type="" class="form-control" id="put_nama_spbe" aria-describedby="emailHelp" required>
                         </div>
-                        <div class="modal-body" style="text-align: center;">
-                            <h2 class="modal-title" id="exampleModalLabel"> Yakin Ingin Menghapus ?</h2>
-                            <br>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal" style="margin: 0 10% 0 0;">NO</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin: 0 0 0 10%;" onclick="delete_fix()">YES</button>
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">No Telepon</label>
+                            <input type="" class="form-control" id="put_telepon_spbe" aria-describedby="emailHelp" required>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Kapasitas TT</label>
+                            <input type="" class="form-control" id="put_kapasitas_tt" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Jarak SPBE</label>
+                            <input type="" class="form-control" id="put_jarak" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Alamat SPBE</label>
+                            <textarea class="form-control" id="put_alamat_spbe"></textarea>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">DOT</label>
+                            <input type="" class="form-control" onchange="myFunction()" id="put_dot" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">Kali DOT</label>
+                            <input type="" class="form-control" onchange="myFunction()" id="put_kali_dot" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">Limit</label>
+                            <input type="" class="form-control" id="put_limit" aria-describedby="emailHelp" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Username</label>
+                            <input type="" class="form-control" id="put_username" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Password</label>
+                            <input type="password" class="form-control" id="put_password" aria-describedby="emailHelp" required>
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" onclick="put_data()">Simpan</button>
+                </div>
             </div>
-            <!-- END -->
+        </div>
+    </div>
 
-            <!-- START PRELOADS -->
-            <audio id="audio-alert" src="<?= base_url() ?>assets/audio/alert.mp3" preload="auto"></audio>
-            <audio id="audio-fail" src="<?= base_url() ?>assets/audio/fail.mp3" preload="auto"></audio>
-            <!-- END PRELOADS -->
-            <!-- START SCRIPTS -->
-            <!-- START PLUGINS -->
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/jquery/jquery.min.js"></script>
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>
-            <!-- END PLUGINS -->
-            <!-- THIS PAGE PLUGINS -->
-            <script type='text/javascript' src='<?= base_url() ?>assets/js/plugins/icheck/icheck.min.js'></script>
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
-            <!-- END PAGE PLUGINS -->
-            <!-- START TEMPLATE -->
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
-            <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
-            <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
-            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-            <!-- END TEMPLATE -->
-            <!-- END SCRIPTS -->
-            <script>
-                var kode_spbe;
-                var password;
-                $('#datatable').DataTable({
-                    distroy: true,
-                    ajax: {
-                        "method": "GET",
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization': "Basic " + btoa("gas:gas")
-                        },
-                        "url": "<?= base_url() ?>/Rest_API/SPBE?KEY-SPBE=SPBE"
-                    },
-                    columns: [{
-                        data: null
-                    }, {
-                        data: "nama_spbe"
-                    }, {
-                        data: "telepon_spbe"
-                    }, {
-                        data: "dot"
-                    }, {
-                        data: "kapasitas_tt"
-                    }, {
-                        data: "kode_spbe",
-                        className: "center",
-                        render: function(data, type, row, meta) {
-                            return '<div class="form-group"><div class="col-md-12"><button class="btn btn-success btn-block" data-toggle="modal" data-target="#viewdata" onclick="view_data(' + data + ')"><span class="fa fa-eye"></span></button></div><div class="col-md-12"><button class="btn btn-info btn-block" data-toggle="modal" data-target="#updatedata" onclick="view_data(' + data + ')"><span class="fa fa-cog"></span></button></div><div class="col-md-12"><button class="btn btn-danger btn-block" data-toggle="modal" data-target="#deletedata" onclick="delete_data(' + data + ')"><span class="fa fa-trash-o"></span></button></div></div>'
-                        }
-                    }, ],
-                    "fnCreatedRow": function(row, data, index) {
-                        $('td', row).eq(0).html(index + 1);
-                    },
+
+    <!--   Core JS Files   -->
+    <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/core/popper.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+
+
+    <!-- Chart JS -->
+    <script src="<?= base_url() ?>assets/js/plugin/chart.js/chart.min.js"></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Chart Circle -->
+    <script src="<?= base_url() ?>assets/js/plugin/chart-circle/circles.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="<?= base_url() ?>assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="<?= base_url() ?>assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="<?= base_url() ?>assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="<?= base_url() ?>assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Atlantis JS -->
+    <script src="<?= base_url() ?>assets/js/atlantis.min.js"></script>
+
+    <script type="text/javascript">
+        $('#datatable').DataTable({
+            distroy: true,
+            ajax: {
+                "method": "GET",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                "url": "<?= base_url() ?>/Rest_API/SPBE?KEY-SPBE=SPBE"
+            },
+            columns: [{
+                data: null
+            }, {
+                data: "nama_spbe"
+            }, {
+                data: "telepon_spbe"
+            }, {
+                data: "dot"
+            }, {
+                data: "kapasitas_tt"
+            }, {
+                data: "kode_spbe",
+                className: "center",
+                render: function(data, type, row, meta) {
+                    return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" onclick="delete_data(' + data + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                }
+            }, ],
+            "fnCreatedRow": function(row, data, index) {
+                $('td', row).eq(0).html(index + 1);
+            },
+        });
+
+        function myFunction() {
+            $("#post_limit").val($("#post_dot").val() * $("#post_kali_dot").val());
+            $("#put_limit").val($("#put_dot").val() * $("#put_kali_dot").val());
+        }
+
+        function empty() {
+            $("#post_name_spbe").val('')
+            $("#post_telepon_spbe").val('')
+            $("#post_alamat_spbe").val('')
+            $("#post_kapasitas_tt").val('')
+            $("#post_dot").val('')
+            $("#post_jarak").val('')
+            $("#post_limit").val('')
+            $("#post_username").val('')
+            $("#post_password").val('')
+            $("#post_kali_dot").val('')
+        }
+
+        function post_data() {
+            if ($("#post_name_spbe").val() == '' || $("#post_telepon_spbe").val() == '' || $("#post_alamat_spbe").val() == '' || $("#post_kapasitas_tt").val() == '' ||
+                $("#post_dot").val() == '' || $("#post_jarak").val() == '' || $("#post_limit").val() == '' || $("#post_username").val() == '' ||
+                $("#post_password").val() == '' || $("#post_kali_dot").val() == '') {
+                // $('.validasi').show()
+                $('.validasi').show();
+                swal({
+                    title: "Data tidak boleh kosong!",
+                    text: "Tolong periksa kembali data yang dimasukan!!",
+                    icon: "warning",
+                    button: "close",
                 });
-
-                function myFunction() {
-                    $("#post_limit").val($("#post_dot").val() * $("#post_kali_dot").val());
-                    $("#put_limit").val($("#put_dot").val() * $("#put_kali_dot").val());
+            } else {
+                const value_data = {
+                    'nama_spbe': $("#post_name_spbe").val(),
+                    'telepon_spbe': $("#post_telepon_spbe").val(),
+                    'alamat_spbe': $("#post_alamat_spbe").val(),
+                    'kapasitas_tt': $("#post_kapasitas_tt").val(),
+                    'dot': $("#post_dot").val(),
+                    'jarak': $("#post_jarak").val(),
+                    'limit': $("#post_limit").val(),
+                    'username': $("#post_username").val(),
+                    'password': $("#post_password").val(),
+                    'KEY-SPBE': 'SPBE'
                 }
-
-                function empty() {
-                    $("#post_name_spbe").val('')
-                    $("#post_telepon_spbe").val('')
-                    $("#post_alamat_spbe").val('')
-                    $("#post_kapasitas_tt").val('')
-                    $("#post_dot").val('')
-                    $("#post_jarak").val('')
-                    $("#post_limit").val('')
-                    $("#post_username").val('')
-                    $("#post_password").val('')
-                    $("#post_kali_dot").val('')
-                }
-
-                function post_data() {
-                    if ($("#post_name_spbe").val() == '' || $("#post_telepon_spbe").val() == '' || $("#post_alamat_spbe").val() == '' || $("#post_kapasitas_tt").val() == '' ||
-                        $("#post_dot").val() == '' || $("#post_jarak").val() == '' || $("#post_limit").val() == '' || $("#post_username").val() == '' ||
-                        $("#post_password").val() == '' || $("#post_kali_dot").val() == '') {
-                        // $('.validasi').show()
-                        $('.validasi').show();
+                $.ajax({
+                    type: 'POST',
+                    url: " <?= base_url() ?>Rest_API/SPBE",
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Authorization': "Basic " + btoa("gas:gas")
+                    },
+                    dataType: 'json',
+                    data: value_data,
+                    success: function(response) {
+                        $('#inputdata').modal('hide')
                         swal({
-                            title: "Data tidak boleh kosong!",
-                            text: "Tolong periksa kembali data yang dimasukan!!",
-                            icon: "warning",
+                            title: "Penambahan Data Berhasil!",
+                            icon: "success",
                             button: "close",
                         });
-                    } else {
-                        const value_data = {
-                            'nama_spbe': $("#post_name_spbe").val(),
-                            'telepon_spbe': $("#post_telepon_spbe").val(),
-                            'alamat_spbe': $("#post_alamat_spbe").val(),
-                            'kapasitas_tt': $("#post_kapasitas_tt").val(),
-                            'dot': $("#post_dot").val(),
-                            'jarak': $("#post_jarak").val(),
-                            'limit': $("#post_limit").val(),
-                            'username': $("#post_username").val(),
-                            'password': $("#post_password").val(),
-                            'KEY-SPBE': 'SPBE'
-                        }
-                        $.ajax({
-                            type: 'POST',
-                            url: " <?= base_url() ?>Rest_API/SPBE",
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                                'Authorization': "Basic " + btoa("gas:gas")
-                            },
-                            dataType: 'json',
-                            data: value_data,
-                            success: function(response) {
-                                $('#inputdata').modal('hide')
-                                swal({
-                                    title: "Penambahan Data Berhasil!",
-                                    icon: "success",
-                                    button: "close",
-                                });
-                                $(".put").hide();
-                                $(".delete").hide();
-                                $(".tambah").show();
-                                $("#datatable").DataTable().ajax.reload();
-                                empty()
+                        $(".put").hide();
+                        $(".delete").hide();
+                        $(".tambah").show();
+                        $("#datatable").DataTable().ajax.reload();
+                        empty()
+                    }
+                });
+            }
+        }
+
+        function view_data(id) {
+            $.ajax({
+                type: 'GET',
+                url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                contentType: "application/json",
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response);
+                    $("#view_nama_spbe").text(response.data[0].nama_spbe);
+                    $("#view_telepon_spbe").text(response.data[0].telepon_spbe);
+                    $("#view_alamat_spbe").text(response.data[0].alamat_spbe);
+                    $("#view_kapasitas_tt").text(response.data[0].kapasitas_tt);
+                    $("#view_jarak").text(response.data[0].jarak);
+                    $("#view_dot").text(response.data[0].dot);
+                    $("#view_limit").text(response.data[0].limit);
+                    kode_spbe = response.data[0].kode_spbe;
+
+                    $("#put_nama_spbe").val(response.data[0].nama_spbe);
+                    $("#put_telepon_spbe").val(response.data[0].telepon_spbe);
+                    $("#put_alamat_spbe").val(response.data[0].alamat_spbe);
+                    $("#put_kapasitas_tt").val(response.data[0].kapasitas_tt);
+                    $("#put_jarak").val(response.data[0].jarak);
+                    $("#put_dot").val(response.data[0].dot);
+                    $("#put_kali_dot").val(response.data[0].limit / response.data[0].dot);
+                    $("#put_limit").val(response.data[0].limit);
+                    $("#put_username").val(response.data[0].username);
+                    $("#put_password").val(response.data[0].password);
+                    password = response.data[0].password;
+                }
+            });
+        }
+
+        function put_data() {
+            console.log('put');
+            var value_data;
+            if ($("#put_password").val() == password) {
+                value_data = {
+                    'kode_spbe': kode_spbe,
+                    'nama_spbe': $("#put_nama_spbe").val(),
+                    'telepon_spbe': $("#put_telepon_spbe").val(),
+                    'alamat_spbe': $("#put_alamat_spbe").val(),
+                    'kapasitas_tt': $("#put_kapasitas_tt").val(),
+                    'dot': $("#put_dot").val(),
+                    'jarak': $("#put_jarak").val(),
+                    'limit': $("#put_limit").val(),
+                    'username': $("#put_username").val(),
+                    'password': 'false',
+                    'KEY-SPBE': 'SPBE'
+                }
+            } else {
+                value_data = {
+                    'kode_spbe': kode_spbe,
+                    'nama_spbe': $("#put_nama_spbe").val(),
+                    'telepon_spbe': $("#put_telepon_spbe").val(),
+                    'alamat_spbe': $("#put_alamat_spbe").val(),
+                    'kapasitas_tt': $("#put_kapasitas_tt").val(),
+                    'dot': $("#put_dot").val(),
+                    'jarak': $("#put_jarak").val(),
+                    'limit': $("#put_limit").val(),
+                    'username': $("#put_username").val(),
+                    'password': $("#put_password").val(),
+                    'KEY-SPBE': 'SPBE'
+                }
+            }
+            $.ajax({
+                type: 'POST',
+                url: " <?= base_url() ?>Rest_API/SPBE/edit",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                dataType: 'json',
+                data: value_data,
+                success: function(response) {
+                    swal({
+                        title: "Edit Data Berhasil!",
+                        icon: "success",
+                        button: "close",
+                    });
+                    $(".put").show();
+                    $(".delete").hide();
+                    $(".tambah").hide();
+                    $("#datatable").DataTable().ajax.reload();
+                    $('#editdata').modal('hide')
+                }
+            });
+        }
+
+        function delete_data(id) {
+            kode_SPBE = id;
+            swal({
+                title: 'Anda yakin?',
+                text: "Data yang dihapus akan hilang!",
+                type: 'warning',
+                buttons: {
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    },
+                    confirm: {
+                        text: 'Yes, delete it!',
+                        className: 'btn btn-success'
+                    }
+                }
+            }).then((Delete) => {
+                if (Delete) {
+                    delete_fix();
+                    swal({
+                        title: 'Terhapus!',
+                        text: 'Data telah dihapus.',
+                        type: 'success',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
                             }
-                        });
-                    }
-                }
-
-                function view_data(id) {
-                    $.ajax({
-                        type: 'GET',
-                        url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization': "Basic " + btoa("gas:gas")
-                        },
-                        contentType: "application/json",
-                        dataType: 'json',
-                        success: function(response) {
-                            console.log(response);
-                            $("#view_nama_spbe").text(response.data[0].nama_spbe);
-                            $("#view_telepon_spbe").text(response.data[0].telepon_spbe);
-                            $("#view_alamat_spbe").text(response.data[0].alamat_spbe);
-                            $("#view_kapasitas_tt").text(response.data[0].kapasitas_tt);
-                            $("#view_jarak").text(response.data[0].jarak);
-                            $("#view_dot").text(response.data[0].dot);
-                            $("#view_limit").text(response.data[0].limit);
-                            kode_spbe = response.data[0].kode_spbe;
-
-                            $("#put_nama_spbe").val(response.data[0].nama_spbe);
-                            $("#put_telepon_spbe").val(response.data[0].telepon_spbe);
-                            $("#put_alamat_spbe").val(response.data[0].alamat_spbe);
-                            $("#put_kapasitas_tt").val(response.data[0].kapasitas_tt);
-                            $("#put_jarak").val(response.data[0].jarak);
-                            $("#put_dot").val(response.data[0].dot);
-                            $("#put_kali_dot").val(response.data[0].limit / response.data[0].dot);
-                            $("#put_limit").val(response.data[0].limit);
-                            $("#put_username").val(response.data[0].username);
-                            $("#put_password").val(response.data[0].password);
-                            password = response.data[0].password;
                         }
                     });
+                } else {
+                    swal.close();
                 }
+            });
+        }
 
-                function put_data() {
-                    console.log('put');
-                    var value_data;
-                    if ($("#put_password").val() == password) {
-                        value_data = {
-                            'kode_spbe': kode_spbe,
-                            'nama_spbe': $("#put_nama_spbe").val(),
-                            'telepon_spbe': $("#put_telepon_spbe").val(),
-                            'alamat_spbe': $("#put_alamat_spbe").val(),
-                            'kapasitas_tt': $("#put_kapasitas_tt").val(),
-                            'dot': $("#put_dot").val(),
-                            'jarak': $("#put_jarak").val(),
-                            'limit': $("#put_limit").val(),
-                            'username': $("#put_username").val(),
-                            'password': 'false',
-                            'KEY-SPBE': 'SPBE'
-                        }
-                    } else {
-                        value_data = {
-                            'kode_spbe': kode_spbe,
-                            'nama_spbe': $("#put_nama_spbe").val(),
-                            'telepon_spbe': $("#put_telepon_spbe").val(),
-                            'alamat_spbe': $("#put_alamat_spbe").val(),
-                            'kapasitas_tt': $("#put_kapasitas_tt").val(),
-                            'dot': $("#put_dot").val(),
-                            'jarak': $("#put_jarak").val(),
-                            'limit': $("#put_limit").val(),
-                            'username': $("#put_username").val(),
-                            'password': $("#put_password").val(),
-                            'KEY-SPBE': 'SPBE'
-                        }
-                    }
-                    $.ajax({
-                        type: 'POST',
-                        url: " <?= base_url() ?>Rest_API/SPBE/edit",
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization': "Basic " + btoa("gas:gas")
-                        },
-                        dataType: 'json',
-                        data: value_data,
-                        success: function(response) {
-                            swal({
-                                title: "Edit Data Berhasil!",
-                                icon: "success",
-                                button: "close",
-                            });
-                            $(".put").show();
-                            $(".delete").hide();
-                            $(".tambah").hide();
-                            $("#datatable").DataTable().ajax.reload();
-                        }
+        function delete_fix() {
+            console.log('delete');
+            const value_data = {
+                'kode_SPBE': kode_SPBE,
+                'KEY-SPBE': 'SPBE'
+            }
+            console.log(value_data);
+            $.ajax({
+                type: 'POST',
+                url: " <?= base_url() ?>Rest_API/SPBE/delete",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                dataType: 'json',
+                data: value_data,
+                success: function(response) {
+                    swal({
+                        title: "Penghapusan Data Berhasil!",
+                        icon: "success",
+                        button: "close",
                     });
+                    $(".delete").show();
+                    $(".tambah").hide();
+                    $(".put").hide();
+                    $("#datatable").DataTable().ajax.reload();
                 }
-
-                function delete_data(id) {
-                    kode_SPBE = id;
-                }
-
-                function delete_fix() {
-                    console.log('delete');
-                    const value_data = {
-                        'kode_SPBE': kode_SPBE,
-                        'KEY-SPBE': 'SPBE'
-                    }
-                    console.log(value_data);
-                    $.ajax({
-                        type: 'POST',
-                        url: " <?= base_url() ?>Rest_API/SPBE/delete",
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization': "Basic " + btoa("gas:gas")
-                        },
-                        dataType: 'json',
-                        data: value_data,
-                        success: function(response) {
-                            swal({
-                                title: "Penghapusan Data Berhasil!",
-                                icon: "success",
-                                button: "close",
-                            });
-                            $(".delete").show();
-                            $(".tambah").hide();
-                            $(".put").hide();
-                            $("#datatable").DataTable().ajax.reload();
-                        }
-                    });
-                }
-            </script>
+            });
+        }
+    </script>
 </body>
 
 </html>

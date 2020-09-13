@@ -85,7 +85,7 @@ class Skid_tank extends REST_Controller
             'kode_supir' => $this->post('kode_supir2'),
             'nama_supir' => $this->post('nama_supir2'),
             'tgl_lahir' => $this->post('tgl_lahir2'),
-            'no_hp' => $this->put('no_hp2'),
+            'no_hp' => $this->post('no_hp2'),
             'no_sim' => $this->post('no_sim2'),
             'tahun_berlaku' => $this->post('tahun_berlaku2'),
         );

@@ -2,119 +2,177 @@
 <html lang="en">
 
 <head>
-    <?php $this->load->view('SPBE/head'); ?>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="<?= base_url() ?>assets/img/icon.ico" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="<?= base_url() ?>assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Lato:300,400,700,900"]
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"],
+                urls: ['<?= base_url() ?>assets/css/fonts.min.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/atlantis.min.css">
+
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css">
 </head>
 
 <body>
-    <!-- START PAGE CONTAINER -->
-    <div class="page-container">
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="blue">
 
-        <!-- START PAGE SIDEBAR -->
-        <div class="page-sidebar">
-            <!-- START X-NAVIGATION -->
-            <?php $this->load->view('SPBE/side'); ?>
-            <!-- END X-NAVIGATION -->
+                <h1 style="color: aliceblue; text-align:center">P</h1>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2"></nav>
+            <!-- End Navbar -->
         </div>
-        <!-- END PAGE SIDEBAR -->
 
-        <!-- PAGE CONTENT -->
-        <div class="page-content">
+        <?php $this->load->view('SPBE/side') ?>
 
-            <!-- START X-NAVIGATION VERTICAL -->
-            <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
-
-            </ul>
-            <!-- END X-NAVIGATION VERTICAL -->
-
-            <!-- START BREADCRUMB -->
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active"><?= $side ?></li>
-            </ul>
-            <!-- END BREADCRUMB -->
-
-
-
-            <!-- PAGE CONTENT WRAPPER -->
-            <div class="page-content-wrap">
-
-                <div class="col-md-12">
-                    <div class="alert alert-info put" style="display: none" role="put">
-                        Pembaruan Data Telah Berhasil
-                    </div>
-                    <div class="panel panel-colorful">
-                        <div class="panel-body">
-                            <h2>Profil</h2>
-                            <div class="form-group col-md-4">
-                                <label>Nama SPBE</label>
-                                <input type="text" class="form-control" id="nama_spbe">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Telepon SPBE</label>
-                                <input type="" class="form-control" id="telepon_spbe">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Kapasitas TT</label>
-                                <input type="" class="form-control" id="kapasitas_tt">
-                            </div>
-                            <div class="form-group col-md-12">
-                                <label>Alamat</label>
-                                <textarea class="form-control" rows="5" id="alamat_spbe"></textarea>
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label>DOT</label>
-                                <input type="" class="form-control" id="dot" onchange="mychang()">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Limit</label>
-                                <input type="" class="form-control" id="limit" disabled>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label>Jarak</label>
-                                <input type="" class="form-control" id="jarak">
+        <div class="main-panel">
+            <div class="content">
+                <div class="panel-header bg-primary-gradient">
+                    <div class="page-inner py-5">
+                        <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                            <div>
+                                <h2 class="text-white pb-2 fw-bold">Profil</h2>
                             </div>
                         </div>
-                        <div class="panel-footer">
-                            <button class="btn btn-info pull-right" onclick="put()">Update</button>
-                        </div>
                     </div>
-
                 </div>
 
+                <!-- isi -->
+                <div class="panel panel-default">
+                    <div class="page-inner mt--5">
+                        <div class="row mt--2">
+                            <div class="col-md-12">
+                                <div class="card full-height">
+                                    <div class="card-header">
+                                        <h2>Data Patra Niaga</h2>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="p-2 row">
+                                            <div class="form-group col-md-4">
+                                                <label>Nama SPBE</label>
+                                                <input type="text" class="form-control" id="nama_spbe">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>Telepon SPBE</label>
+                                                <input type="" class="form-control" id="telepon_spbe">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>Kapasitas TT</label>
+                                                <input type="" class="form-control" id="kapasitas_tt">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label>Alamat</label>
+                                                <textarea class="form-control" rows="5" id="alamat_spbe"></textarea>
+                                            </div>
 
+                                            <div class="form-group col-md-4">
+                                                <label>DOT</label>
+                                                <input type="" class="form-control" id="dot" onchange="mychang()">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>Limit</label>
+                                                <input type="" class="form-control" id="limit" disabled>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label>Jarak</label>
+                                                <input type="" class="form-control" id="jarak">
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <button class="btn btn-info pull-right" onclick="put()">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- END PAGE CONTENT WRAPPER -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="copyright ml-auto">
+                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <!-- END PAGE CONTENT -->
     </div>
-    <!-- END PAGE CONTAINER -->
+    <!--   Core JS Files   -->
+    <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/core/popper.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/core/bootstrap.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 
 
+    <!-- Chart JS -->
+    <script src="<?= base_url() ?>assets/js/plugin/chart.js/chart.min.js"></script>
 
+    <!-- jQuery Sparkline -->
+    <script src="<?= base_url() ?>assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js"></script>
 
+    <!-- Chart Circle -->
+    <script src="<?= base_url() ?>assets/js/plugin/chart-circle/circles.min.js"></script>
 
-    <!-- START PRELOADS -->
-    <audio id="audio-alert" src="<?= base_url() ?>assets/audio/alert.mp3" preload="auto"></audio>
-    <audio id="audio-fail" src="<?= base_url() ?>assets/audio/fail.mp3" preload="auto"></audio>
-    <!-- END PRELOADS -->
-    <!-- START SCRIPTS -->
-    <!-- START PLUGINS -->
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>
-    <!-- END PLUGINS -->
-    <!-- THIS PAGE PLUGINS -->
-    <script type='text/javascript' src='<?= base_url() ?>assets/js/plugins/icheck/icheck.min.js'></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
-    <!-- END PAGE PLUGINS -->
-    <!-- START TEMPLATE -->
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/plugins.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>assets/js/actions.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>preload/code.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <!-- END TEMPLATE -->
-    <!-- END SCRIPTS -->
+    <!-- Datatables -->
+    <script src="<?= base_url() ?>assets/js/plugin/datatables/datatables.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="<?= base_url() ?>assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- jQuery Vector Maps -->
+    <script src="<?= base_url() ?>assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="<?= base_url() ?>assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Atlantis JS -->
+    <script src="<?= base_url() ?>assets/js/atlantis.min.js"></script>
+
+    <!-- moment -->
+    <script src="<?= base_url() ?>assets/js/moment.min.js"></script>
+
     <script type="text/javascript">
         var id;
         var pengali;
@@ -142,8 +200,7 @@
                         dataType: 'json',
                         success: function(response) {
                             console.log(response);
-
-                            document.getElementById('namaspbe').innerHTML = response.data[0].nama_spbe;
+                            // document.getElementById('namaspbe').innerHTML = response.data[0].nama_spbe;
                             $("#nama_spbe").val(response.data[0].nama_spbe);
                             $("#alamat_spbe").val(response.data[0].alamat_spbe);
                             $("#telepon_spbe").val(response.data[0].telepon_spbe);
@@ -196,10 +253,8 @@
                         button: "close",
                     });
                     data_spbe();
-                    $(".put").show();
                 }
             });
-
         }
     </script>
 </body>

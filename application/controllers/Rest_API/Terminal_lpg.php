@@ -50,7 +50,7 @@ class Terminal_lpg extends REST_Controller
 
     public function edit_post()
     {
-        if ($this->post('password') == false) {
+        if ($this->post('password') == 'false') {
             $data = array(
                 'kode_terminal' => $this->post('kode_terminal'),
                 'nama_terminal' => $this->post('nama_terminal'),

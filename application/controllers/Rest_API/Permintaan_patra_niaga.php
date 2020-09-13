@@ -51,8 +51,11 @@ class Permintaan_patra_niaga extends REST_Controller
         );
         if ($this->post('kode_skid_tank') != null) {
             $data['kode_skid_tank'] = $this->post('kode_skid_tank');
+            $respone = $this->M_permintaan->update_permintaan_patra_niaga($data);
+        } else {
+            $data['kode_skid_tank'] = 0;
+            $respone = $this->M_permintaan->update_permintaan_patra_niaga($data);
         }
-        $respone = $this->M_permintaan->update_permintaan_patra_niaga($data);
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 

@@ -9,9 +9,9 @@ class SPBE extends CI_Controller
     {
         parent::__construct();
         if (isset($_SESSION['status'])) {
-            if ($_SESSION['level'] == 1) {
+            if ($_SESSION['level'] == "1") {
                 redirect('terminal');
-            } else if ($_SESSION['level'] == 3) {
+            } else if ($_SESSION['level'] == "3") {
                 redirect('patra_niaga');
             }
         } else {
@@ -24,7 +24,7 @@ class SPBE extends CI_Controller
         $this->load->view('SPBE/dashboard', $data);
     }
     public function profil()
-    { 
+    {
         $data['side'] = 'Profil';
         $this->load->view('SPBE/profil', $data);
     }
