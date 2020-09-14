@@ -666,16 +666,6 @@
             }).then((Delete) => {
                 if (Delete) {
                     delete_fix();
-                    swal({
-                        title: 'Terhapus!',
-                        text: 'Data telah dihapus.',
-                        type: 'success',
-                        buttons: {
-                            confirm: {
-                                className: 'btn btn-success'
-                            }
-                        }
-                    });
                 } else {
                     swal.close();
                 }

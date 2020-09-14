@@ -38,7 +38,6 @@
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="blue">
 
-                <h1 style="color: aliceblue; text-align:center">Terminal</h1>
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="icon-menu"></i>
@@ -80,7 +79,7 @@
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         <h4 class="card-title">Data SPBE</h4>
-                                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata">
+                                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata" onclick="$('.validasi').hide();">
                                             <i class="fa fa-plus"></i>
                                             Tambah Data
                                         </button>
@@ -512,16 +511,6 @@
             }).then((Delete) => {
                 if (Delete) {
                     delete_fix();
-                    swal({
-                        title: 'Terhapus!',
-                        text: 'Data telah dihapus.',
-                        type: 'success',
-                        buttons: {
-                            confirm: {
-                                className: 'btn btn-success'
-                            }
-                        }
-                    });
                 } else {
                     swal.close();
                 }

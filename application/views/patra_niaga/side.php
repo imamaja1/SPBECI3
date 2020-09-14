@@ -3,23 +3,16 @@
     <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
             <div class="user">
-                <div class="card">
+                <div class="info">
                     <div class="card-body" style="text-align: center;">
                         <div id="profil_img"></div>
-                        <div class="profile-image" style="margin: -20px 0 0px 0 ;">
-                            <a type="file" data-toggle="modal" data-target="#Profil"><span class="fa fa-camera" style="background-color: skyblue; padding:8px; border-radius:50%; border-color:black"></span></a>
+                        <div class="profile-image" style="margin: -20px 0 0px 0 ; text-align: center;">
+                            <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
                         </div>
+                        <h3 style="color:steelblue">Terminal</h3>
+                        <span style="color: black;">(style nanti diubah)</span>
                     </div>
-                </div>
-                <div class="info">
-                    <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                        <span>
-                            Hizrian
-                            <span class="user-level">Administrator</span>
-                        </span>
-                    </a>
                     <div class="clearfix"></div>
-
                 </div>
             </div>
             <ul class="nav nav-primary">
@@ -85,7 +78,7 @@
 
 <script>
     var data_profil;
-    document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl"  onchange="SavePhoto()" id="blah" >';
+    // document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl"  onchange="SavePhoto()" id="blah" >';
 
     document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">';
 
