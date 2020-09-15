@@ -85,35 +85,55 @@
     </div>
 </div>
 <!-- End Sidebar -->
+<div class="modal fade bd-example-modal-sm" id="Profil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
 
+            <div class="modal-body col-md-12">
+                <div class="form-group col-md-12 text-center">
+                    <div class="profile" style="background-color: white;">
+                        <div class="profile-image">
+                            <div id="images"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-12 text-center">
+                    <form id="myform" enctype="multipart/form-data">
+                        <input type="file" class="form-control" aria-describedby="emailHelp" id="foto" multiple>
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="profil()" data-dismiss="modal">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     var data_profil;
-    // document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl"  onchange="SavePhoto()" id="blah" >';
+    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl" >';
 
-    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>assets/img/profile.jpg" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">';
+    document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl" id="myImg"> ';
 
-    function readURL(input) {
-        console.log('profil');
-        // if (input.files && input.files[0]) {
-        //     var reader = new FileReader();
-        //     reader.onload = function(e) {
-        //         $('#blah')
-        //             .attr('src', e.target.result)
-        //             .width(100)
-        //             .height(100);
-        //     };
-        //     reader.readAsDataURL(input.files[0]);
-        //     data_profil = input.files[0];
-        // }
-    }
+    window.addEventListener('load', function() {
+        document.querySelector('input[type="file"]').addEventListener('change', function() {
+
+            if (this.files && this.files[0]) {
+                var img = document.querySelector('#myImg'); // $('img')[0]
+                img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+                data_profil = this.files[0]
+            }
+        });
+    });
 
     function profil() {
         var nama_profil = new FormData();
         nama_profil.append('file_profil', data_profil);
-        console.log('ada')
         $.ajax({
             type: 'POST',
-            url: " <?= base_url() ?>Rest_API/Profil/Terminal",
+            url: " <?= base_url() ?>Rest_API/Profil/Patra_niaga",
             headers: {
                 'KEY-SPBE': 'SPBE',
                 'Authorization': "Basic " + btoa("gas:gas")
@@ -131,21 +151,21 @@
         });
     }
 
-    // function foto_profil() {
-    //     $.ajax({
-    //         type: 'GET',
-    //         headers: {
-    //             'Content-Type': 'application/x-www-form-urlencoded',
-    //             'Authorization': "Basic " + btoa("gas:gas")
-    //         },
-    //         url: " <?= base_url() ?>Rest_API/Profil/Terminal?KEY-SPBE=SPBE",
-    //         contentType: "application/json",
-    //         dataType: 'json',
-    //         success: function(response) {
-    //             console.log(response);
-    //             document.getElementById('profil_img').innerHTML = '<img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">'
-    //         }
-    //     })
-    // }
-    // setTimeout(foto_profil, 100)
+    function foto_profil() {
+        $.ajax({
+            type: 'GET',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': "Basic " + btoa("gas:gas")
+            },
+            url: " <?= base_url() ?>Rest_API/Profil/Patra_niaga?KEY-SPBE=SPBE",
+            contentType: "application/json",
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+                document.getElementById('profil_img').innerHTML = '<img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">'
+            }
+        })
+    }
+    setTimeout(foto_profil, 100)
 </script>
