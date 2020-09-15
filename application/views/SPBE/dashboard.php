@@ -247,7 +247,6 @@
                             timeZone: 'Asia/Jakarta'
                         }));
                         var times = moment.utc(x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate() + ' ' + x.getHours() + ':' + x.getMinutes() + ':' + x.getSeconds());
-                        console.log(response)
                         $.each(response.data, function(i) {
                             if (response.data[i].status_permintaan != '2') {
                                 if (response.data[i].status_patra_niaga == '2') {
@@ -318,7 +317,6 @@
                 dataType: 'json',
                 success: function(response) {
                     document.getElementById('Verifikasi').innerHTML = null;
-                    console.log(response);
                     if (response.status) {
                         $.each(response.data, function(i) {
                             document.getElementById('Verifikasi').innerHTML += '<div class="card p-3"><div class=" d-flex row"><div class="col-md-8"><h6 class="text-uppercase fw-bold mb-1">Skid Tang dengan NOPOL : ' + response.data[i].nopol + ' <span></h6><span class="text-uppercase text-muted d-block"><table><tr><td>No SPA</td><td> : ' + response.data[i].no_spa + '</td></tr><tr><td>Tanggal SPA</td><td> : ' + response.data[i].tgl_spa + '</td></tr><tr><td>Kapasitas TT </td><td> : ' + response.data[i].kapasitas_tt + '</td></tr></table></span></div><div class=" col-md-4 pull-right mt-2"><button class="btn btn-success btn-border btn-round pull-right btn-sm" onclick="kode_vefikasi(' + response.data[i].kode_permintaan + ')">Konfirmasui</button></div></div></div>'
@@ -388,6 +386,7 @@
         //     contentType: "application/json",
         //     dataType: 'json',
         //     success: function(response) {
+        //         console.log(response)
         //         Morris.Bar({
         //             element: 'dashboard-bar-2',
         //             data: response.data,

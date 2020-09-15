@@ -221,7 +221,6 @@
                             timeZone: 'Asia/Jakarta'
                         }));
                         var times = moment.utc(x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate() + ' ' + x.getHours() + ':' + x.getMinutes() + ':' + x.getSeconds());
-                        console.log(response)
                         $.each(response.data, function(i) {
                             if (response.data[i].status_permintaan != '2') {
                                 if (response.data[i].status_patra_niaga == '2') {
@@ -230,7 +229,7 @@
                                             if (moment(response.data[i].tgl_kembali) < times) {
                                                 if (moment(response.data[i].tgl_sampai_kembali) < times) {
                                                     console.log('nesxt3');
-                                                    kdoe2(response.data[i].kode_permintaan, response.data[i].jarak, response.data[i].kode_skid_tank);
+                                                    kode4(response.data[i].kode_permintaan, response.data[i].jarak, response.data[i].kode_skid_tank);
                                                     document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">timeline</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
                                                 } else {
                                                     document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">Permintaan SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses Menuju Tujuan</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">timeline</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
@@ -283,6 +282,13 @@
             });
         }
 
+        function kode4(data, data2, data3) {
+            kode_permintaan = data
+            jarak = data2
+            kode_skid_tank = data3
+            percepatan();
+        }
+
 
         function percepatan() {
             console.log('put');
@@ -302,8 +308,8 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
-                    console.log(response);
                     data_permintaan()
+                    bar_1()
                     swal({
                         title: "Perceptan Berhasil!",
                         text: "Skid TanK Dikonfirmasi Telah sampai",
@@ -314,31 +320,54 @@
             });
         }
 
-        // $.ajax({
-        //     type: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //         'Authorization': "Basic " + btoa("gas:gas")
-        //     },
-        //     url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
-        //     contentType: "application/json",
-        //     dataType: 'json',
-        //     success: function(response) {
-        //         console.log(response.data)
-        //         Morris.Bar({
-        //             element: 'dashboard-bar-1',
-        //             data: response.data,
-        //             xkey: 'nopol',
-        //             ykeys: ['jarak'],
-        //             labels: ['Jarak Yang Ditempuh'],
-        //             barColors: ['#33414E', '#1caf9a'],
-        //             gridTextSize: '12px',
-        //             hideHover: true,
-        //             resize: true,
-        //             gridLineColor: '#E5E5E5'
-        //         });
-        //     }
-        // })
+
+
+        function bar_1() {
+            $.ajax({
+                type: 'GET',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response.data)
+                    const jarak = response.data.map(function(e) {
+                        return e.jarak;
+                    });
+                    const nopol = response.data.map(function(e) {
+                        return e.nopol;
+                    });
+                    var barChart = document.getElementById('dashboard-bar-1').getContext('2d');
+                    var myBarChart = new Chart(barChart, {
+                        type: 'bar',
+                        data: {
+                            labels: nopol,
+                            datasets: [{
+                                label: "Jarak",
+                                backgroundColor: 'rgb(23, 125, 255)',
+                                borderColor: 'rgb(23, 125, 255)',
+                                data: jarak,
+                            }],
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            },
+                        }
+                    });
+                }
+            })
+        }
+        bar_1()
         // $.ajax({
         //     type: 'GET',
         //     headers: {

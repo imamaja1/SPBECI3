@@ -121,7 +121,7 @@
                                     <div class="card-header">
                                         <div class="d-flex align-items-center">
                                             <h4 class="card-title">Data Skid Tank</h4>
-                                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata">
+                                            <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata" onclick="$('.validasi').hide();">
                                                 <i class="fa fa-plus"></i>
                                                 Tambah Data
                                             </button>
