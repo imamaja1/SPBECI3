@@ -472,22 +472,22 @@
                 data: "status",
                 render: function(data, type, row, meta) {
                     if (data == '1') {
-                        return '<span class="label label-info">Ready</span>';
+                        return '<span class="badge badge-info">Ready</span>';
                     } else if (data == '2') {
-                        return '<span class="label label-default">Waiting..</span>'
+                        return '<span class="badge badge-default">Waiting..</span>'
                     } else if (data == '3') {
-                        return '<span class="label label-danger">Not Ready</span>'
+                        return '<span class="badge badge-danger">Not Ready</span>'
                     }
                 }
             }, {
                 data: "",
                 render: function(data, type, row, meta) {
                     if (row['status'] == '1') {
-                        return '<span class="label label-info">Ready</span>';
+                        return '<span class="badge badge-info">Ready</span>';
                     } else if (row['status'] == '2') {
-                        return '<a href="#" data-toggle="modal" data-target="#timeline" onclick="kode3(' + row['kode_skid_tank'] + ')"><span class="label label-default" >Skid Tank Masih dalam Perjalanan</span></a>'
+                        return '<a href="#" data-toggle="modal" data-target="#timeline" onclick="kode3(' + row['kode_skid_tank'] + ')"><span class="badge badge-default" >Skid Tank Masih dalam Perjalanan</span></a>'
                     } else if (row['status'] == '3') {
-                        return '<span class="label label-danger">Tidak Dapat Digunakan</span>'
+                        return '<span class="badge badge-danger">Tidak Dapat Digunakan</span>'
                     }
                 }
             }, {

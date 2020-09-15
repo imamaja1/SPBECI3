@@ -255,11 +255,11 @@
                             data: "status",
                             render: function(data, type, row, meta) {
                                 if (data == '1') {
-                                    return '<span class="label label-info">Ready</span>';
+                                    return '<span class="badge badge-info">Ready</span>';
                                 } else if (data == '2') {
-                                    return '<span class="label label-default">Waiting..</span>'
+                                    return '<span class="badge badge-default">Waiting..</span>'
                                 } else if (data == '3') {
-                                    return '<span class="label label-danger">Not Ready</span>'
+                                    return '<span class="badge badge-danger">Not Ready</span>'
                                 }
                             }
                         },
@@ -379,11 +379,11 @@
                     className: "center",
                     render: function(data, type, row, meta) {
                         if (data == '1') {
-                            return '<span class="label label-default">Waiting ..</span>';
+                            return '<span class="badge badge-default">Waiting ..</span>';
                         } else if (data == '2') {
-                            return '<span class="label label-info">Diverifikasi</span>'
+                            return '<span class="badge badge-info">Diverifikasi</span>'
                         } else if (data == '3') {
-                            return '<span class="label label-danger">Ditolak</span>'
+                            return '<span class="badge badge-danger">Ditolak</span>'
                         }
                     }
                 }, {
@@ -393,17 +393,17 @@
                         if (row['status_patra_niaga'] == 2) {
                             if (row['status_permintaan'] == 1) {
                                 if (moment(row['tgl_berangkat_tujuan']) < moment(row['tgl_sampai_tujuan'])) {
-                                    return '<span class="label label-info">Skid Tank Telah Sampai</span>'
+                                    return '<span class="badge badge-info">Skid Tank Telah Sampai</span>'
                                 } else {
-                                    return '<span class="label label-default">Skid Tank diperjalanan </span>'
+                                    return '<span class="badge badge-default">Skid Tank diperjalanan </span>'
                                 }
                             } else {
-                                return '<span class="label label-info">Skid Tank Telah Sampai</span>'
+                                return '<span class="badge badge-info">Skid Tank Telah Sampai</span>'
                             }
                         } else if (row['status_patra_niaga'] == 1) {
-                            return '<span class="label label-default">Waiting ..</span>';
+                            return '<span class="badge badge-default">Waiting ..</span>';
                         } else {
-                            return '<span class="label label-danger">Permintaan Ditolak</span>'
+                            return '<span class="badge badge-danger">Permintaan Ditolak</span>'
                         }
                     }
                 }, {
