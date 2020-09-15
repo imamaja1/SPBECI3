@@ -185,18 +185,19 @@ class M_permintaan extends CI_Model
             return $response;
         }
     }
-    public function update2_permintaan_patra_niaga($data)
+    public function update2_permintaan_patra_niaga($data, $obj)
     {
         $this->db->where('kode_permintaan', $data['kode_permintaan']);
         $update = $this->db->update("permintaan", $data);
         if ($update) {
-            $data1 = array('status' => '1');
-            $this->db->where('kode_skid_tank', $data['kode_skid_tank_old']);
-            $this->db->update("t_skid_tank", $data1);
-            $data2 = array('status' => '2');
-            $this->db->where('kode_skid_tank', $data['kode_skid_tank_new']);
-            $this->db->update("t_skid_tank", $data2);
-
+            if ($obj['kode_skid_tank_old'] != $obj['kode_skid_tank_new']) {
+                $data1 = array('status' => '1');
+                $this->db->where('kode_skid_tank', $obj['kode_skid_tank_old']);
+                $this->db->update("t_skid_tank", $data1);
+                $data2 = array('status' => '2');
+                $this->db->where('kode_skid_tank', $obj['kode_skid_tank_new']);
+                $this->db->update("t_skid_tank", $data2);
+            }
             $response['status'] = 200;
             $response['error'] = false;
             $response['message'] = 'Data person diupdate.';

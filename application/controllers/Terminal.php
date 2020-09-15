@@ -27,10 +27,10 @@ class Terminal extends CI_Controller
         $this->load->view('Terminal/profil', $data);
     }
     #activitas
-    public function monitoring()
+    public function permintaan()
     {
-        $data['side'] = 'monitoring';
-        $this->load->view('Terminal/monitoring', $data);
+        $data['side'] = 'permintaan';
+        $this->load->view('Terminal/permintaan', $data);
     }
 
 

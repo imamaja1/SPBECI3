@@ -39,6 +39,16 @@
                     <h4 class="text-section">Data</h4>
                 </li>
                 <li class="nav-item 
+                <?php if ($side == 'permintaan') {
+                    echo 'active';
+                } ?>">
+                    <a href="<?= base_url() ?>Terminal/permintaan" class="collapsed" aria-expanded="false">
+                        <i class="fas fa-home"></i>
+                        <p>Permintaan</p>
+
+                    </a>
+                </li>
+                <li class="nav-item 
                 <?php if ($side == 'spbe') {
                     echo 'active';
                 } ?>">

@@ -58,7 +58,7 @@
             <!-- End Navbar -->
         </div>
 
-        <?php $this->load->view('Patra_niaga/side') ?>
+        <?php $this->load->view('Terminal/side') ?>
 
         <div class="main-panel">
             <div class="content">
