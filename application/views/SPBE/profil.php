@@ -250,7 +250,7 @@
                     swal({
                         title: "Edit Data Berhasil!",
                         icon: "success",
-                        button: "close",
+                        button: "Tutup",
                     });
                     data_spbe();
                 }

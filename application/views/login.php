@@ -127,7 +127,7 @@
                     if (response.status == 200) {
                         location.reload();
                     } else {
-                        document.getElementById('alert').innerHTML = '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="alert-heading">FAIL</h4><hr><p>Tolong priksa kembali <strong>Username</strong> dan <strong>password</strong> anda.</p></div>';
+                        document.getElementById('alert').innerHTML = '<div class="alert alert-danger" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="alert-heading">FAIL</h4><hr><p>Mohon periksa kembali <strong>Username</strong> dan <strong>Password</strong> Anda.</p></div>';
                         $('#alert').delay(5000).fadeOut(400);
                     }
 

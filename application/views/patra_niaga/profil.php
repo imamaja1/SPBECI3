@@ -38,7 +38,7 @@
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="blue">
 
-                <h1 style="color: aliceblue; text-align:center">Terminal</h1>
+                <!-- <h1 style="color: aliceblue; text-align:center">Patra Niaga</h1> -->
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="icon-menu"></i>
@@ -66,7 +66,7 @@
                     <div class="page-inner py-5">
                         <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                             <div>
-                                <h2 class="text-white pb-2 fw-bold">Terminal</h2>
+                                <h2 class="text-white pb-2 fw-bold">Patra Niaga</h2>
                             </div>
                         </div>
                     </div>
@@ -233,7 +233,7 @@
                     swal({
                         title: "Edit Data Berhasil!",
                         icon: "success",
-                        button: "close",
+                        button: "Tutup",
                     });
                     $(".put").show();
                 }

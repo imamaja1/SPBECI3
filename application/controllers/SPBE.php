@@ -27,7 +27,7 @@ class SPBE extends CI_Controller
     {
         $data['side'] = 'Profil';
         $this->load->view('SPBE/profil', $data);
-    }
+    } 
     public function permintaan()
     {
         $data['side'] = 'Permintaan';

@@ -407,9 +407,9 @@
                 $('.validasi').show();
                 swal({
                     title: "Data tidak boleh kosong!",
-                    text: "Tolong periksa kembali data yang dimasukan!!",
+                    text: "Mohon periksa kembali data yang dimasukan",
                     icon: "warning",
-                    button: "close",
+                    button: "Tutup",
                 });
             } else {
                 console.log('post');
@@ -435,7 +435,7 @@
                         swal({
                             title: "Penambahan Data Berhasil!",
                             icon: "success",
-                            button: "close",
+                            button: "Tutup",
                         });
 
                         $(".delete").hide();

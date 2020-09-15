@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-item 
                 <?php if ($side == 'Dashboard') {
-                    echo 'active';
+                    echo 'active'; 
                 } ?>">
                     <a href="<?= base_url() ?>SPBE" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
@@ -39,7 +39,7 @@
                     <h4 class="text-section">Data</h4>
                 </li>
                 <li class="nav-item 
-                <?php if ($side == 'permintaan') {
+                <?php if ($side == 'Permintaan') {
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>SPBE/permintaan" class="collapsed" aria-expanded="false">
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item 
-                <?php if ($side == 'profil') {
+                <?php if ($side == 'Profil') {
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>SPBE/profil" class="collapsed" aria-expanded="false">

@@ -14,7 +14,7 @@ class Patra_niaga extends CI_Controller
                 redirect('spbe');
             }
         } else {
-            redirect('auth');
+            redirect('auth'); 
         }
     }
     public function index()
