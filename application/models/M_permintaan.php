@@ -3,12 +3,10 @@ class M_permintaan extends CI_Model
 {
     public function all_permintaan()
     {
-
-        $this->db->select('*');
-        $this->db->from("permintaan");
-        $this->db->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe");
-        $this->db->order_by('kode_permintaan', 'desc');
-        $all = $this->db->get()->result();
+        $all = $this->db->select('*')
+            ->from('permintaan')
+            ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+            ->get()->result();
         $response['status'] = 200;
         $response['error'] = false;
         $response['data'] = $all;
@@ -68,8 +66,11 @@ class M_permintaan extends CI_Model
     }
     public function one_permintaan($id)
     {
-        $this->db->where('kode_permintaan', $id);
-        $all = $this->db->get("permintaan")->result();
+        $all = $this->db->select('*')
+            ->from('permintaan')
+            ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+            ->where('kode_permintaan', $id)
+            ->get()->result();
         $response['status'] = 200;
         $response['error'] = false;
         $response['data'] = $all;
@@ -173,6 +174,29 @@ class M_permintaan extends CI_Model
                 $this->db->where('kode_skid_tank', $data['kode_skid_tank']);
                 $this->db->update("t_skid_tank", $data1);
             }
+            $response['status'] = 200;
+            $response['error'] = false;
+            $response['message'] = 'Data person diupdate.';
+            return $response;
+        } else {
+            $response['status'] = 502;
+            $response['error'] = true;
+            $response['message'] = 'Data person gagal diupdate.';
+            return $response;
+        }
+    }
+    public function update2_permintaan_patra_niaga($data)
+    {
+        $this->db->where('kode_permintaan', $data['kode_permintaan']);
+        $update = $this->db->update("permintaan", $data);
+        if ($update) {
+            $data1 = array('status' => '1');
+            $this->db->where('kode_skid_tank', $data['kode_skid_tank_old']);
+            $this->db->update("t_skid_tank", $data1);
+            $data2 = array('status' => '2');
+            $this->db->where('kode_skid_tank', $data['kode_skid_tank_new']);
+            $this->db->update("t_skid_tank", $data2);
+
             $response['status'] = 200;
             $response['error'] = false;
             $response['message'] = 'Data person diupdate.';

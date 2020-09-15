@@ -32,14 +32,9 @@ class Patra_niaga extends CI_Controller
         $data['side'] = 'permintaan';
         $this->load->view('patra_niaga/permintaan', $data);
     }
-    public function supir()
-    {
-        $data['side'] = 'supir';
-        $this->load->view('patra_niaga/supir', $data);
-    }
     public function skid_tank()
     {
-        $data['side'] = 'truk';
+        $data['side'] = 'skid_tank';
         $this->load->view('patra_niaga/skid_tank', $data);
     }
     function log_out()

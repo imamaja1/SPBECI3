@@ -59,6 +59,22 @@ class Permintaan_patra_niaga extends REST_Controller
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 
+    public function edit2_post()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $data = array(
+            'kode_permintaan' => $this->post('kode_permintaan'),
+            'status_patra_niaga' => $this->post('status_patra_niaga'),
+            'tgl_berangkat_tujuan' => date('Y-m-d H:i:s')
+        );
+
+        $data['kode_skid_tank_new'] = $this->post('kode_skid_tank_new');
+        $data['kode_skid_tank_old'] = $this->post('kode_skid_tank_old');
+        $respone = $this->M_permintaan->update2_permintaan_patra_niaga($data);
+
+        $this->response($respone, REST_Controller::HTTP_CREATED);
+    }
+
     public function index_delete()
     {
         $id1 = $this->delete('kode_lpg');
