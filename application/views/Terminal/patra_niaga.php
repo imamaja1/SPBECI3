@@ -38,7 +38,7 @@
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="blue">
 
-                <h1 style="color: aliceblue; text-align:center">Terminal</h1>
+                <!-- <h1 style="color: aliceblue; text-align:center">Terminal</h1> -->
                 <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon">
                         <i class="icon-menu"></i>
@@ -484,7 +484,7 @@
                         swal({
                             title: "Edit Data Berhasil!",
                             icon: "success",
-                            button: "close",
+                            button: "Tutup",
                         });
 
                         view_patra_niaga()
@@ -617,7 +617,7 @@
                             swal({
                                 title: "Penambahan Data Berhasil!",
                                 icon: "success",
-                                button: "close",
+                                button: "Tutup",
                             });
                             $(".delete2").hide();
                             $(".put2").hide();
@@ -631,9 +631,9 @@
                     $('.validasi').show();
                     swal({
                         title: "Data tidak boleh kosong!",
-                        text: "Tolong periksa kembali data yang dimasukan!!",
+                        text: "Mohon periksa kembali data yang dimasukan",
                         icon: "warning",
-                        button: "close",
+                        button: "Tutup",
                     });
                 }
             }
@@ -676,7 +676,7 @@
                         swal({
                             title: "Edit Data Berhasil!",
                             icon: "success",
-                            button: "close",
+                            button: "Tutup",
                         });
                         $(".delete2").hide();
                         $(".put2").show();
@@ -743,7 +743,7 @@
                         swal({
                             title: "Penghapusan Data Berhasil!",
                             icon: "success",
-                            button: "close",
+                            button: "Tutup",
                         });
 
                         $(".delete2").show();

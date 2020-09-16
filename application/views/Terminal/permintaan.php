@@ -337,7 +337,7 @@
                     $("#datatable").DataTable().ajax.reload();
                     swal({
                         title: 'Update Data Berhasil!',
-                        text: 'Data telah dirubah.',
+                        // text: 'Data telah dirubah.',
                         type: 'success',
                         icon: 'success',
                         buttons: {
