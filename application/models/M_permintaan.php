@@ -190,13 +190,22 @@ class M_permintaan extends CI_Model
         $this->db->where('kode_permintaan', $data['kode_permintaan']);
         $update = $this->db->update("permintaan", $data);
         if ($update) {
-            if ($obj['kode_skid_tank_old'] != $obj['kode_skid_tank_new']) {
+            if ($data['status_patra_niaga'] != '2') {
                 $data1 = array('status' => '1');
                 $this->db->where('kode_skid_tank', $obj['kode_skid_tank_old']);
                 $this->db->update("t_skid_tank", $data1);
-                $data2 = array('status' => '2');
+                $data2 = array('status' => '1');
                 $this->db->where('kode_skid_tank', $obj['kode_skid_tank_new']);
                 $this->db->update("t_skid_tank", $data2);
+            } else {
+                if ($obj['kode_skid_tank_old'] != $obj['kode_skid_tank_new']) {
+                    $data1 = array('status' => '1');
+                    $this->db->where('kode_skid_tank', $obj['kode_skid_tank_old']);
+                    $this->db->update("t_skid_tank", $data1);
+                    $data2 = array('status' => '2');
+                    $this->db->where('kode_skid_tank', $obj['kode_skid_tank_new']);
+                    $this->db->update("t_skid_tank", $data2);
+                }
             }
             $response['status'] = 200;
             $response['error'] = false;

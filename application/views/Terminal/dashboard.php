@@ -320,8 +320,6 @@
             });
         }
 
-
-
         function bar_1() {
             $.ajax({
                 type: 'GET',
@@ -333,7 +331,7 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response.data)
+                    console.log(response)
                     const jarak = response.data.map(function(e) {
                         return e.jarak;
                     });

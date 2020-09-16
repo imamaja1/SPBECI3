@@ -62,13 +62,16 @@ class Permintaan_patra_niaga extends REST_Controller
     public function edit2_post()
     {
         date_default_timezone_set('Asia/Jakarta');
+        $status_patra_niaga = $this->post('status_patra_niaga');
         $data = array(
             'kode_permintaan' => $this->post('kode_permintaan'),
-            'status_patra_niaga' => $this->post('status_patra_niaga'),
+            'status_patra_niaga' => $status_patra_niaga,
             'tgl_berangkat_tujuan' => date('Y-m-d H:i:s'),
             'kode_skid_tank' => $this->post('kode_skid_tank_new')
         );
-
+        if ($status_patra_niaga != '2') {
+            $data['kode_skid_tank'] = 0;
+        }
         $data2['kode_skid_tank_new'] = $this->post('kode_skid_tank_new');
         $data2['kode_skid_tank_old'] = $this->post('kode_skid_tank_old');
         $respone = $this->M_permintaan->update2_permintaan_patra_niaga($data, $data2);

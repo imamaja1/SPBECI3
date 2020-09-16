@@ -131,7 +131,11 @@
                     <div class="modal-body row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Status Patra Niaga</label>
-                            <input type="" class="form-control" id="status_patra_niaga" aria-describedby="emailHelp">
+                            <select class="form-control" id="status_patra_niaga">
+                                <option class="form-control" id="1" value="1">Waiting..</option>
+                                <option class="form-control" id="2" value="2">Diverifikasi</option>
+                                <option class="form-control" id="3" value="3">Ditolak</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Skid tank</label>
@@ -312,7 +316,7 @@
             console.log('put');
             const value_data = {
                 'kode_permintaan': kode_permintaan,
-                'status_patra_niaga': '2',
+                'status_patra_niaga': $('#status_patra_niaga option:selected').attr('id'),
                 'kode_skid_tank_new': kode_skid_tank_new,
                 'kode_skid_tank_old': kode_skid_tank_old,
                 'KEY-SPBE': 'SPBE'
@@ -392,13 +396,13 @@
                     render: function(data, type, row, meta) {
                         if (row['status_patra_niaga'] == 2) {
                             if (row['status_permintaan'] == 1) {
-                                if (moment(row['tgl_berangkat_tujuan']) < moment(row['tgl_sampai_tujuan'])) {
-                                    return '<span class="badge badge-info">Skid Tank Telah Sampai</span>'
+                                if (moment(row['tgl_berangkat_tujuan']) > moment(row['tgl_sampai_tujuan'])) {
+                                    return '<span class="badge badge-info">Skid Tank Dalam Perjalanan</span>'
                                 } else {
-                                    return '<span class="badge badge-default">Skid Tank diperjalanan </span>'
+                                    return '<span class="badge badge-primary">Skid Tank Telah Sampai</span>'
                                 }
                             } else {
-                                return '<span class="badge badge-info">Skid Tank Telah Sampai</span>'
+                                return '<span class="badge badge-primary">Skid Tank Telah Sampai</span>'
                             }
                         } else if (row['status_patra_niaga'] == 1) {
                             return '<span class="badge badge-default">Waiting ..</span>';

@@ -275,6 +275,7 @@
                                 <label for="exampleInputEmail1">Status</label>
                                 <select class="form-control" id="put_status">
                                     <option class="form-control" id="1" value="1">Ready</option>
+                                    <option class="form-control" id="2" value="2">Waiting ..</option>
                                     <option class="form-control" id="3" value="3">Not Ready</option>
                                 </select>
                             </div>
