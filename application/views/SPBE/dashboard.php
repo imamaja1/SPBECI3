@@ -195,6 +195,19 @@
                 id = response.kode_spbe
                 data_permintaan2()
                 data_permintaan()
+                $.ajax({
+                    type: 'GET',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'Authorization': "Basic " + btoa("gas:gas")
+                    },
+                    url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    success: function(response) {
+                        document.getElementById('namaspbe').innerHTML = response.data[0].nama_spbe;
+                    }
+                });
             }
         })
 

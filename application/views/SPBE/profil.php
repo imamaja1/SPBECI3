@@ -200,7 +200,7 @@
                         dataType: 'json',
                         success: function(response) {
                             console.log(response);
-                            // document.getElementById('namaspbe').innerHTML = response.data[0].nama_spbe;
+                            document.getElementById('namaspbe').innerHTML = response.data[0].nama_spbe;
                             $("#nama_spbe").val(response.data[0].nama_spbe);
                             $("#alamat_spbe").val(response.data[0].alamat_spbe);
                             $("#telepon_spbe").val(response.data[0].telepon_spbe);

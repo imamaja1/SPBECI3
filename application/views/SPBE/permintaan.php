@@ -173,47 +173,83 @@
                 </div>
                 <div class="modal-body">
                     <div class="modal-body row">
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Nama SPBE</label>
-                            <input type="" class="form-control" id="put_nama_spbe" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">NOPOL</label>
+                            <br>
+                            <span id="view_nopol"></span>
+                            <hr>
                         </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">No Telepon</label>
-                            <input type="" class="form-control" id="put_telepon_spbe" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">Kapasitas</label>
+                            <br>
+                            <span id="view_kapasitas"></span>
+                            <hr>
                         </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Kapasitas TT</label>
-                            <input type="" class="form-control" id="put_kapasitas_tt" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">Odometer</label>
+                            <br>
+                            <span id="view_odometer"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Jarak SPBE</label>
-                            <input type="" class="form-control" id="put_jarak" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">Nama Supir 1</label>
+                            <br>
+                            <span id="view_nama_supir1"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label for="exampleInputEmail1">Alamat SPBE</label>
-                            <textarea class="form-control" id="put_alamat_spbe"></textarea>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">Tanggal Lahir </label>
+                            <br>
+                            <span id="view_tgl_lahir1"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">DOT</label>
-                            <input type="" class="form-control" onchange="myFunction()" id="put_dot" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">NO HP</label>
+                            <br>
+                            <span id="view_no_hp1"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">Kali DOT</label>
-                            <input type="" class="form-control" onchange="myFunction()" id="put_kali_dot" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-6  ">
+                            <label for="exampleInputEmail1">NO SIM</label>
+                            <br>
+                            <span id="view_no_sim1"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="exampleInputEmail1">Limit</label>
-                            <input type="" class="form-control" id="put_limit" aria-describedby="emailHelp" disabled>
+                        <div class="form-group col-md-6  ">
+                            <label for="exampleInputEmail1">Tangal Berlaku</label>
+                            <br>
+                            <span id="view_tgl_berlaku1"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Username</label>
-                            <input type="" class="form-control" id="put_username" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">Nama Supir 2</label>
+                            <br>
+                            <span id="view_nama_supir2"></span>
+                            <hr>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Password</label>
-                            <input type="password" class="form-control" id="put_password" aria-describedby="emailHelp" required>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail1">Tanggal Lahir</label>
+                            <br>
+                            <span id="view_tgl_lahir2"></span>
+                            <hr>
+                        </div>
+                        <div class="form-group col-md-4  ">
+                            <label for="exampleInputEmail2">NO HP</label>
+                            <br>
+                            <span id="view_no_hp2"></span>
+                            <hr>
+                        </div>
+                        <div class="form-group col-md-6  ">
+                            <label for="exampleInputEmail2">NO SIM</label>
+                            <br>
+                            <span id="view_no_sim2"></span>
+                            <hr>
+                        </div>
+                        <div class="form-group col-md-6  ">
+                            <label for="exampleInputEmail2">Tangal Berlaku</label>
+                            <br>
+                            <span id="view_tgl_berlaku2"></span>
+                            <hr>
                         </div>
                     </div>
                 </div>
@@ -293,7 +329,6 @@
                     success: function(response) {
                         limit = response.data[0].limit;
                         document.getElementById('namaspbe').innerHTML = response.data[0].nama_spbe;
-
                     }
                 })
             }
@@ -364,9 +399,9 @@
                     className: "center",
                     render: function(data, type, row, meta) {
                         if (row['kode_skid_tank'] == null) {
-                            return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                            return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                         } else {
-                            return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                            return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                         }
                     }
                 }, ],
