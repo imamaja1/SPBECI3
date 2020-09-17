@@ -334,6 +334,26 @@
             </div>
         </div>
 
+        <div class="modal fade bd-example-modal-lg" id="timeline" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="exampleModalLongTitle">Data Skid Tank</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ol class="activity-feed">
+                            <div id="datatimeline"></div>
+                        </ol>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--   Core JS Files   -->
         <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
@@ -406,13 +426,13 @@
                         if (response.data[0].status_permintaan != '2') {
                             if (response.data[0].status_patra_niaga == '2') {
                                 if (moment(response.data[0].tgl_berangkat_tujuan) < times) {
-                                    document.getElementById('datatimeline').innerHTML += ' <article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl + '<br><strong>Skid Tank Bersiap <br></strong> menuju <strong>SPBE</strong>.</div></article>';
+                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Skid Tank </strong> bersiap menuju <strong>SPBE</strong></span></li>'
                                     if (moment(response.data[0].tgl_berangkat_tujuan) < moment(response.data[0].tgl_sampai_tujuan)) {
-                                        document.getElementById('datatimeline').innerHTML += ' <article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl + '<br><strong>Skid Tank dalam perjalanan <br></strong> menuju <strong>SPBE</strong>.</div></article>';
+                                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Skid Tank </strong>dalam perjalana menuju <strong>SPBE</strong></span></li>'
                                         if (moment(response.data[0].tgl_sampai_tujuan) < times) {
-                                            document.getElementById('datatimeline').innerHTML += ' <article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl_sampai_tujuan + '<br><strong>Skid Tank</strong> Telah sampai <strong>SPBE</strong>.</div></article>';
+                                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_sampai_tujuan + '</time><span class="text"><strong>Skid Tank </strong> Telah sampai di <strong>SPBE</strong></span></li>'
                                             if (moment(response.data[0].tgl_kembali) < times) {
-                                                document.getElementById('datatimeline').innerHTML += ' <article class="panel panel-info panel-outline"><div class="panel-heading icon"><i class="glyphicon glyphicon-info-sign"></i></div><div class="panel-body">' + response.data[0].tgl_kembali + '<br><strong>Skid Tank</strong>Perjalan Kembali<br> menuju <strong>Pangkalan</strong>.</div></article>';
+                                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_kembali + '</time><span class="text"><strong>Skid Tank</strong> Kembali ke <strong>Pangkalan</strong></span></li>'
                                             }
                                         }
                                     }
@@ -706,16 +726,6 @@
                 }).then((Delete) => {
                     if (Delete) {
                         delete_fix();
-                        swal({
-                            title: 'Terhapus!',
-                            text: 'Data telah dihapus.',
-                            type: 'success',
-                            buttons: {
-                                confirm: {
-                                    className: 'btn btn-success'
-                                }
-                            }
-                        });
                     } else {
                         swal.close();
                     }

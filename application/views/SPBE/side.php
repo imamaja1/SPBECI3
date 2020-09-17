@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-item 
                 <?php if ($side == 'Dashboard') {
-                    echo 'active'; 
+                    echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>SPBE" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
@@ -149,7 +149,7 @@
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': "Basic " + btoa("gas:gas")
             },
-            url: " http://localhost/SPBECI3/Rest_API/auth?KEY-SPBE=SPBE",
+            url: " <?= base_url() ?>Rest_API/auth?KEY-SPBE=SPBE",
             contentType: "application/json",
             dataType: 'json',
             success: function(response) {
@@ -159,7 +159,7 @@
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'Authorization': "Basic " + btoa("gas:gas")
                     },
-                    url: " http://localhost/SPBECI3/Rest_API/Profil/SPBE?KEY-SPBE=SPBE&id=" + response.kode_spbe,
+                    url: " <?= base_url() ?>Rest_API/Profil/SPBE?KEY-SPBE=SPBE&id=" + response.kode_spbe,
                     contentType: "application/json",
                     dataType: 'json',
                     success: function(response) {
