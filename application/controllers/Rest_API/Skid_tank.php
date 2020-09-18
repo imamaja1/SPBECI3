@@ -7,6 +7,7 @@ class Skid_tank extends REST_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->library('form_validation');
         $this->load->model('M_skid_tank');
     }
     public function index_get()
@@ -37,30 +38,37 @@ class Skid_tank extends REST_Controller
 
     public function index_post()
     {
-        $data1 = array(
-            'nopol' => $this->post('nopol'),
-            'kapasitas' => $this->post('kapasitas'),
-            'odometer' => $this->post('odometer'),
-            'status' => $this->post('status'),
-        );
-        $data2 = array(
-            'nopol' => $this->post('nopol'),
-            'nama_supir' => $this->post('nama_supir1'),
-            'tgl_lahir' => $this->post('tgl_lahir1'),
-            'no_hp' => $this->post('no_hp1'),
-            'no_sim' => $this->post('no_sim1'),
-            'tahun_berlaku' => $this->post('tahun_berlaku1'),
-        );
-        $data3 = array(
-            'nopol' => $this->post('nopol'),
-            'nama_supir' => $this->post('nama_supir2'),
-            'tgl_lahir' => $this->post('tgl_lahir2'),
-            'no_hp' => $this->post('no_hp2'),
-            'no_sim' => $this->post('no_sim2'),
-            'tahun_berlaku' => $this->post('tahun_berlaku2'),
-        );
-        $respone = $this->M_skid_tank->add_skid_tank($data1, $data2, $data3);
-        $this->response($respone, REST_Controller::HTTP_CREATED);
+        // $respone = 'ada';
+        $this->form_validation->set_rules('nopol', 'nopol', 'is_unique[t_skid_tank.nopol]');
+        if ($this->form_validation->run() === FALSE) {
+            $response['status'] = 'false';
+            $this->response($response, REST_Controller::HTTP_CREATED);
+        } else {
+            $data1 = array(
+                'nopol' => $this->post('nopol'),
+                'kapasitas' => $this->post('kapasitas'),
+                'odometer' => $this->post('odometer'),
+                'status' => $this->post('status'),
+            );
+            $data2 = array(
+                'nopol' => $this->post('nopol'),
+                'nama_supir' => $this->post('nama_supir1'),
+                'tgl_lahir' => $this->post('tgl_lahir1'),
+                'no_hp' => $this->post('no_hp1'),
+                'no_sim' => $this->post('no_sim1'),
+                'tahun_berlaku' => $this->post('tahun_berlaku1'),
+            );
+            $data3 = array(
+                'nopol' => $this->post('nopol'),
+                'nama_supir' => $this->post('nama_supir2'),
+                'tgl_lahir' => $this->post('tgl_lahir2'),
+                'no_hp' => $this->post('no_hp2'),
+                'no_sim' => $this->post('no_sim2'),
+                'tahun_berlaku' => $this->post('tahun_berlaku2'),
+            );
+            $respone = $this->M_skid_tank->add_skid_tank($data1, $data2, $data3);
+            $this->response($respone, REST_Controller::HTTP_CREATED);
+        }
     }
 
     public function edit_post()

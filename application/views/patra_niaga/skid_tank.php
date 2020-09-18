@@ -595,17 +595,26 @@
                     dataType: 'json',
                     data: value_data,
                     success: function(response) {
-                        swal({
-                            title: "Penambahan Data Berhasil!",
-                            icon: "success",
-                            button: "Tutup",
-                        });
-                        $(".delete2").hide();
-                        $(".put2").hide();
-                        $(".tambah2").show();
-                        $("#datatable").DataTable().ajax.reload();
-                        $('#inputdata').modal('hide')
-                        empty()
+                        if (response.status == 'false') {
+                            swal({
+                                title: "Penambahan Data Gagal!",
+                                text: "Nopol sudah terpakai",
+                                icon: "warning",
+                                button: "Tutup",
+                            });
+                        } else {
+                            swal({
+                                title: "Penambahan Data Berhasil!",
+                                icon: "success",
+                                button: "Tutup",
+                            });
+                            $(".delete2").hide();
+                            $(".put2").hide();
+                            $(".tambah2").show();
+                            $("#datatable").DataTable().ajax.reload();
+                            $('#inputdata').modal('hide')
+                            empty()
+                        }
                     }
                 });
             } else {
