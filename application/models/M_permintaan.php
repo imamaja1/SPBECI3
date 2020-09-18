@@ -3,9 +3,12 @@ class M_permintaan extends CI_Model
 {
     public function all_permintaan()
     {
+
         $all = $this->db->select('*')
             ->from('permintaan')
+            ->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe")
             ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+            ->order_by('kode_permintaan', 'desc')
             ->get()->result();
         $response['status'] = 200;
         $response['error'] = false;
