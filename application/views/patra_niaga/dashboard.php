@@ -302,7 +302,7 @@
             kode_skid_tank = data3
             swal({
                 title: 'Anda yakin?',
-                text: "Ingin Melakuka  Peceptaan Skid Tank!",
+                text: "Ingin Melakukan  Peceptaan Skid Tank!",
                 type: 'warning',
                 icon: "info",
                 buttons: {
@@ -311,7 +311,7 @@
                         className: 'btn btn-danger'
                     },
                     confirm: {
-                        text: 'Yes, Pecepatan!',
+                        text: 'Pecepat',
                         className: 'btn btn-success'
                     }
                 }
