@@ -4,9 +4,9 @@
         <div class="sidebar-content">
             <div class="user">
                 <div class="info">
-                    <div class="card-body" style="text-align: center;">
+                    <div class="card_body" style="text-align: center;">
                         <div id="profil_img"></div>
-                        <div class="profile-image" style="margin: -20px 0 0px 0 ; text-align: center;">
+                        <div class="profile-image" style="margin: -20px auto 0px auto ; text-align: center;">
                             <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
                         </div>
                         <h3 style="color:steelblue">Terminal</h3>
@@ -126,9 +126,9 @@
 
 <script>
     var data_profil;
-    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl" >';
+    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="rounded-circle avatar-xxl" style="margin: auto">';
 
-    document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl" id="myImg"> ';
+    document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="rounded-circle avatar-xxl" id="myImg"> ';
 
     window.addEventListener('load', function() {
         document.querySelector('input[type="file"]').addEventListener('change', function() {
@@ -174,7 +174,7 @@
             contentType: "application/json",
             dataType: 'json',
             success: function(response) {
-                document.getElementById('profil_img').innerHTML = '<img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl">'
+                document.getElementById('profil_img').innerHTML = '<img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '" alt="Card image cap" class=" rounded-circle avatar-xxl" style="margin: auto">'
             }
         })
     }

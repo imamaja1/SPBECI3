@@ -105,7 +105,7 @@
 
 <script>
     var data_profil;
-    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl" >';
+    document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="rounded-circle avatar-xxl" style="margin: auto">';
 
     document.getElementById('images').innerHTML = '<img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" class="avatar-img rounded-circle avatar-xxl" id="myImg"> ';
 
@@ -164,7 +164,7 @@
                     contentType: "application/json",
                     dataType: 'json',
                     success: function(response) {
-                        document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '"  class="avatar-img rounded-circle avatar-xxl" />';
+                        document.getElementById('profil_img').innerHTML = ' <img src="<?= base_url() ?>uploads/' + response.data.nama_profil + '"  class=" rounded-circle avatar-xxl" style="margin: auto"/>';
                     }
                 })
 
