@@ -381,7 +381,7 @@
                     swal({
                         title: "Konfirmasi Data Berhasil!",
                         icon: "success",
-                        button: "close",
+                        button: "Tutup",
                     })
 
                     data_permintaan();

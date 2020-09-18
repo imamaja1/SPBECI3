@@ -389,7 +389,7 @@
                         className: 'btn btn-danger'
                     },
                     confirm: {
-                        text: 'Verifikasi!',
+                        text: 'Verifikasi',
                         className: 'btn btn-success'
                     }
                 }
@@ -513,7 +513,7 @@
                         className: 'btn btn-danger'
                     },
                     confirm: {
-                        text: 'Ditolak!',
+                        text: 'Tolak',
                         className: 'btn btn-info'
                     }
                 }
