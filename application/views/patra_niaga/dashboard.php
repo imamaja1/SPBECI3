@@ -427,6 +427,7 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
+                    bar_1()
                     data_permintaan();
                     data_permintaan2();
                     $('#inputdata').modal('hide');
@@ -548,6 +549,53 @@
                 }
             });
         }
+
+        function bar_1() {
+            $.ajax({
+                type: 'GET',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:gas")
+                },
+                url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response)
+                    const jarak = response.data.map(function(e) {
+                        return e.jarak;
+                    });
+                    const nopol = response.data.map(function(e) {
+                        return e.nopol;
+                    });
+                    var barChart = document.getElementById('dashboard-bar-1').getContext('2d');
+                    var myBarChart = new Chart(barChart, {
+                        type: 'bar',
+                        data: {
+                            labels: nopol,
+                            datasets: [{
+                                label: "Jarak",
+                                backgroundColor: 'rgb(23, 125, 255)',
+                                borderColor: 'rgb(23, 125, 255)',
+                                data: jarak,
+                            }],
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            },
+                        }
+                    });
+                }
+            })
+        }
+        bar_1()
     </script>
 </body>
 
