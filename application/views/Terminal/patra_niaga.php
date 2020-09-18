@@ -728,7 +728,7 @@
                             className: 'btn btn-danger'
                         },
                         confirm: {
-                            text: 'Yes, delete it!',
+                            text: 'Hapus',
                             className: 'btn btn-success'
                         }
                     }
