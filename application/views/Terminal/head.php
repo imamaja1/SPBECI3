@@ -22,7 +22,7 @@
             position: absolute;
             width: 4px;
             display: block;
-            background: currentColor;
+            background: currentColor; 
             top: 0px;
             bottom: 0px;
             margin-left: 30px;
