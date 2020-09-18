@@ -716,7 +716,6 @@
                         icon: "success",
                         button: "Tutup",
                     });
-
                     $(".delete2").show();
                     $(".put2").hide();
                     $(".tambah2").hide();

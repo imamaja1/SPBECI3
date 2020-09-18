@@ -381,6 +381,11 @@
                         data: value_data,
                         success: function(response) {
                             console.log(response.message);
+                            swal({
+                                title: "Penghapusan Data Berhasil!",
+                                icon: "success",
+                                button: "Tutup",
+                            });
                             $(".delete").show().delay(9000).fadeOut(400);
                             $(".tambah").hide()
                             $(".put").hide()

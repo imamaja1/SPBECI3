@@ -567,15 +567,9 @@
                 data: value_data,
                 success: function(response) {
                     swal({
-                        title: 'Terhapus!',
-                        text: 'Data telah dihapus.',
-                        type: 'success',
+                        title: "Penghapusan Data Berhasil!",
                         icon: "success",
-                        buttons: {
-                            confirm: {
-                                className: 'btn btn-success'
-                            }
-                        }
+                        button: "Tutup",
                     });
                     $("#datatable").DataTable().ajax.reload();
                     $('#inputdata').modal('hide')
