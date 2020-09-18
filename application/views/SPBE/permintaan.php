@@ -99,7 +99,7 @@
                                             <div class="modal-body">
                                                 <div class="modal-body row">
                                                     <div class="alert alert-danger validasi col-md-12" style="display: none;" role="validasi">
-                                                        Data Skid Tank tidak boleh kosong
+                                                        Data Permintaan tidak boleh kosong
                                                     </div>
                                                     <div class="form-group col-md-6">
                                                         <label for="exampleInputEmail1">Nomor SPA</label>
