@@ -10,7 +10,6 @@
                             <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
                         </div>
                         <h3 style="color:steelblue">Patra Niaga</h3>
-                        <span style="color: black;">(style nanti diubah)</span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
