@@ -106,18 +106,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="card-title">Jarak yang ditempuh Skid Tank</div>
-                                </div>
-                                <div class="card-body">
-                                    <div id="chart-container">
-                                        <canvas id="dashboard-bar-1"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
