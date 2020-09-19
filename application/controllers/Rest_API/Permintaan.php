@@ -8,6 +8,7 @@ class Permintaan extends REST_Controller
     {
         parent::__construct();
         $this->load->model('M_permintaan');
+        $this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta');
     }
     public function index_get()
@@ -52,20 +53,26 @@ class Permintaan extends REST_Controller
 
     public function index_post()
     {
-        $data = array(
-            'no_spa' => $this->post('no_spa'),
-            'tgl_spa' => $this->post('tgl_spa'),
-            'stock' => $this->post('stock'),
-            'tgl' => date('Y-m-d H:i:s'),
-            'nopol' => $this->post('nopol'),
-            'kode_spbe' => $this->post('kode_spbe'),
-            'status_terminal' => 1,
-            'status_patra_niaga' => 1,
-            'kode_skid_tank' => 0,
+        $this->form_validation->set_rules('no_spa', 'no_spa', 'is_unique[permintaan.no_spa]');
+        if ($this->form_validation->run() === FALSE) {
+            $response['status'] = 'false';
+            $this->response($response, REST_Controller::HTTP_CREATED);
+        } else {
+            $data = array(
+                'no_spa' => $this->post('no_spa'),
+                'tgl_spa' => $this->post('tgl_spa'),
+                'stock' => $this->post('stock'),
+                'tgl' => date('Y-m-d H:i:s'),
+                'nopol' => $this->post('nopol'),
+                'kode_spbe' => $this->post('kode_spbe'),
+                'status_terminal' => 1,
+                'status_patra_niaga' => 1,
+                'kode_skid_tank' => 0,
 
-        );
-        $respone = $this->M_permintaan->add_permintaan($data);
-        $this->response($respone, REST_Controller::HTTP_CREATED);
+            );
+            $respone = $this->M_permintaan->add_permintaan($data);
+            $this->response($respone, REST_Controller::HTTP_CREATED);
+        }
     }
 
     public function edit_post()

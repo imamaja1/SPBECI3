@@ -44,10 +44,12 @@ class Permintaan_patra_niaga extends REST_Controller
     public function edit_post()
     {
         date_default_timezone_set('Asia/Jakarta');
+        $timeb = date('Y-m-d H:i:s');
+        $tgl_berangkat_tujuan = date('Y-m-d H:i:s', strtotime('+3600 second', strtotime($timeb)));
         $data = array(
             'kode_permintaan' => $this->post('kode_permintaan'),
             'status_patra_niaga' => $this->post('status_patra_niaga'),
-            'tgl_berangkat_tujuan' => date('Y-m-d H:i:s')
+            'tgl_berangkat_tujuan' => $tgl_berangkat_tujuan
         );
         if ($this->post('kode_skid_tank') != null) {
             $data['kode_skid_tank'] = $this->post('kode_skid_tank');

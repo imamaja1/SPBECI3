@@ -467,19 +467,27 @@
                     dataType: 'json',
                     data: value_data,
                     success: function(response) {
-                        swal({
-                            title: "Penambahan Data Berhasil!",
-                            icon: "success",
-                            button: "Tutup",
-                        });
+                        if (response.status == 'false') {
+                            swal({
+                                title: "No. SPA sudah ada!",
+                                icon: "warning",
+                                button: "Tutup",
+                            });
+                        } else {
+                            swal({
+                                title: "Penambahan Data Berhasil!",
+                                icon: "success",
+                                button: "Tutup",
+                            });
 
-                        $(".delete").hide();
-                        $(".tambah").show();
-                        $(".put").hide();
-                        $('#inputdata').modal('hide');
-                        $("#datatable").DataTable().ajax.reload();
-                        empty();
-                        cek()
+                            $(".delete").hide();
+                            $(".tambah").show();
+                            $(".put").hide();
+                            $('#inputdata').modal('hide');
+                            $("#datatable").DataTable().ajax.reload();
+                            empty();
+                            cek()
+                        }
                     }
                 });
             }
