@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+    <title>Sistem Pendistribusian LPG</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="<?= base_url() ?>assets/img/icon.ico" type="image/x-icon" />
 
@@ -258,7 +258,7 @@
             kode_skid_tank = data3
             swal({
                 title: 'Anda yakin?',
-                text: "Ingin Melakuka  Peceptaan Skid Tank!",
+                text: "Ingin Melakukan  Peceptaan Skid Tank!",
                 type: 'warning',
                 icon: "info",
                 buttons: {
@@ -267,7 +267,7 @@
                         className: 'btn btn-danger'
                     },
                     confirm: {
-                        text: 'Yes, Pecepatan!',
+                        text: 'Pecepat',
                         className: 'btn btn-success'
                     }
                 }
