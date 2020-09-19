@@ -52,7 +52,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/spbe" class="collapsed" aria-expanded="false">
-                        <i class="flaticon-user-5"></i>
+                        <i class="icon-doc"></i>
                         <p>SPBE</p>
 
                     </a>
@@ -62,7 +62,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/patra_niaga" class="collapsed" aria-expanded="false">
-                        <i class="flaticon-user-5"></i>
+                        <i class="icon-doc"></i>
                         <p>Patra Niaga</p>
 
                     </a>
@@ -72,7 +72,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/profil" class="collapsed" aria-expanded="false">
-                        <i class="icon-settings"></i>
+                        <i class="flaticon-user-5"></i>
                         <p>Profil</p>
                     </a>
                 </li>

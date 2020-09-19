@@ -44,7 +44,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>SPBE/permintaan" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="icon-doc"></i>
                         <p>Permintaan</p>
 
                     </a>
@@ -54,7 +54,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>SPBE/profil" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="flaticon-user-5"></i>
                         <p>Profil</p>
 
                     </a>
@@ -67,7 +67,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url() ?>SPBE/log_out" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="icon-logout"></i>
                         <p>Log Out</p>
                     </a>
                 </li>
