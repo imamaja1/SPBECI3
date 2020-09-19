@@ -76,6 +76,9 @@
                 <div class="page-inner mt--5">
                     <div class="row mt--2">
                         <div class="col-md-12">
+                            <div class="alert alert-danger limit col-md-12" style="display: none;" role="limit">
+                                permintaan limit
+                            </div>
                             <div class="card full-height">
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
@@ -428,6 +431,7 @@
                         $("#post_tgl_spa").prop('disabled', true);
                         $("#post_stock").prop('disabled', true);
                     } else {
+                        $(".limit").hide();
                         $("#post_no_spa").prop('disabled', false);
                         $("#post_tgl_spa").prop('disabled', false);
                         $("#post_stock").prop('disabled', false);
