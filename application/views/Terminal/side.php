@@ -42,7 +42,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/permintaan" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="icon-doc"></i>
                         <p>Permintaan</p>
 
                     </a>
@@ -52,7 +52,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/spbe" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="flaticon-user-5"></i>
                         <p>SPBE</p>
 
                     </a>
@@ -62,7 +62,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/patra_niaga" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="flaticon-user-5"></i>
                         <p>Patra Niaga</p>
 
                     </a>
@@ -72,7 +72,7 @@
                     echo 'active';
                 } ?>">
                     <a href="<?= base_url() ?>Terminal/profil" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="icon-settings"></i>
                         <p>Profil</p>
                     </a>
                 </li>
@@ -84,7 +84,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url() ?>Terminal/log_out" class="collapsed" aria-expanded="false">
-                        <i class="fas fa-home"></i>
+                        <i class="icon-logout"></i>
                         <p>Log Out</p>
                     </a>
                 </li>
