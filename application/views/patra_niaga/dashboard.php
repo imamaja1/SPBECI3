@@ -213,6 +213,10 @@
         var time;
 
 
+        // date.subtract(time);
+        // console.log(moment(date.format(), "DD MM YYYY hh:mm:ss"));
+
+
         function kode3(kode, jum) {
             $.ajax({
                 type: 'GET',
@@ -228,7 +232,9 @@
                     if (jum > 1) {
                         document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                         if (jum > 2) {
-                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                            var timeA = moment.duration("01:00:00");
+                            var dateA = moment(response.data[0].tgl_berangkat_tujuan);
+                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + dateA.subtract(timeA).format("YYYY-MM-DD HH:mm:ss") + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                             if (jum > 3) {
                                 document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
                                 if (jum > 4) {
@@ -548,7 +554,17 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
-                    console.log(response);
+                    swal({
+                        title: 'Ditolak!',
+                        text: 'Data permintaan ditolak.',
+                        type: 'success',
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
                     data_permintaan()
                     data_permintaan2()
                 }
