@@ -97,7 +97,7 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="card-title">Activiti Skid Tank</div>
+                                    <div class="card-title">Activitas Skid Tank</div>
                                 </div>
                                 <div class="card-body">
                                     <ol class="activity-feed">
@@ -224,15 +224,15 @@
                 success: function(response) {
                     document.getElementById('datatimeline').innerHTML = null;
                     if (jum > 1) {
-                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                         if (jum > 2) {
-                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                             if (jum > 3) {
-                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                                 if (jum > 4) {
-                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                                     if (jum > 5) {
-                                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                                     }
                                 }
                             }
@@ -332,7 +332,7 @@
         function kode_vefikasi(data) {
             swal({
                 title: 'Anda yakin?',
-                text: "Permintaan akan dikonfirmasi!",
+                text: "Skid Tank Telah Sampai Di SPBE",
                 icon: 'info',
                 buttons: {
                     cancel: {
