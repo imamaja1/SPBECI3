@@ -77,7 +77,7 @@
                     <div class="row mt--2">
                         <div class="col-md-12">
                             <div class="alert alert-danger limit col-md-12" style="display: none;" role="limit">
-                                permintaan limit
+                                Permintaan tidak dapat dilakukan karena sudah melampaui limit
                             </div>
                             <div class="card full-height">
                                 <div class="card-header">
