@@ -477,11 +477,11 @@
                         data: "status",
                         render: function(data, type, row, meta) {
                             if (data == '1') {
-                                return '<span class="label label-info">Ready</span>';
+                                return '<span class="badge badge-info">Ready</span>';
                             } else if (data == '2') {
-                                return '<span class="label label-default">Waiting..</span>'
+                                return '<span class="badge badge-default">Waiting..</span>'
                             } else if (data == '3') {
-                                return '<span class="label label-danger">Not Ready</span>'
+                                return '<span class="badge badge-danger">Not Ready</span>'
                             }
                         }
                     },
