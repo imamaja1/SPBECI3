@@ -6,8 +6,8 @@
                 <div class="info">
                     <div class="card-body" style="text-align: center;">
                         <div id="profil_img"></div>
-                        <div class="profile-image" style="margin: -20px 0 0px 0 ; text-align: center;">
-                            <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
+                        <div class="profile-image" style="margin: -20px auto 0px auto ; text-align: center;">
+                        <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:-10px auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
                         </div>
                         <h3 style="color:steelblue">Patra Niaga</h3>
                     </div>

@@ -117,7 +117,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                        Hak Cipta Depot LPG Lombok 
                     </div>
                 </div>
             </footer>
@@ -231,7 +231,7 @@
                 data: value_data,
                 success: function(response) {
                     swal({
-                        title: "Edit Data Berhasil!",
+                        title: "Update Data Berhasil!",
                         icon: "success",
                         button: "Tutup",
                     });
