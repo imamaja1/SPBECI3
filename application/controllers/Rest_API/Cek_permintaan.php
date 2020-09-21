@@ -14,7 +14,8 @@ class Cek_permintaan extends REST_Controller
     {
         $tgl = date('Y-m-d');
         $id = $this->get('id');
-        $responese['data'] = $this->M_permintaan->cek($id, $tgl)->num_rows();
+        $responese['jumlah'] = $this->M_permintaan->cek($id, $tgl)->num_rows();
+        $responese['sisa_stok'] = $this->M_permintaan->cek($id, $tgl)->last_row();
         $this->response($responese, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
     }
 }

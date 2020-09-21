@@ -7,6 +7,8 @@
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="<?= base_url() ?>assets/img/icon.ico" type="image/x-icon" />
 
+    <?php $this->load->view('SPBE/head') ?>
+
     <!-- Fonts and icons -->
     <script src="<?= base_url() ?>assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
@@ -424,8 +426,8 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response)
-                    if (response.data * 13 > limit) {
+                    console.log((response.jumlah * 13) + (response.sisa_stok.stock * 1))
+                    if ((response.jumlah * 13) + (response.sisa_stok.stock * 1) > limit) {
                         $(".limit").show();
                         $("#post_no_spa").prop('disabled', true);
                         $("#post_tgl_spa").prop('disabled', true);

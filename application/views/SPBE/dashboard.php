@@ -7,6 +7,8 @@
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="<?= base_url() ?>assets/img/icon.ico" type="image/x-icon" />
 
+    <?php $this->load->view('SPBE/head') ?>
+
     <!-- Fonts and icons -->
     <script src="<?= base_url() ?>assets/js/plugin/webfont/webfont.min.js"></script>
     <script>
@@ -23,6 +25,7 @@
             }
         });
     </script>
+
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
@@ -119,7 +122,6 @@
         </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
     <script src="<?= base_url() ?>assets/js/core/popper.min.js"></script>
     <script src="<?= base_url() ?>assets/js/core/bootstrap.min.js"></script>
 
@@ -162,6 +164,7 @@
     <!-- moris -->
     <script src="<?= base_url() ?>assets/js/raphael-min.js"></script>
     <script src="<?= base_url() ?>assets/js/morris.min.js"></script>
+
 
     <script type="text/javascript">
         var kode_permintaan;
