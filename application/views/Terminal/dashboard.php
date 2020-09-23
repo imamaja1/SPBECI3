@@ -314,7 +314,7 @@
                         title: "Berhasil!",
                         text: "Skid TanK Dikonfirmasi Telah sampai",
                         icon: "success",
-                        button: "close",
+                        button: "Tutup",
                     });
                 }
             });
