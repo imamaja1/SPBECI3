@@ -109,7 +109,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                        Hak Cipta Depot LPG Lombok 
                     </div>
                 </div>
             </footer>
@@ -337,7 +337,6 @@
                     $("#datatable").DataTable().ajax.reload();
                     swal({
                         title: 'Update Data Berhasil!',
-                        text: 'Data telah dirubah.',
                         type: 'success',
                         icon: 'success',
                         buttons: {
@@ -397,7 +396,7 @@
                         if (row['status_patra_niaga'] == 2) {
                             if (row['status_permintaan'] == 1) {
                                 if (moment(row['tgl_berangkat_tujuan']) > moment(row['tgl_sampai_tujuan'])) {
-                                    return '<span class="badge badge-info">Skid Tank Dalam Perjalanan</span>'
+                                    return '<span class="badge badge-info">Skid Tank Diperjalanan</span>'
                                 } else {
                                     return '<span class="badge badge-primary">Skid Tank Telah Sampai</span>'
                                 }
@@ -478,7 +477,7 @@
                         className: 'btn btn-danger'
                     },
                     confirm: {
-                        text: 'Yes, delete it!',
+                        text: 'Hapus',
                         className: 'btn btn-success'
                     }
                 }

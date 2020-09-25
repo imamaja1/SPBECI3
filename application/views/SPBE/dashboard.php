@@ -100,7 +100,7 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="card-title">Activitas Skid Tank</div>
+                                    <div class="card-title">Aktivitas Skid Tank</div>
                                 </div>
                                 <div class="card-body">
                                     <ol class="activity-feed">
@@ -115,7 +115,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                        Hak Cipta Depot LPG Lombok 
                     </div>
                 </div>
             </footer>
@@ -219,11 +219,11 @@
                         if (jum > 2) {
                             var timeA = moment.duration("01:00:00");
                             var dateA = moment(response.data[0].tgl_berangkat_tujuan);
-                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + dateA.subtract(timeA).format("YYYY-MM-DD HH:mm:ss") + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + dateA.subtract(timeA).format("YYYY-MM-DD HH:mm:ss") + '</time><span class="text"><strong>Permintaan Skid Tank Diverifikasi</strong> oleh <strong>Patra Niaga</strong></span></li>'
                             if (jum > 3) {
-                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
+                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Skid Tank Berangkat</strong> menuju <strong>SPBE</strong></span></li>'
                                 if (jum > 4) {
-                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
+                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Skid Tank Sampai</strong> di <strong>SPBE</strong></span></li>'
                                     if (jum > 5) {
                                         document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                                     }

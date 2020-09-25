@@ -87,7 +87,7 @@
                         <div class="col-md-4">
                             <div class="card">
                                 <div class="card-header">
-                                    <div class="card-title">Activiti Skid Tank</div>
+                                    <div class="card-title">Aktivitas Skid Tank</div>
                                 </div>
                                 <div class="card-body">
                                     <ol class="activity-feed">
@@ -114,7 +114,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                        Hak Cipta Depot LPG Lombok 
                     </div>
                 </div>
             </footer>
@@ -185,17 +185,17 @@
                 success: function(response) {
                     document.getElementById('datatimeline').innerHTML = null;
                     if (jum > 1) {
-                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Permintaan Skid Tank</strong> oleh <strong>SPBE</strong></span></li>'
                         if (jum > 2) {
                             var timeA = moment.duration("01:00:00");
                             var dateA = moment(response.data[0].tgl_berangkat_tujuan);
-                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + dateA.subtract(timeA).format("YYYY-MM-DD HH:mm:ss") + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                            document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + dateA.subtract(timeA).format("YYYY-MM-DD HH:mm:ss") + '</time><span class="text"><strong>Permintaan Skid Tank Diverifikasi</strong> oleh <strong>Patra Niaga</strong></span></li>'
                             if (jum > 3) {
-                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                                document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Skid Tank Berangkat</strong> menuju <strong>SPBE</strong></span></li>'
                                 if (jum > 4) {
-                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Skid Tank Sampai</strong> di <strong>SPBE</strong></span></li>'
                                     if (jum > 5) {
-                                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Pemintaan Skid Tank</strong> dari <strong>SPBE</strong></span></li>'
+                                        document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_berangkat_tujuan + '</time><span class="text"><strong>Skid Tank Kembali</strong> menuju <strong>Terminal</strong></span></li>'
                                     }
                                 }
                             }
@@ -232,13 +232,13 @@
                                                 if (moment(response.data[i].tgl_sampai_kembali) < times) {
                                                     kode4(response.data[i].kode_permintaan, response.data[i].jarak, response.data[i].kode_skid_tank);
                                                 } else {
-                                                    document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Skid Tank dalam Perjalana menuju Terminal</span></span><span class="text-muted fw-bold pull-right"> 90%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 90%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="90%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',6)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
+                                                    document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Skid Tank dalam Perjalanan menuju Terminal</span></span><span class="text-muted fw-bold pull-right"> 90%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 90%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="90%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',6)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
                                                 }
                                             } else {
-                                                document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses tranfer LPG ke tanki tumbun</span></span><span class="text-muted fw-bold pull-right"> 70%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="70%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',5)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
+                                                document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Proses transfer LPG ke tanki tumbun</span></span><span class="text-muted fw-bold pull-right"> 70%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="70%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',5)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
                                             }
                                         } else {
-                                            document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Skid Tank dalam Perjalana menuju SPBE</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
+                                            document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Skid Tank dalam Perjalanan menuju SPBE</span></span><span class="text-muted fw-bold pull-right"> 40%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="40%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
                                         }
                                     } else {
                                         document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Pengisian LPG ke Skid Tank</span></span><span class="text-muted fw-bold pull-right"> 20%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 20%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="20%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',3)">Time Line</button><button class="btn btn-primary btn-border btn-round btn-sm" onclick="kode2(' + response.data[i].kode_permintaan + ',' + response.data[i].jarak + ',' + response.data[i].kode_skid_tank + ')">Percepatan</button></div></div>'
@@ -314,7 +314,7 @@
                         title: "Berhasil!",
                         text: "Skid TanK Dikonfirmasi Telah sampai",
                         icon: "success",
-                        button: "close",
+                        button: "Tutup",
                     });
                 }
             });

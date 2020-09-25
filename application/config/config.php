@@ -24,6 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost/SPBECI3N/';
+// $config['base_url'] = 'http://10.20.41.64/SPBECI3N/';
 
 /*
 |--------------------------------------------------------------------------

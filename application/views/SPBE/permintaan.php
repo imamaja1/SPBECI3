@@ -158,7 +158,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        2020, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">Terminal</a>
+                        Hak Cipta Depot LPG Lombok 
                     </div>
                 </div>
             </footer>
@@ -427,7 +427,7 @@
                 dataType: 'json',
                 success: function(response) {
                     console.log((response.jumlah * 13) + (response.sisa_stok.stock * 1))
-                    if ((response.jumlah * 13) + (response.sisa_stok.stock * 1) > limit) {
+                    if (((response.jumlah+1) * 13) + (response.sisa_stok.stock * 1) > limit) {
                         $(".limit").show();
                         $("#post_no_spa").prop('disabled', true);
                         $("#post_tgl_spa").prop('disabled', true);
