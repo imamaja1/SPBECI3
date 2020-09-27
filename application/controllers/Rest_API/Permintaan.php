@@ -58,19 +58,27 @@ class Permintaan extends REST_Controller
             $response['status'] = 'false';
             $this->response($response, REST_Controller::HTTP_CREATED);
         } else {
-            $data = array(
-                'no_spa' => $this->post('no_spa'),
-                'tgl_spa' => $this->post('tgl_spa'),
-                'stock' => $this->post('stock'),
-                'tgl' => date('Y-m-d H:i:s'),
-                'nopol' => $this->post('nopol'),
-                'kode_spbe' => $this->post('kode_spbe'),
-                'status_terminal' => 1,
-                'status_patra_niaga' => 1,
-                'kode_skid_tank' => 0,
-
-            );
-            $respone = $this->M_permintaan->add_permintaan($data);
+            $config['upload_path']          = './uploads/bukti';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_size']             = 10000000;
+            $config['max_width']            = 320000;
+            $config['max_height']           = 320000;
+            $this->load->library('upload', $config);
+            if ($this->upload->do_upload('bukti')) {
+                $data = array(
+                    'no_spa' => $this->post('no_spa'),
+                    'tgl_spa' => $this->post('tgl_spa'),
+                    'stock' => $this->post('stock'),
+                    'tgl' => date('Y-m-d H:i:s'),
+                    'nopol' => $this->post('nopol'),
+                    'kode_spbe' => $this->post('kode_spbe'),
+                    'status_terminal' => 1,
+                    'status_patra_niaga' => 1,
+                    'kode_skid_tank' => 0,
+                    'bukti' => $this->upload->data('file_name'),
+                );
+                $respone = $this->M_permintaan->add_permintaan($data);
+            }
             $this->response($respone, REST_Controller::HTTP_CREATED);
         }
     }

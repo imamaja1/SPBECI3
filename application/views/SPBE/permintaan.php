@@ -122,6 +122,13 @@
                                                         <label for="exampleInputEmail1">NOPOL</label>
                                                         <input type="" class="form-control" id="post_nopol" aria-describedby="emailHelp" value="Patra Niaga" disabled>
                                                     </div>
+                                                    <div class="form-group col-md-12">
+                                                        <label for="exampleInputEmail1">Bukti</label>
+                                                        <div class="card ml-auto mr-auto" style="width: 18rem;">
+                                                            <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" width="100%" height="200px" id="bukti_foto">
+                                                        </div>
+                                                        <input type="file" class="form-control" id="foto_bukti" aria-describedby="emailHelp">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -158,7 +165,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -266,6 +273,27 @@
         </div>
     </div>
 
+    <div class="modal fade bd-example-modal-lg" id="bukti" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Bukti Nopol</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body row">
+                        <div class="form-group col-md-12">
+                            <div class=" col-md-8 ml-auto mr-auto">
+                                <div id="bukti_nopol"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!--   Core JS Files   -->
     <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
@@ -310,6 +338,21 @@
         var id;
         var kode_permintaan;
         var limit;
+        var bukti;
+        window.addEventListener('load', function() {
+            document.querySelector('#foto_bukti').addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    var img = document.querySelector('#bukti_foto'); // $('img')[0]
+                    img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+                    bukti = this.files[0]
+                }
+            });
+        });
+
+        function show_bukti(data) {
+            $('#bukti').modal('show')
+            document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
+        }
         $.ajax({
             type: 'GET',
             headers: {
@@ -404,9 +447,9 @@
                     className: "center",
                     render: function(data, type, row, meta) {
                         if (row['kode_skid_tank'] == null) {
-                            return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                            return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" onclick="show_bukti(\'' + row['bukti'] + '\')"><i class="far fa-file-image"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                         } else {
-                            return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                            return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" onclick="show_bukti(\'' + row['bukti'] + '\')"><i class="far fa-file-image"></i></button><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fas fa-eye"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                         }
                     }
                 }, ],
@@ -426,8 +469,7 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    console.log((response.jumlah * 13) + (response.sisa_stok.stock * 1))
-                    if (((response.jumlah+1) * 13) + (response.sisa_stok.stock * 1) > limit) {
+                    if (((response.jumlah + 1) * 13) + (response.sisa_stok.stock * 1) > limit) {
                         $(".limit").show();
                         $("#post_no_spa").prop('disabled', true);
                         $("#post_tgl_spa").prop('disabled', true);
@@ -444,7 +486,7 @@
         setTimeout(cek, 400);
 
         function post_data() {
-            if ($("#post_no_spa").val() == '' || $("#post_tgl_spa").val() == '' || $("#post_stock").val() == '') {
+            if ($("#post_no_spa").val() == '' || $("#post_tgl_spa").val() == '' || $("#post_stock").val() == '' || $("#foto_bukti").val() == '') {
                 $('.validasi').show();
                 swal({
                     title: "Data tidak boleh kosong!",
@@ -453,27 +495,30 @@
                     button: "Tutup",
                 });
             } else {
-                console.log('post');
-                const value_data = {
-                    'no_spa': $("#post_no_spa").val(),
-                    'tgl_spa': $("#post_tgl_spa").val(),
-                    'stock': $("#post_stock").val(),
-                    'nopol': $("#post_nopol").val(),
-                    'kode_spbe': id,
-                    'KEY-SPBE': 'SPBE'
-                }
-                console.log(value_data);
+                var value_data = new FormData();
+                value_data.append('bukti', bukti);
+                value_data.append('no_spa', $("#post_no_spa").val());
+                value_data.append('tgl_spa', $("#post_tgl_spa").val());
+                value_data.append('stock', $("#post_stock").val());
+                value_data.append('nopol', $("#post_nopol").val());
+                value_data.append('kode_spbe', id)
+                console.log(...value_data);
                 $.ajax({
                     type: 'POST',
                     url: " <?= base_url() ?>Rest_API/permintaan",
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:gas"),
+                        'KEY-SPBE': 'SPBE'
                     },
                     dataType: 'json',
+                    enctype: 'multipart/form-data',
                     data: value_data,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
                     success: function(response) {
                         if (response.status == 'false') {
+                            console.log(response)
                             swal({
                                 title: "No. SPA sudah ada!",
                                 icon: "warning",

@@ -109,7 +109,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -185,6 +185,28 @@
         </div>
     </div>
 
+    <div class="modal fade bd-example-modal-lg" id="bukti" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Bukti Nopol</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body row">
+                        <div class="form-group col-md-12">
+                            <div class=" col-md-8 ml-auto mr-auto">
+                                <div id="bukti_nopol"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!--   Core JS Files   -->
     <script src="<?= base_url() ?>assets/js/core/jquery.3.2.1.min.js"></script>
@@ -232,6 +254,11 @@
         var x = 0;
         var kode_skid_tank_new;
         var kode_skid_tank_old;
+
+        function show_bukti(data) {
+            $('#bukti').modal('show')
+            document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
+        }
 
         function data_skid_tank() {
             if (x == 0) {
@@ -416,15 +443,15 @@
                         if (row['status_patra_niaga'] == 2) {
                             if (row['status_permintaan'] == 1) {
                                 if (moment(row['tgl_berangkat_tujuan']) > moment(row['tgl_sampai_tujuan'])) {
-                                    return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_permintaan'] + ',' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                                    return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" onclick="show_bukti(\'' + row['bukti'] + '\')"><i class="far fa-file-image"></i></button><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_permintaan'] + ',' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                                 } else {
-                                    return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                                    return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" onclick="show_bukti(\'' + row['bukti'] + '\')"><i class="far fa-file-image"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                                 }
                             } else {
-                                return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                                return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" onclick="show_bukti(\'' + row['bukti'] + '\')"><i class="far fa-file-image"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-default btn-lg" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                             }
                         } else {
-                            return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_permintaan'] + ',' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                            return '<div class="form-button-action"><button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" onclick="show_bukti(\'' + row['bukti'] + '\')"><i class="far fa-file-image"></i></button><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + row['kode_permintaan'] + ',' + row['kode_skid_tank'] + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" onclick="delete_data(' + row['kode_permintaan'] + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                         }
                     }
                 }, ],
