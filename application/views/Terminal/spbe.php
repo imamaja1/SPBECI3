@@ -187,7 +187,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -305,7 +305,7 @@
                 "method": "GET",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 "url": "<?= base_url() ?>/Rest_API/SPBE?KEY-SPBE=SPBE"
             },
@@ -379,7 +379,7 @@
                     url: " <?= base_url() ?>Rest_API/SPBE",
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                     dataType: 'json',
                     data: value_data,
@@ -406,7 +406,7 @@
                 url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: "application/json",
                 dataType: 'json',
@@ -473,7 +473,7 @@
                 url: " <?= base_url() ?>Rest_API/SPBE/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 data: value_data,
@@ -529,7 +529,7 @@
                 url: " <?= base_url() ?>Rest_API/SPBE/delete",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 data: value_data,

@@ -115,7 +115,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -177,7 +177,7 @@
             type: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             url: " <?= base_url() ?>Rest_API/Auth?KEY-SPBE=SPBE",
             contentType: "application/json",
@@ -190,7 +190,7 @@
                     type: 'GET',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                     url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
                     contentType: "application/json",
@@ -207,7 +207,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/permintaan?KEY-SPBE=SPBE&id=" + kode,
                 contentType: "application/json",
@@ -241,7 +241,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Permintaan_spbe/permintaan?KEY-SPBE=SPBE&id=" + id,
                 contentType: "application/json",
@@ -259,7 +259,7 @@
                                     if (moment(response.data[i].tgl_berangkat_tujuan) < times) {
                                         if (moment(response.data[i].tgl_berangkat_tujuan) < moment(response.data[i].tgl_sampai_tujuan)) {
                                             document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Skid Tank Telah Sampai Di SPBE</span></span><span class="text-muted fw-bold pull-right"> 100%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="100%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',5)">Time Line</button></div></div>'
-                                        } else { 
+                                        } else {
                                             document.getElementById('progres').innerHTML += '<div class="mb-5" ><div class="progress-status-1"><span class="text-muted">SPBE : ' + response.data[i].nama_spbe + ' <br> <span class="text-info d-inline-block">Skid Tank dalam perjalanan menuju SPBE</span></span><span class="text-muted fw-bold pull-right"> 70%</span></div><div class="progress m-1"><div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 70%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="" data-original-title="70%"></div></div><div class="progress-status pull-right m-1"><button class="btn btn-default btn-border btn-round btn-sm" onclick="kode3(' + response.data[i].kode_permintaan + ',4)">Time Line</button></div></div>'
                                         }
                                     } else {
@@ -279,7 +279,7 @@
             type: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
             contentType: "application/json",
@@ -306,7 +306,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Permintaan_spbe?KEY-SPBE=SPBE&id=" + id,
                 contentType: "application/json",
@@ -356,7 +356,7 @@
                 url: " <?= base_url() ?>Rest_API/Permintaan_spbe/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 data: value_data,
@@ -376,7 +376,7 @@
         //     type: 'GET',
         //     headers: {
         //         'Content-Type': 'application/x-www-form-urlencoded',
-        //         'Authorization': "Basic " + btoa("gas:gas")
+        //         'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
         //     },
         //     url: " <?= base_url() ?>Rest_API/aktifitas/spbe?KEY-SPBE=SPBE",
         //     contentType: "application/json",

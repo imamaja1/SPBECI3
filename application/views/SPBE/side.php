@@ -129,7 +129,7 @@
             url: " <?= base_url() ?>Rest_API/Profil/SPBE/" + id,
             headers: {
                 'KEY-SPBE': 'SPBE',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             dataType: 'json',
             data: nama_profil,
@@ -149,7 +149,7 @@
             type: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             url: " <?= base_url() ?>Rest_API/auth?KEY-SPBE=SPBE",
             contentType: "application/json",
@@ -159,7 +159,7 @@
                     type: 'GET',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                     url: " <?= base_url() ?>Rest_API/Profil/SPBE?KEY-SPBE=SPBE&id=" + response.kode_spbe,
                     contentType: "application/json",

@@ -357,7 +357,7 @@
             type: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             url: " <?= base_url() ?>Rest_API/auth?KEY-SPBE=SPBE",
             contentType: "application/json",
@@ -369,7 +369,7 @@
                     type: 'GET',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                     url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
                     contentType: "application/json",
@@ -390,7 +390,7 @@
                     url: "<?= base_url() ?>/Rest_API/Permintaan_spbe/data?KEY-SPBE=SPBE&id=" + id,
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                 },
                 columns: [{
@@ -465,7 +465,7 @@
                 url: " <?= base_url() ?>Rest_API/cek_permintaan?KEY-SPBE=SPBE&id=" + id,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -507,7 +507,7 @@
                     type: 'POST',
                     url: " <?= base_url() ?>Rest_API/permintaan",
                     headers: {
-                        'Authorization': "Basic " + btoa("gas:gas"),
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768"),
                         'KEY-SPBE': 'SPBE'
                     },
                     dataType: 'json',
@@ -558,7 +558,7 @@
                 contentType: "application/json",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -619,7 +619,7 @@
                 url: " <?= base_url() ?>Rest_API/Permintaan/delete",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',

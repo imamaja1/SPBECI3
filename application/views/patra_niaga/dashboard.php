@@ -251,7 +251,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/permintaan?KEY-SPBE=SPBE&id=" + kode,
                 contentType: "application/json",
@@ -285,7 +285,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Permintaan?KEY-SPBE=SPBE",
                 contentType: "application/json",
@@ -377,7 +377,7 @@
                 url: " <?= base_url() ?>Rest_API/Aktifitas/Percepatan",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 data: value_data,
@@ -398,7 +398,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga?KEY-SPBE=SPBE",
                 contentType: "application/json",
@@ -461,7 +461,7 @@
                 url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 data: value_data,
@@ -490,7 +490,7 @@
                 ajax: {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                     "method": "GET",
                     "url": "<?= base_url() ?>Rest_API/Skid_tank?KEY-SPBE=SPBE",
@@ -576,7 +576,7 @@
                 url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 data: value_data,
@@ -602,7 +602,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Aktifitas/Skid_tank?KEY-SPBE=SPBE",
                 contentType: "application/json",

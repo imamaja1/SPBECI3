@@ -7,7 +7,7 @@
                     <div class="card-body" style="text-align: center;">
                         <div id="profil_img"></div>
                         <div class="profile-image" style="margin: -20px auto 0px auto ; text-align: center;">
-                        <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:-10px auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
+                            <a type="file" data-toggle="modal" data-target="#Profil" class="btn" style="margin: auto;"><span class="fa fa-camera" style="width: 30px; background-color: skyblue; margin:-10px auto; padding:8px 0px 8px 0px; border-radius:50%; border-color:black"></span></a>
                         </div>
                         <h3 style="color:steelblue">Patra Niaga</h3>
                     </div>
@@ -135,7 +135,7 @@
             url: " <?= base_url() ?>Rest_API/Profil/Patra_niaga",
             headers: {
                 'KEY-SPBE': 'SPBE',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             dataType: 'json',
             data: nama_profil,
@@ -155,7 +155,7 @@
             type: 'GET',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Authorization': "Basic " + btoa("gas:gas")
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
             },
             url: " <?= base_url() ?>Rest_API/Profil/Patra_niaga?KEY-SPBE=SPBE",
             contentType: "application/json",

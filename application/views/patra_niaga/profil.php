@@ -117,7 +117,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -179,7 +179,7 @@
                 contentType: "application/json",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -224,7 +224,7 @@
                 url: " <?= base_url() ?>Rest_API/Patra_niaga/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',

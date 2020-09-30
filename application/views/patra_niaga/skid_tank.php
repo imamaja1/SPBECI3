@@ -200,7 +200,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -377,7 +377,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Permintaan/Skid_tank?KEY-SPBE=SPBE&id=" + kode,
                 contentType: "application/json",
@@ -411,7 +411,7 @@
                 contentType: "application/json",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -455,7 +455,7 @@
                 url: " <?= base_url() ?>Rest_API/Patra_niaga/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',
@@ -476,7 +476,7 @@
             ajax: {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 method: "GET",
                 url: "<?= base_url() ?>/Rest_API/Skid_tank?KEY-SPBE=SPBE",
@@ -531,7 +531,7 @@
                 contentType: "application/json",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 dataType: 'json',
                 success: function(response) {
@@ -589,7 +589,7 @@
                     url: " <?= base_url() ?>Rest_API/Skid_tank",
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
-                        'Authorization': "Basic " + btoa("gas:gas")
+                        'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                     },
                     contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                     dataType: 'json',
@@ -657,7 +657,7 @@
                 url: " <?= base_url() ?>Rest_API/Skid_tank/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',
@@ -714,7 +714,7 @@
                 url: " <?= base_url() ?>Rest_API/Skid_tank/delete",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',

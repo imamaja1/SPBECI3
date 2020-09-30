@@ -126,7 +126,7 @@
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="copyright ml-auto">
-                        Hak Cipta Depot LPG Lombok 
+                        Hak Cipta Depot LPG Lombok
                     </div>
                 </div>
             </footer>
@@ -182,7 +182,7 @@
                 type: 'GET',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 url: " <?= base_url() ?>Rest_API/Auth?KEY-SPBE=SPBE",
                 contentType: "application/json",
@@ -193,7 +193,7 @@
                         type: 'GET',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
-                            'Authorization': "Basic " + btoa("gas:gas")
+                            'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                         },
                         url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE&id=" + id,
                         contentType: "application/json",
@@ -241,7 +241,7 @@
                 url: " <?= base_url() ?>Rest_API/SPBE/edit",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa("gas:gas")
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',

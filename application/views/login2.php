@@ -109,15 +109,13 @@
                 'password': $("#password").val(),
                 'KEY-SPBE': 'SPBE'
             }
-            var user = 'gas';
-            var pass = 'gas';
             console.log(value_data);
             $.ajax({
                 type: 'POST',
                 url: " <?= base_url() ?>Rest_API/Auth/SPBE",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': "Basic " + btoa(user + ":" + pass)
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
                 },
                 contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: 'json',
