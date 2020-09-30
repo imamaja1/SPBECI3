@@ -199,7 +199,6 @@
             document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
         }
 
-
         function kode3(kode, jum) {
             $.ajax({
                 type: 'GET',
