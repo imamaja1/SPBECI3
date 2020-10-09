@@ -85,7 +85,7 @@
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         <h4 class="card-title">Data Permintaan</h4>
-                                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata" onclick="$('.validasi').hide();">
+                                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#inputdata" onclick="tambahdata()">
                                             <i class="fa fa-plus"></i>
                                             Tambah Data
                                         </button>
@@ -125,7 +125,7 @@
                                                     <div class="form-group col-md-12">
                                                         <label for="exampleInputEmail1">Bukti</label>
                                                         <div class="card ml-auto mr-auto" style="width: 18rem;">
-                                                            <img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" width="100%" height="200px" id="bukti_foto">
+                                                            <div id="fotodatabukti"></div>
                                                         </div>
                                                         <input type="file" class="form-control" id="foto_bukti" aria-describedby="emailHelp">
                                                     </div>
@@ -381,6 +381,11 @@
                 })
             }
         })
+
+        function tambahdata() {
+            $('.validasi').hide();
+            document.getElementById('fotodatabukti').innerHTML = '<img src="<?= base_url() ?>uploads/default-avatar.png" alt="Card image cap" width="100%" height="200px" id="bukti_foto">'
+        }
 
         function datatablesgo() {
             $('#datatable').DataTable({
