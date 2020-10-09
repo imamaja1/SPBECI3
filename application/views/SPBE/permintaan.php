@@ -123,7 +123,7 @@
                                                         <input type="" class="form-control" id="post_nopol" aria-describedby="emailHelp" value="Patra Niaga" disabled>
                                                     </div>
                                                     <div class="form-group col-md-12">
-                                                        <label for="exampleInputEmail1">Bukti</label>
+                                                        <label for="exampleInputEmail1">Bukti SPA</label>
                                                         <div class="card ml-auto mr-auto" style="width: 18rem;">
                                                             <div id="fotodatabukti"></div>
                                                         </div>
@@ -266,7 +266,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                     <!-- <button type="button" class="btn btn-primary" onclick="put_data()">Simpan</button> -->
                 </div>
             </div>
@@ -277,7 +277,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">Bukti Nopol</h3>
+                    <h3 class="modal-title" id="exampleModalLongTitle">Bukti SPA</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

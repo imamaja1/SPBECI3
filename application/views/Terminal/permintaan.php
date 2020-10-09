@@ -132,7 +132,7 @@
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Status Patra Niaga</label>
                             <select class="form-control" id="status_patra_niaga">
-                                <option class="form-control" id="1" value="1">Waiting..</option>
+                                <option class="form-control" id="1" value="1">Menunggu..</option>
                                 <option class="form-control" id="2" value="2">Diverifikasi</option>
                                 <option class="form-control" id="3" value="3">Ditolak</option>
                             </select>
@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
@@ -189,7 +189,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLongTitle">Bukti Nopol</h3>
+                    <h3 class="modal-title" id="exampleModalLongTitle">Bukti SPA</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -409,7 +409,7 @@
                     className: "center",
                     render: function(data, type, row, meta) {
                         if (data == '1') {
-                            return '<span class="badge badge-default">Waiting ..</span>';
+                            return '<span class="badge badge-default">Menunggu ..</span>';
                         } else if (data == '2') {
                             return '<span class="badge badge-info">Diverifikasi</span>'
                         } else if (data == '3') {
@@ -431,7 +431,7 @@
                                 return '<span class="badge badge-primary">Skid Tank Telah Sampai</span>'
                             }
                         } else if (row['status_patra_niaga'] == 1) {
-                            return '<span class="badge badge-default">Waiting ..</span>';
+                            return '<span class="badge badge-default">Menunggu ..</span>';
                         } else {
                             return '<span class="badge badge-danger">Permintaan Ditolak</span>'
                         }
