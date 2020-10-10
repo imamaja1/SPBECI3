@@ -389,7 +389,7 @@
                             if (moment(response.data[0].tgl_berangkat_tujuan) < times) {
                                 document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Skid Tank </strong> bersiap menuju <strong>SPBE</strong></span></li>'
                                 if (moment(response.data[0].tgl_berangkat_tujuan) < moment(response.data[0].tgl_sampai_tujuan)) {
-                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Skid Tank </strong>dalam perjalana menuju <strong>SPBE</strong></span></li>'
+                                    document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl + '</time><span class="text"><strong>Skid Tank </strong>dalam perjalanan menuju <strong>SPBE</strong></span></li>'
                                     if (moment(response.data[0].tgl_sampai_tujuan) < times) {
                                         document.getElementById('datatimeline').innerHTML += '<li class="feed-item"><time class="date" datetime="9-25">' + response.data[0].tgl_sampai_tujuan + '</time><span class="text"><strong>Skid Tank </strong> Telah sampai di <strong>SPBE</strong></span></li>'
                                         if (moment(response.data[0].tgl_kembali) < times) {
