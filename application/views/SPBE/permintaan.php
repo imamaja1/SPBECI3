@@ -474,17 +474,25 @@
                 },
                 dataType: 'json',
                 success: function(response) {
-                    if (((response.jumlah + 1) * 13) + (response.sisa_stok.stock * 1) > limit) {
-                        $(".limit").show();
-                        $("#post_no_spa").prop('disabled', true);
-                        $("#post_tgl_spa").prop('disabled', true);
-                        $("#post_stock").prop('disabled', true);
-                    } else {
+                    if (response.sisa_stok == null) {
                         $(".limit").hide();
                         $("#post_no_spa").prop('disabled', false);
                         $("#post_tgl_spa").prop('disabled', false);
                         $("#post_stock").prop('disabled', false);
+                    } else {
+                        if (((response.jumlah + 1) * 13) + (response.sisa_stok.stock * 1) > limit) {
+                            $(".limit").show();
+                            $("#post_no_spa").prop('disabled', true);
+                            $("#post_tgl_spa").prop('disabled', true);
+                            $("#post_stock").prop('disabled', true);
+                        } else {
+                            $(".limit").hide();
+                            $("#post_no_spa").prop('disabled', false);
+                            $("#post_tgl_spa").prop('disabled', false);
+                            $("#post_stock").prop('disabled', false);
+                        }
                     }
+
                 }
             });
         }

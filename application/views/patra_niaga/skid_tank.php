@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/atlantis.min.css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css">
+
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css">
 </head>
@@ -58,7 +60,7 @@
             <!-- End Navbar -->
         </div>
 
-        <?php $this->load->view('Patra_niaga/side') ?>
+        <?php $this->load->view('patra_niaga/side') ?>
 
         <div class="main-panel">
             <div class="content">
@@ -208,6 +210,43 @@
     </div>
     </div>
 
+    <!-- History -->
+    <div class="modal fade bd-example-modal-lg" id="historiskidtank" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">History</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="loader" style="margin:100px auto 100px auto; position: absolut; "></div>
+                    <div id="table_histori">
+                        <div class="table-responsive">
+                            <table id="datatablehistori" class="display table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>SPBE Tujuan</th>
+                                        <th>Tanggal Berangkat</th>
+                                        <th>Tanggal Sampai</th>
+                                        <th>Waktu Perjalanan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- modal edit data -->
     <div class="modal fade bd-example-modal-lg" id="editdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -340,6 +379,14 @@
 
     <!-- Datatables -->
     <script src="<?= base_url() ?>assets/js/plugin/datatables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
 
     <!-- Bootstrap Notify -->
     <script src="<?= base_url() ?>assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
@@ -515,13 +562,69 @@
                 data: "kode_skid_tank",
                 className: "center",
                 render: function(data, type, row, meta) {
-                    return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button type="button" onclick="delete_data(' + data + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
+                    return '<div class="form-button-action"><button data-toggle="modal" data-target="#editdata" onclick="view_data(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task" ><i class="fa fa-edit"></i></button><button data-toggle="modal" data-target="#historiskidtank" onclick="history(' + data + ')" type="button" data-toggle="tooltip" title="" class="btn btn-link btn-success btn-lg" data-original-title="Edit Task" ><i class="fas fa-history"></i></button><button type="button" onclick="delete_data(' + data + ')" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"><i class="fa fa-times"></i></button></div>'
                 }
             }, ],
             "fnCreatedRow": function(row, data, index) {
                 $('td', row).eq(0).html(index + 1);
             },
         });
+
+        function history(data) {
+            $(".loader").show().delay(700).fadeOut(300);
+            $("#table_histori").hide().delay(1000).fadeIn(300);
+            $('#datatablehistori').DataTable().clear();
+            $('#datatablehistori').DataTable().destroy();
+            $.ajax({
+                type: 'GET',
+                url: "<?= base_url() ?>/Rest_API/Skid_tank/Histori/" + data + "?KEY-SPBE=SPBE",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
+                },
+                contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: 'json',
+                success: function(response) {
+                    $('#datatablehistori').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [{
+                            extend: 'csv',
+                            text: 'Download',
+                            className: 'form-group btn-info'
+                        }, ],
+                        data: response,
+                        columns: [{
+                            data: null
+                        }, {
+                            data: "nama_spbe"
+                        }, {
+                            data: "tgl_berangkat_tujuan"
+                        }, {
+                            data: "tgl_sampai_tujuan"
+                        }, {
+                            data: "",
+                            render: function(data, type, row, meta) {
+                                var duration = moment.duration(moment(row['tgl_sampai_tujuan']).diff(moment(row['tgl_berangkat_tujuan'])));
+                                return (duration.days() * 24) + duration.hours() + " Jam";
+                            }
+                        }, ],
+                        "fnCreatedRow": function(row, data, index) {
+                            $('td', row).eq(0).html(index + 1);
+                        },
+                    });
+                },
+                error: function() {
+                    $('#datatablehistori').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [{
+                            extend: 'csv',
+                            text: 'Download',
+                            className: 'form-group btn-info'
+                        }, ]
+                    });
+                }
+            });
+        }
 
         function view_data(id) {
             console.log(id);

@@ -24,12 +24,33 @@ class M_permintaan extends CI_Model
         $respone = $this->db->get();
         return $respone;
     }
+    public function permintaan_truk($id)
+    {
+        $this->db->select('*');
+        $this->db->from("permintaan");
+        $this->db->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe");
+        $this->db->order_by('kode_permintaan', 'desc');
+        $this->db->where('kode_skid_tank', $id);
+        $respone = $this->db->get()->result();
+        return $respone;
+    }
     public function all_permintaan_patra_niaga()
     {
         $this->db->select('*');
         $this->db->from("permintaan");
         $this->db->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe");
         $this->db->where('status_patra_niaga', '1');
+        $this->db->order_by('kode_permintaan', 'desc');
+        $respone = $this->db->get();
+        return $respone;
+    }
+    public function all_permintaan_patra_niaga_berangkat()
+    {
+        $this->db->select('*');
+        $this->db->from("permintaan");
+        $this->db->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe");
+        $this->db->where('status_patra_niaga', '2');
+        $this->db->where('tgl_berangkat_tujuan', '0000-00-00 00:00:00');
         $this->db->order_by('kode_permintaan', 'desc');
         $respone = $this->db->get();
         return $respone;
@@ -178,6 +199,22 @@ class M_permintaan extends CI_Model
                 $this->db->where('kode_skid_tank', $data['kode_skid_tank']);
                 $this->db->update("t_skid_tank", $data1);
             }
+            $response['status'] = 200;
+            $response['error'] = false;
+            $response['message'] = 'Data person diupdate.';
+            return $response;
+        } else {
+            $response['status'] = 502;
+            $response['error'] = true;
+            $response['message'] = 'Data person gagal diupdate.';
+            return $response;
+        }
+    }
+    public function update_permintaan_patra_niaga_berangkat($data)
+    {
+        $this->db->where('kode_permintaan', $data['kode_permintaan']);
+        $update = $this->db->update("permintaan", $data);
+        if ($update) {
             $response['status'] = 200;
             $response['error'] = false;
             $response['message'] = 'Data person diupdate.';

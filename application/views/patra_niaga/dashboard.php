@@ -74,13 +74,24 @@
                 <!-- isi -->
                 <div class="page-inner mt--5">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-7">
                             <div class="card" style="max-height:350px; overflow-y:auto;">
                                 <div class="card-header">
                                     <div class="card-title">Permintaan Skid Tank</div>
                                 </div>
                                 <div class="card-body">
                                     <div id="Verifikasi"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card" style="max-height:350px; overflow-y:auto;">
+                                <div class="card-header">
+                                    <div class="card-title">Skid Tank Berangkat</div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="Verifikasi_skid_tank"></div>
 
                                 </div>
                             </div>
@@ -236,12 +247,8 @@
         var kode_skid_tank;
         var time;
 
-
-        // date.subtract(time);
-        // console.log(moment(date.format(), "DD MM YYYY hh:mm:ss"));
-
         function show_bukti(data) {
-            console.log(data)
+
             $('#bukti').modal('show')
             document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
         }
@@ -297,11 +304,10 @@
                             timeZone: 'Asia/Jakarta'
                         }));
                         var times = moment.utc(x.getFullYear() + '-' + (x.getMonth() + 1) + '-' + x.getDate() + ' ' + x.getHours() + ':' + x.getMinutes() + ':' + x.getSeconds());
-                        console.log(response)
                         $.each(response.data, function(i) {
                             if (response.data[i].status_permintaan != '2') {
                                 if (response.data[i].status_patra_niaga == '2') {
-                                    if (moment(response.data[i].tgl_berangkat_tujuan) < times) {
+                                    if (response.data[i].tgl_berangkat_tujuan != '0000-00-00 00:00:00') {
                                         if (moment(response.data[i].tgl_sampai_tujuan) < times && moment(response.data[i].tgl_berangkat_tujuan) < moment(response.data[i].tgl_sampai_tujuan)) {
                                             if (moment(response.data[i].tgl_kembali) < times) {
                                                 if (moment(response.data[i].tgl_sampai_kembali) < times) {
@@ -365,7 +371,6 @@
         }
 
         function percepatan() {
-            console.log('put');
             const value_data = {
                 'kode_permintaan': kode_permintaan,
                 'jarak': jarak,
@@ -382,7 +387,6 @@
                 dataType: 'json',
                 data: value_data,
                 success: function(response) {
-                    console.log(response);
                     data_permintaan()
                     swal({
                         title: "Skid Tank Telah Di Terminal!",
@@ -407,13 +411,36 @@
                     document.getElementById('Verifikasi').innerHTML = null;
                     if (response.status) {
                         $.each(response.data, function(i) {
-                            document.getElementById('Verifikasi').innerHTML += '<div class="card p-3"><div class=" d-flex row"><div class="col-md-8"><h6 class="text-uppercase fw-bold mb-1">Permintaan dari SPBE : ' + response.data[i].nama_spbe + ' <span></h6><span class="text-uppercase text-muted d-block"><table><tr><td>No SPA</td><td> : ' + response.data[i].no_spa + '</td></tr><tr><td>Tanggal SPA</td><td> : ' + response.data[i].tgl_spa + '</td></tr><tr><td>Kapasitas TT </td><td> : ' + response.data[i].kapasitas_tt + '</td></tr></table></span></div><div class=" col-md-4 pull-right mt-2"><button class="btn btn-primary btn-border btn-round pull-right btn-sm" onclick="kode_vefikasi(' + response.data[i].kode_permintaan + ')">Verifikasi</button><button class="btn btn-success btn-border btn-round pull-right btn-sm" onclick="show_bukti(\'' + response.data[i].bukti + '\')">Bukti</button><button class="btn btn-danger btn-border btn-round pull-right btn-sm" onclick="kode_tolak(' + response.data[i].kode_permintaan + ')">Tolak</button></div></div></div>'
+                            document.getElementById('Verifikasi').innerHTML += '<div class="card p-3"><div class=" d-flex row"><div class="col-md-9"><h6 class="text-uppercase fw-bold mb-1">Permintaan dari SPBE : ' + response.data[i].nama_spbe + ' <span></h6><span class="text-uppercase text-muted d-block"><table><tr><td>No SPA</td><td> : ' + response.data[i].no_spa + '</td></tr><tr><td>Tanggal SPA</td><td> : ' + response.data[i].tgl_spa + '</td></tr><tr><td>Kapasitas TT </td><td> : ' + response.data[i].kapasitas_tt + '</td></tr></table></span></div><div class=" col-md-3 pull-right mt-2"><button class="btn btn-primary btn-border btn-round pull-right btn-sm" onclick="kode_vefikasi(' + response.data[i].kode_permintaan + ')">Verifikasi</button><button class="btn btn-success btn-border btn-round pull-right btn-sm" onclick="show_bukti(\'' + response.data[i].bukti + '\')">Bukti</button><button class="btn btn-danger btn-border btn-round pull-right btn-sm" onclick="kode_tolak(' + response.data[i].kode_permintaan + ')">Tolak</button></div></div></div>'
                         });
                     }
                 }
             });
         }
         data_permintaan2();
+
+        function data_permintaan3() {
+            $.ajax({
+                type: 'GET',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
+                },
+                url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/berangkat?KEY-SPBE=SPBE",
+                contentType: "application/json",
+                dataType: 'json',
+                success: function(response) {
+                    console.log(response)
+                    document.getElementById('Verifikasi_skid_tank').innerHTML = null;
+                    if (response.status) {
+                        $.each(response.data, function(i) {
+                            document.getElementById('Verifikasi_skid_tank').innerHTML += '<div class="card p-3"><div class=" d-flex row"><div class="col-md-8"><h6 class="text-uppercase fw-bold mb-1">Permintaan dari SPBE : ' + response.data[i].nama_spbe + ' <span></h6><span class="text-uppercase text-muted d-block"><table><tr><td>No SPA</td><td> : ' + response.data[i].no_spa + '</td></tr><tr><td>Tanggal SPA</td><td> : ' + response.data[i].tgl_spa + '</td></tr><tr><td>Kapasitas TT </td><td> : ' + response.data[i].kapasitas_tt + '</td></tr></table></span></div><div class=" col-md-4 pull-right mt-2"><button class="btn btn-primary btn-border btn-round pull-right btn-sm" onclick="berangkat(' + response.data[i].kode_permintaan + ')">Verifikasi</button></div></div></div>'
+                        });
+                    }
+                }
+            });
+        }
+        data_permintaan3();
 
         function varifikasi_fix(param) {
             kode_skid_tank = param;
@@ -448,14 +475,12 @@
         }
 
         function verifikasi() {
-            console.log('put');
             const value_data = {
                 'kode_permintaan': kode_permintaan,
                 'status_patra_niaga': '2',
                 'kode_skid_tank': kode_skid_tank,
                 'KEY-SPBE': 'SPBE'
             }
-            console.log(value_data);
             $.ajax({
                 type: 'POST',
                 url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/edit",
@@ -469,8 +494,67 @@
                     bar_1()
                     data_permintaan();
                     data_permintaan2();
+                    data_permintaan3();
                     $('#inputdata').modal('hide');
                     $("#datatable").DataTable().ajax.reload();
+                    swal({
+                        title: 'Permintaan Telah Diverifikasi!',
+                        type: 'success',
+                        icon: 'success',
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        function berangkat(data) {
+            swal({
+                title: 'Anda yakin?',
+                text: "Skid akan Berangakt!",
+                // type: 'default',
+                icon: 'info',
+                buttons: {
+                    cancel: {
+                        visible: true,
+                        className: 'btn btn-danger'
+                    },
+                    confirm: {
+                        text: 'Verifikasi',
+                        className: 'btn btn-success'
+                    }
+                }
+            }).then((e) => {
+                if (e) {
+                    berangkat_fix(data);
+                } else {
+                    swal.close();
+                }
+            });
+        }
+
+        function berangkat_fix(data) {
+            const value_data = {
+                'kode_permintaan': data,
+                'KEY-SPBE': 'SPBE'
+            }
+            $.ajax({
+                type: 'POST',
+                url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/berangkat",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
+                },
+                dataType: 'json',
+                data: value_data,
+                success: function(response) {
+                    bar_1()
+                    data_permintaan();
+                    data_permintaan2();
+                    data_permintaan3();
                     swal({
                         title: 'Permintaan Telah Diverifikasi!',
                         type: 'success',
@@ -570,7 +654,6 @@
                 'status_patra_niaga': '3',
                 'KEY-SPBE': 'SPBE'
             }
-            console.log(value_data);
             $.ajax({
                 type: 'POST',
                 url: " <?= base_url() ?>Rest_API/Permintaan_patra_niaga/edit",
@@ -608,7 +691,6 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response)
                     const jarak = response.data.map(function(e) {
                         return e.jarak;
                     });

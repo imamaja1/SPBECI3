@@ -25,6 +25,20 @@ class Permintaan_patra_niaga extends REST_Controller
             ], REST_Controller::HTTP_OK);
         }
     }
+    public function berangkat_get()
+    {
+        if ($this->M_permintaan->all_permintaan_patra_niaga_berangkat()->num_rows() > 0) {
+            $respone['status'] = '200';
+            $respone['massage'] = 'data belum diferivikasi';
+            $respone['data'] = $this->M_permintaan->all_permintaan_patra_niaga_berangkat()->result();
+            $this->response($respone, REST_Controller::HTTP_OK);
+        } else {
+            $this->response([
+                'status' => FALSE,
+                'message' => 'No users were found'
+            ], REST_Controller::HTTP_OK);
+        }
+    }
 
     public function index_post()
     {
@@ -44,12 +58,9 @@ class Permintaan_patra_niaga extends REST_Controller
     public function edit_post()
     {
         date_default_timezone_set('Asia/Jakarta');
-        $timeb = date('Y-m-d H:i:s');
-        $tgl_berangkat_tujuan = date('Y-m-d H:i:s', strtotime('+3600 second', strtotime($timeb)));
         $data = array(
             'kode_permintaan' => $this->post('kode_permintaan'),
-            'status_patra_niaga' => $this->post('status_patra_niaga'),
-            'tgl_berangkat_tujuan' => $tgl_berangkat_tujuan
+            'status_patra_niaga' => $this->post('status_patra_niaga')
         );
         if ($this->post('kode_skid_tank') != null) {
             $data['kode_skid_tank'] = $this->post('kode_skid_tank');
@@ -58,6 +69,18 @@ class Permintaan_patra_niaga extends REST_Controller
             $data['kode_skid_tank'] = 0;
             $respone = $this->M_permintaan->update_permintaan_patra_niaga($data);
         }
+        $this->response($respone, REST_Controller::HTTP_CREATED);
+    }
+
+    public function berangkat_post()
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $tgl_berangkat_tujuan = date('Y-m-d H:i:s');
+        $data = array(
+            'kode_permintaan' => $this->post('kode_permintaan'),
+            'tgl_berangkat_tujuan' => $tgl_berangkat_tujuan
+        );
+        $respone = $this->M_permintaan->update_permintaan_patra_niaga_berangkat($data);
         $this->response($respone, REST_Controller::HTTP_CREATED);
     }
 

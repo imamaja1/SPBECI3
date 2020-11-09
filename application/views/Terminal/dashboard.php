@@ -253,7 +253,7 @@
                         $.each(response.data, function(i) {
                             if (response.data[i].status_permintaan != '2') {
                                 if (response.data[i].status_patra_niaga == '2') {
-                                    if (moment(response.data[i].tgl_berangkat_tujuan) < times) {
+                                    if (response.data[i].tgl_berangkat_tujuan != '0000-00-00 00:00:00') {
                                         if (moment(response.data[i].tgl_sampai_tujuan) < times && moment(response.data[i].tgl_berangkat_tujuan) < moment(response.data[i].tgl_sampai_tujuan)) {
                                             if (moment(response.data[i].tgl_kembali) < times) {
                                                 if (moment(response.data[i].tgl_sampai_kembali) < times) {
@@ -393,30 +393,6 @@
             })
         }
         bar_1()
-        // $.ajax({
-        //     type: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded',
-        //         'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
-        //     },
-        //     url: " <?= base_url() ?>Rest_API/aktifitas/spbe?KEY-SPBE=SPBE",
-        //     contentType: "application/json",
-        //     dataType: 'json',
-        //     success: function(response) {
-        //         Morris.Bar({
-        //             element: 'dashboard-bar-2',
-        //             data: response.data,
-        //             xkey: 'nama_spbe',
-        //             ykeys: ['jumlah_diterima', 'jumlah_ditolak'],
-        //             labels: ['Jumlah Permintaan Diterima', 'Jumlah Permintaan Ditolak'],
-        //             barColors: ['#33414E', '#1caf9a'],
-        //             gridTextSize: '10px',
-        //             hideHover: true,
-        //             resize: true,
-        //             gridLineColor: '#E5E5E5'
-        //         });
-        //     }
-        // })
     </script>
 </body>
 

@@ -9,6 +9,7 @@ class Skid_tank extends REST_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->model('M_skid_tank');
+        $this->load->model('M_permintaan');
     }
     public function index_get()
     {
@@ -111,5 +112,18 @@ class Skid_tank extends REST_Controller
             $this->response($respone, REST_Controller::HTTP_BAD_REQUEST);
         }
         $this->response($respone, REST_Controller::HTTP_OK);
+    }
+
+    public function Histori_get($id)
+    {
+        $data = $this->M_permintaan->permintaan_truk($id);
+        if ($data) {
+            $this->response($data, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+        } else {
+            $this->response([
+                'status' => FALSE,
+                'message' => 'No users were found'
+            ], REST_Controller::HTTP_NOT_FOUND); // NOT_FOUND (404) being the HTTP response code
+        }
     }
 }
