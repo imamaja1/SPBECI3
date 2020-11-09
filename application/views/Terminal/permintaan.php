@@ -203,6 +203,10 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <div id="download"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -257,6 +261,8 @@
         function show_bukti(data) {
             $('#bukti').modal('show')
             document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
+
+            document.getElementById('download').innerHTML = '<a href="<?= base_url() ?>uploads/bukti/' + data + '"  download><button type="button" class="btn btn-primary" >Unduh</button><a/> ';
         }
 
         function data_skid_tank() {

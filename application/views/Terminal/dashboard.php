@@ -121,6 +121,7 @@
         </div>
     </div>
 
+    <!-- bukti spa  -->
     <div class="modal fade bd-example-modal-lg" id="bukti" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -138,6 +139,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <div id="download"></div>
                 </div>
             </div>
         </div>
@@ -192,11 +197,12 @@
         var jarak;
         var kode_skid_tank;
         var time;
+        var download;
 
         function show_bukti(data) {
-            console.log(data)
             $('#bukti').modal('show')
             document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
+            document.getElementById('download').innerHTML = '<a href="<?= base_url() ?>uploads/bukti/' + data + '"  download><button type="button" class="btn btn-primary" >Unduh</button><a/> ';
         }
 
         function kode3(kode, jum) {
