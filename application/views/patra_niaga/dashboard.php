@@ -434,7 +434,6 @@
                 contentType: "application/json",
                 dataType: 'json',
                 success: function(response) {
-                    console.log(response)
                     document.getElementById('Verifikasi_skid_tank').innerHTML = null;
                     if (response.status) {
                         $.each(response.data, function(i) {

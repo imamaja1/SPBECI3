@@ -14,6 +14,63 @@ class M_permintaan extends CI_Model
         $response['data'] = $all;
         return $response;
     }
+    public function download_permintaan($data1, $data2, $data3)
+    {
+        if ($data1 == '0') {
+            if ($data2 == 'null' && $data3 == 'null') {
+                $all = $this->db->select('*')
+                    ->from('permintaan')
+                    ->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe")
+                    ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+                    ->order_by('kode_permintaan', 'desc')
+                    ->get()->result();
+                $response['status'] = 200;
+                $response['error'] = false;
+                $response['data'] = $all;
+                return $response;
+            } else {
+                $all = $this->db->select('*')
+                    ->from('permintaan')
+                    ->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe")
+                    ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+                    ->where('permintaan.tgl >=', $data2)
+                    ->where('permintaan.tgl <=', $data3)
+                    ->order_by('kode_permintaan', 'desc')
+                    ->get()->result();
+                $response['status'] = 200;
+                $response['error'] = false;
+                $response['data'] = $all;
+                return $response;
+            }
+        } else {
+            if ($data2 == 'null' && $data3 == 'null') {
+                $all = $this->db->select('*')
+                    ->from('permintaan')
+                    ->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe")
+                    ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+                    ->where('t_spbe.kode_spbe', $data1)
+                    ->order_by('kode_permintaan', 'desc')
+                    ->get()->result();
+                $response['status'] = 200;
+                $response['error'] = false;
+                $response['data'] = $all;
+                return $response;
+            } else {
+                $all = $this->db->select('*')
+                    ->from('permintaan')
+                    ->join("t_spbe", "t_spbe.kode_spbe = permintaan.kode_spbe")
+                    ->join("t_skid_tank", "t_skid_tank.kode_skid_tank = permintaan.kode_skid_tank", 'left')
+                    ->where('permintaan.tgl >=', $data2)
+                    ->where('permintaan.tgl <=', $data3)
+                    ->order_by('kode_permintaan', 'desc')
+                    ->get()->result();
+                $response['status'] = 200;
+                $response['error'] = false;
+                $response['data'] = $all;
+                return $response;
+            }
+        }
+    }
     public function all_permintaan_terminal()
     {
         $this->db->select('*');

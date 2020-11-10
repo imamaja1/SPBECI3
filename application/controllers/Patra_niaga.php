@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Reader\Csv;
 
 class Patra_niaga extends CI_Controller
 {
@@ -7,6 +13,7 @@ class Patra_niaga extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('M_permintaan');
         if (isset($_SESSION['status'])) {
             if ($_SESSION['level'] == "1") {
                 redirect('terminal');
@@ -14,7 +21,7 @@ class Patra_niaga extends CI_Controller
                 redirect('spbe');
             }
         } else {
-            redirect('auth'); 
+            redirect('auth');
         }
     }
     public function index()
@@ -36,6 +43,45 @@ class Patra_niaga extends CI_Controller
     {
         $data['side'] = 'skid_tank';
         $this->load->view('patra_niaga/skid_tank', $data);
+    }
+    public function download($data1, $data2, $data3)
+    {
+        $obj = $this->M_permintaan->download_permintaan($data1, $data2, $data3);
+
+        $file = new Spreadsheet();
+        $active_sheet = $file->getActiveSheet();
+        $active_sheet->setCellValue('A1', 'NO SPA');
+        $active_sheet->setCellValue('B1', 'Tanggal SPA');
+        $active_sheet->setCellValue('C1', 'Tanggal Permintaan');
+        $active_sheet->setCellValue('D1', 'Nama SPBE');
+        $active_sheet->setCellValue('E1', 'Alamat SPBE');
+        $active_sheet->setCellValue('F1', 'NOPOL');
+        $active_sheet->setCellValue('G1', 'TGL skid Tank Berangakt');
+        $active_sheet->setCellValue('H1', 'TGL skid Tank Sampai');
+
+        // var_dump(json_decode($obj['data']));
+        $count = 2;
+        foreach ($obj['data'] as $key => $value) {
+            $active_sheet->setCellValue('A' . $count, $value->no_spa);
+            $active_sheet->setCellValue('B' . $count, $value->tgl_spa);
+            $active_sheet->setCellValue('C' . $count, $value->tgl);
+            $active_sheet->setCellValue('D' . $count, $value->nama_spbe);
+            $active_sheet->setCellValue('E' . $count, $value->alamat_spbe);
+            $active_sheet->setCellValue('F' . $count, $value->nopol);
+            $active_sheet->setCellValue('G' . $count, $value->tgl_berangkat_tujuan);
+            $active_sheet->setCellValue('H' . $count, $value->tgl_sampai_tujuan);
+            $count = $count + 1;
+        }
+
+        $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($file, 'Csv');
+        $file_name =  'Permintaan.' . strtolower('csv');
+        $writer->save($file_name);
+        header('Content-Type: application/x-www-form-urlencoded');
+        header('Content-Transfer-Encoding: Binary');
+        header("Content-disposition: attachment; filename=\"" . $file_name . "\"");
+        readfile($file_name);
+        unlink($file_name);
+        exit;
     }
     function log_out()
     {

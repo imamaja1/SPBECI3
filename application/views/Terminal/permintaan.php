@@ -80,6 +80,9 @@
                                 <div class="card-header">
                                     <div class="d-flex align-items-center">
                                         <h4 class="card-title">Data Permintaan</h4>
+                                        <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#downloadpermintaan">
+                                            <i class="fas fa-download"></i> Unduh Data
+                                        </button>
                                     </div>
                                 </div>
 
@@ -116,6 +119,40 @@
         </div>
     </div>
 
+
+    <!-- Download -->
+    <div class="modal fade bd-example-modal-lg" id="downloadpermintaan" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLongTitle">Download Permintaan</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body row">
+                        <div class="form-group col-md-12">
+                            <label for="exampleInputEmail1">Permintaan Dari SPBE</label>
+                            <div id="permintaanspbe"></div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Dari tanggal</label>
+                            <input class="form-control" type="date" id='dari_tanggal' />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="exampleInputEmail1">Sampai Tanggal</label>
+                            <input class="form-control" type="date" id='sampai_tanggal' />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" onclick="download_data()">Unduh</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- modal edit data -->
     <div class="modal fade bd-example-modal-lg" id="editdata" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -263,6 +300,32 @@
             document.getElementById('bukti_nopol').innerHTML = '<img src="<?= base_url() ?>uploads/bukti/' + data + '" alt="Card image cap" style="margin: auto" width="100%"> ';
 
             document.getElementById('download').innerHTML = '<a href="<?= base_url() ?>uploads/bukti/' + data + '"  download><button type="button" class="btn btn-primary" >Unduh</button><a/> ';
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: " <?= base_url() ?>Rest_API/SPBE?KEY-SPBE=SPBE",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': "Basic " + btoa("gas:986b679b6523392aa553cd1aae104768")
+            },
+            success: function(response) {
+                console.log(response.data)
+                var htmm = '<select class="form-control" id="downloasSPBE"><option class="form-control" id="0" value="0">Semua</option>';
+                $.each(response.data, function(i) {
+                    htmm += '<option class="form-control" id="' + response.data[i].kode_spbe + '" value="' + response.data[i].kode_spbe + '">' + response.data[i].nama_spbe + '</option>';
+                });
+                htmm += '</select>';
+                $('#permintaanspbe').html(htmm);
+            }
+        });
+
+        function download_data() {
+            const data1 = $('#downloasSPBE option:selected').attr('id');
+            const data2 = $("#dari_tanggal").val() != '' ? $("#dari_tanggal").val() : null;
+            const data3 = $("#sampai_tanggal").val() != '' ? $("#sampai_tanggal").val() : null;
+            console.log(data2)
+            location.href = "<?= base_url() ?>Terminal/download/" + data1 + "/" + data2 + "/" + data3;
         }
 
         function data_skid_tank() {
